@@ -10,7 +10,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "start": "next dev",
         "test": "yarn eslint && yarn jest"
     },
     "dependencies": {
@@ -19,6 +19,8 @@
         "react-dom": "16.13.1"
     },
     "devDependencies": {
+        "@testing-library/react": "^10.0.4",
+        "@types/jest": "^25.2.3",
         "@types/node": "^14.0.5",
         "@types/react": "^16.9.35",
         "@typescript-eslint/eslint-plugin": "^3.0.0",
