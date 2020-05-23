@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "bullsh-t-pyramid",
+    "production": "bullsh-t-pyramid",
+    "staging": "bullshi-t-pyramid-staging"
+  }
+}

@@ -31,3 +31,6 @@ yarn-error.log*
 
 # jest caching
 jest-cache
+
+#output director
+dist/
