@@ -10,16 +10,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/cache@v1
+      - name: Restore npm cache
+        uses: actions/cache@v1
+        id: node-modules-cache
         env:
-          cache-name: cache-node-modules
+          cache-name: node-modules-cache
         with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.18.0
+          registry-url: 'https://npm.pkg.github.com'
+
 
       - name: Restore jest cache
         uses: actions/cache@v1
@@ -33,14 +40,15 @@ jobs:
                 ${{ runner.os }}-build-
                 ${{ runner.os }}-
 
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 10.18.0
-          registry-url: 'https://npm.pkg.github.com'
 
       - name: yarn install
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
         run: |
-          yarn
+          yarn install
+
+      - name: yarn prepare
+        run: |
+          yarn prepare
 
       - name: Running Validations
         run: yarn test

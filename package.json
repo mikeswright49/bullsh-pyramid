@@ -10,6 +10,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "prepare": "cd functions && yarn",
         "start": "next dev",
         "test": "yarn eslint && yarn jest"
     },
