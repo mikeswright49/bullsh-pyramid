@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Unit Test> - How to play should be able to render the component 1`] = `
+<div>
+  <h1>
+    How to play page
+  </h1>
+</div>
+`;

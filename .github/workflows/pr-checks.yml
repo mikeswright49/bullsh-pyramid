@@ -1,0 +1,46 @@
+name: Unit Test PR Action
+
+on:
+    pull_request:
+        types: [opened, synchronize]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Restore jest cache
+        uses: actions/cache@v1
+        env:
+            cache-name: cache-jest
+        with:
+            path: ./jest-cache
+            key: ${{ runner.os }}-build-${{ env.cache-name }}
+            restore-keys: |
+                ${{ runner.os }}-build-${{ env.cache-name }}-
+                ${{ runner.os }}-build-
+                ${{ runner.os }}-
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.18.0
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: yarn install
+        run: |
+          yarn
+
+      - name: Running Validations
+        run: yarn test
