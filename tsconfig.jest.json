@@ -4,5 +4,6 @@
         "baseUrl": ".",
         "jsx": "react",
         "isolatedModules": false
-    }
+    },
+    "include": ["**/*.test.tsx"]
 }
