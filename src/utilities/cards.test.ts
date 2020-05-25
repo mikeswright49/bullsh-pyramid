@@ -4,8 +4,8 @@ describe('<Unit Test> Cards', () => {
     test('should be able to generate a deck of 4 suits of 13 cards', () => {
         const deck = generateDeck();
         expect(deck.length).toBe(52);
-        expect(deck[0]).toBe(0);
-        expect(deck[51]).toBe(12);
+        expect(deck[0]).toEqual({ hidden: false, suit: 0, value: 0 });
+        expect(deck[51]).toEqual({ hidden: false, suit: 3, value: 12 });
     });
 
     test('should be able to deal N players cards', () => {
@@ -34,10 +34,15 @@ describe('<Unit Test> Cards', () => {
         expect(tiers[0].length).toBe(tierCount);
         expect(tiers[tierCount - 1].length).toBe(1);
         expect(deck.length).toBe(37); //52 - 5+4+3+2+1 = 37
+        expect(tiers[0][0].hidden).toBeTruthy();
     });
 
     test('should be able to deal a random card from the deck', () => {
-        const deck = [1, 2, 3];
+        const deck = [
+            { hidden: false, suit: 0, value: 0 },
+            { hidden: false, suit: 0, value: 1 },
+            { hidden: false, suit: 0, value: 2 },
+        ];
         const card = dealCard(deck);
         expect(card).toBeDefined();
         expect(deck.length).toBe(2);
