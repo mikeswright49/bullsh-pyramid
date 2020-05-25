@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Unit Test> Card shold be able to change styles on visibility 1`] = `
+<div>
+  <div
+    class="flex-center-center card hidden"
+  />
+</div>
+`;
+
+exports[`<Unit Test> Card should be able to render the component 1`] = `
+<div>
+  <div
+    class="flex-center-center card"
+  >
+    1
+  </div>
+</div>
+`;
