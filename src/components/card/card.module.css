@@ -1,0 +1,11 @@
+.card {
+    height: 150px;
+    width: 75px;
+    border: 1px solid black;
+    text-align: center;
+    margin-right: 12px;
+}
+
+.card.hidden {
+    background: black;
+}

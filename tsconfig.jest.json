@@ -3,7 +3,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "jsx": "react",
-        "isolatedModules": false
+        "isolatedModules": true
     },
     "include": ["**/*.test.tsx"]
 }
