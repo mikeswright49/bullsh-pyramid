@@ -6,6 +6,6 @@
     margin-right: 12px;
 }
 
-.card.hidden {
-    background: black;
+.cardHidden {
+    background-color: black;
 }

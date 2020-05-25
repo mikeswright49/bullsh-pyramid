@@ -3,7 +3,7 @@
 exports[`<Unit Test> Card shold be able to change styles on visibility 1`] = `
 <div>
   <div
-    class="flex-center-center card hidden"
+    class="flex-center-center card cardHidden"
   />
 </div>
 `;

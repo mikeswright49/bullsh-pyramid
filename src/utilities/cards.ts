@@ -1,14 +1,20 @@
 import { getRandomInt } from './random';
+import { Card } from 'types/card';
+import { GameState } from 'types/game-state';
 
 /**
  * Generates a deck of cards. Cards is customizable now, because I might make euchre
  * @returns a deck of N cards
  */
-export function generateDeck(cardsInSuit = 13): number[] {
+export function generateDeck(cardsInSuit = 13): Card[] {
     const SUITS = 4;
     const deck = [];
-    for (let i = 0; i < SUITS * cardsInSuit; i++) {
-        deck[i] = i % cardsInSuit;
+    for (let index = 0; index < SUITS * cardsInSuit; index++) {
+        deck[index] = {
+            value: index % cardsInSuit,
+            suit: Math.floor(index / cardsInSuit),
+            hidden: false,
+        };
     }
 
     return deck;
@@ -20,7 +26,7 @@ export function generateDeck(cardsInSuit = 13): number[] {
  * @param playerCount number of players
  * @param handSize size of hand that players are playing with
  */
-export function generatePlayers(deck: number[], playerCount: number, handSize = 3) {
+export function generatePlayers(deck: Card[], playerCount: number, handSize = 3): Card[][] {
     const players = [];
     for (let player = 0; player < playerCount; player++) {
         if (!players[player]) {
@@ -39,7 +45,7 @@ export function generatePlayers(deck: number[], playerCount: number, handSize = 
  * @param deck Deck to be generated from
  * @param tierCount number of tiers
  */
-export function generateTiers(deck: number[], tierCount: number) {
+export function generateTiers(deck: Card[], tierCount: number): Card[][] {
     const tiers = [];
     for (let tier = 0; tier < tierCount; tier++) {
         if (!tiers[tier]) {
@@ -47,7 +53,9 @@ export function generateTiers(deck: number[], tierCount: number) {
         }
 
         for (let card = 0; card < tierCount - tier; card++) {
-            tiers[tier].push(dealCard(deck));
+            const card = dealCard(deck);
+            card.hidden = true;
+            tiers[tier].push(card);
         }
     }
 
@@ -59,7 +67,7 @@ export function generateTiers(deck: number[], tierCount: number) {
  * @param deck Deck to be dealt from,
  * @returns card dealt
  */
-export function dealCard(deck: number[]) {
+export function dealCard(deck: Card[]) {
     const index = getRandomInt(0, deck.length);
     const [card] = deck.splice(index, 1);
     return card;
@@ -71,14 +79,16 @@ export function dealCard(deck: number[]) {
  * @param tiers Number of tiers to be generated
  * @param players Number of players in the game
  */
-export function dealHand(deck: number[], tiers: number, players: number) {
-    const response = {
+export function dealHand(deck: Card[], tiers: number, players: number): GameState {
+    const response: GameState = {
         players: [],
         tiers: [],
+        flattenedTiers: [],
     };
 
     response.players = generatePlayers(deck, players);
     response.tiers = generateTiers(deck, tiers);
+    response.flattenedTiers = response.tiers.flat();
 
     return response;
 }
