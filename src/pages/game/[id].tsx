@@ -6,36 +6,21 @@ import { shortId } from 'src/utilities/shortid';
 import { Pyramid } from 'src/components/pyramid/pyramid';
 import { Card as CardType } from 'types/card';
 import styles from './[id].module.css';
-import { GameState } from 'types/game-state';
 import { Card } from 'src/components/card/card';
+import { GameStage } from 'src/enums/game-stage';
+import { useGameState } from 'src/hooks/use-game-state';
+import { useRouter } from 'next/router';
+import { updateGameStage, setHand, setActiveCard } from 'src/services/firebase-db';
 
-const DEFAULT_PLAYER_COUNT = 3;
-const DEFAULT_TIER_COUNT = 5;
 const MEMORIZATION_TIMEOUT = 5000;
 const DECLARATION_TIMEOUT = 1000;
 const BULLSHIT_TIMEOUT = 1000;
 
-enum GameStage {
-    Initiation,
-    Memorization,
-    Flipping,
-    Declaration,
-    Bullshit,
-    Memory,
-    Complete,
-}
-
 export default function Game(): JSX.Element {
-    const [playerCount, setPlayerCount] = useState(DEFAULT_PLAYER_COUNT);
-    const [tierCount, setTierCount] = useState(DEFAULT_TIER_COUNT);
-    const [gameStage, setGameStage] = useState(GameStage.Initiation);
-    const [activeCard, setActiveCard] = useState(0);
-    const [gameState, setGameState] = useState<GameState>({
-        players: [],
-        tiers: [],
-        flattenedTiers: [],
-    });
-
+    const router = useRouter();
+    const gameId: string = router.query.id as string;
+    const gameState = useGameState(gameId);
+    const { gameStage, activeRow, activeIndex } = gameState;
     /**
      * Transition to the flip phase of the game
      * This is some fucked up shit right here.
@@ -57,21 +42,26 @@ export default function Game(): JSX.Element {
 
     const flipCard = (event: { preventDefault: () => void }) => {
         event.preventDefault();
-        gameState.flattenedTiers[activeCard].hidden = false;
-        setGameState(gameState);
-        setGameStage(GameStage.Declaration);
+        gameState.tiers[activeRow][activeIndex].hidden = false;
+        setHand(gameId, gameState);
+        updateGameStage(gameId, GameStage.Declaration);
     };
 
     const transitionToBullshit = () => {
-        setGameStage(GameStage.Bullshit);
+        updateGameStage(gameId, GameStage.Bullshit);
     };
 
     const transitionFromBullShit = () => {
-        if (activeCard === gameState.flattenedTiers.length - 1) {
-            setGameStage(GameStage.Memory);
+        if (activeRow === gameState.tierCount - 1 && activeIndex === 0) {
+            updateGameStage(gameId, GameStage.Memory);
         } else {
-            setActiveCard(activeCard + 1);
-            setGameStage(GameStage.Flipping);
+            const updatedIndex = (activeIndex + 1) % gameState.tiers[activeRow].length;
+            const updatedRow = updatedIndex === 0 ? activeRow + 1 : activeRow;
+            setActiveCard(gameId, {
+                activeRow: updatedRow,
+                activeIndex: updatedIndex,
+            });
+            updateGameStage(gameId, GameStage.Flipping);
         }
     };
 
@@ -80,19 +70,16 @@ export default function Game(): JSX.Element {
         players.forEach((player) => {
             player.forEach((card) => (card.hidden = true));
         });
-        setGameState({
-            ...gameState,
-            players,
-        });
-        setGameStage(GameStage.Flipping);
+        setHand(gameId, gameState);
+        updateGameStage(gameId, GameStage.Flipping);
     };
 
     const transitionToMemorization = (event: { preventDefault: () => void }): void => {
         event.preventDefault();
 
-        const hand = dealHand(generateDeck(), tierCount, playerCount);
-        setGameState(hand);
-        setGameStage(GameStage.Memorization);
+        const hand = dealHand(generateDeck(), gameState.tierCount, gameState.playerCount);
+        setHand(gameId, hand);
+        updateGameStage(gameId, GameStage.Memorization);
     };
 
     function GameBoard() {
@@ -118,28 +105,6 @@ export default function Game(): JSX.Element {
             case GameStage.Initiation:
                 return (
                     <>
-                        <div className="stack-y-2">
-                            <label>
-                                Player count:
-                                <input
-                                    value={playerCount}
-                                    type="number"
-                                    onChange={(val) =>
-                                        setPlayerCount(parseInt(val.target.value, 10))
-                                    }
-                                />
-                            </label>
-                        </div>
-                        <div className="stack-y-2">
-                            <label>
-                                Tier count:
-                                <input
-                                    value={tierCount}
-                                    type="number"
-                                    onChange={(val) => setTierCount(parseInt(val.target.value, 10))}
-                                />
-                            </label>
-                        </div>
                         <div className="stack-y-2">
                             <h2>All players joined!</h2>
                             <button onClick={transitionToMemorization}>Start game</button>
@@ -170,7 +135,7 @@ export default function Game(): JSX.Element {
                     <>
                         <div className="stack-y-2">
                             <h2>Quick 5s! Do you have this card?</h2>
-                            <Card card={gameState.flattenedTiers[activeCard]} />
+                            <Card card={gameState.tiers[activeRow][activeIndex]} />
                         </div>
                         <GameBoard />
                     </>
@@ -180,7 +145,7 @@ export default function Game(): JSX.Element {
                     <>
                         <div className="stack-y-2">
                             <h2>Did anyone have this card?</h2>
-                            <Card card={gameState.flattenedTiers[activeCard]} />
+                            <Card card={gameState.tiers[activeRow][activeIndex]} />
                         </div>
                         <GameBoard />
                     </>

@@ -30,6 +30,24 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Jest Current File - Open Handles",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "${fileBasenameNoExtension}",
+                "--config",
+                "jest.config.js",
+                "--detectOpenHandles"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Jest Update Snapshots (Current File)",
             "program": "${workspaceFolder}/node_modules/.bin/jest",
             "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js", "-u"],

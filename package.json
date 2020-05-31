@@ -9,7 +9,7 @@
     },
     "engineStrict": true,
     "engines": {
-        "node": ">12.13.0"
+        "node": ">=12.13.0"
     },
     "scripts": {
         "dev": "next dev",
@@ -25,6 +25,7 @@
     },
     "devDependencies": {
         "@testing-library/react": "^10.0.4",
+        "@testing-library/react-hooks": "^3.2.1",
         "@types/classnames": "^2.2.10",
         "@types/jest": "^25.2.3",
         "@types/node": "^14.0.5",
@@ -35,9 +36,11 @@
         "eslint": "^7.1.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.3",
+        "firebase": "^7.14.6",
         "jest": "^26.0.1",
         "jest-transform-stub": "^2.0.0",
         "prettier": "^2.0.5",
+        "react-test-renderer": "^16.13.1",
         "ts-jest": "^26.0.0",
         "typescript": "^3.9.3"
     }
