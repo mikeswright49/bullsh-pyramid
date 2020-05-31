@@ -1,7 +1,6 @@
 import { getRandomInt } from './random';
 import { Card } from 'types/card';
-import { GameState } from 'types/game-state';
-
+import { Hand } from 'types/hand';
 /**
  * Generates a deck of cards. Cards is customizable now, because I might make euchre
  * @returns a deck of N cards
@@ -79,16 +78,14 @@ export function dealCard(deck: Card[]) {
  * @param tiers Number of tiers to be generated
  * @param players Number of players in the game
  */
-export function dealHand(deck: Card[], tiers: number, players: number): GameState {
-    const response: GameState = {
+export function dealHand(deck: Card[], tiers: number, players: number): Hand {
+    const response: Hand = {
         players: [],
         tiers: [],
-        flattenedTiers: [],
     };
 
     response.players = generatePlayers(deck, players);
     response.tiers = generateTiers(deck, tiers);
-    response.flattenedTiers = response.tiers.flat();
 
     return response;
 }
