@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Layout } from 'src/components/layout/layout';
 import { dealHand, generateDeck } from 'src/utilities/cards';
-import { Hand } from 'src/components/hand/hand';
-import { shortId } from 'src/utilities/shortid';
-import { Pyramid } from 'src/components/pyramid/pyramid';
 import { Card as CardType } from 'types/card';
-import styles from './[id].module.css';
 import { Card } from 'src/components/card/card';
 import { GameStage } from 'src/enums/game-stage';
 import { useGameState } from 'src/hooks/use-game-state';
 import { useRouter } from 'next/router';
-import { updateGameStage, setHand, setActiveCard } from 'src/services/firebase-db';
+import { GameStore } from 'src/stores/game-store';
+import { GameBoard } from 'src/components/game-board/game-board';
 
 const MEMORIZATION_TIMEOUT = 5000;
 const DECLARATION_TIMEOUT = 1000;
@@ -43,25 +40,25 @@ export default function Game(): JSX.Element {
     const flipCard = (event: { preventDefault: () => void }) => {
         event.preventDefault();
         gameState.tiers[activeRow][activeIndex].hidden = false;
-        setHand(gameId, gameState);
-        updateGameStage(gameId, GameStage.Declaration);
+        GameStore.setHand(gameId, gameState);
+        GameStore.updateGameStage(gameId, GameStage.Declaration);
     };
 
     const transitionToBullshit = () => {
-        updateGameStage(gameId, GameStage.Bullshit);
+        GameStore.updateGameStage(gameId, GameStage.Bullshit);
     };
 
     const transitionFromBullShit = () => {
         if (activeRow === gameState.tierCount - 1 && activeIndex === 0) {
-            updateGameStage(gameId, GameStage.Memory);
+            GameStore.updateGameStage(gameId, GameStage.Memory);
         } else {
             const updatedIndex = (activeIndex + 1) % gameState.tiers[activeRow].length;
             const updatedRow = updatedIndex === 0 ? activeRow + 1 : activeRow;
-            setActiveCard(gameId, {
+            GameStore.setActiveCard(gameId, {
                 activeRow: updatedRow,
                 activeIndex: updatedIndex,
             });
-            updateGameStage(gameId, GameStage.Flipping);
+            GameStore.updateGameStage(gameId, GameStage.Flipping);
         }
     };
 
@@ -70,35 +67,17 @@ export default function Game(): JSX.Element {
         players.forEach((player) => {
             player.forEach((card) => (card.hidden = true));
         });
-        setHand(gameId, gameState);
-        updateGameStage(gameId, GameStage.Flipping);
+        GameStore.setHand(gameId, gameState);
+        GameStore.updateGameStage(gameId, GameStage.Flipping);
     };
 
     const transitionToMemorization = (event: { preventDefault: () => void }): void => {
         event.preventDefault();
 
         const hand = dealHand(generateDeck(), gameState.tierCount, gameState.playerCount);
-        setHand(gameId, hand);
-        updateGameStage(gameId, GameStage.Memorization);
+        GameStore.setHand(gameId, hand);
+        GameStore.updateGameStage(gameId, GameStage.Memorization);
     };
-
-    function GameBoard() {
-        if (gameStage === GameStage.Initiation) {
-            return <span></span>;
-        }
-        return (
-            <div className="flex-center-center">
-                <div className={styles.leftBar}>
-                    {gameState.players.map((player, index) => {
-                        return <Hand key={shortId()} cards={player} name={index + ''} />;
-                    })}
-                </div>
-                <div className={styles.rightBar}>
-                    <Pyramid tiers={gameState.tiers} />
-                </div>
-            </div>
-        );
-    }
 
     function GameDisplay() {
         switch (gameStage) {
@@ -117,7 +96,7 @@ export default function Game(): JSX.Element {
                         <div className="stack-y-2">
                             <h2>You have 30s to remember your cards!</h2>
                         </div>
-                        <GameBoard />
+                        <GameBoard gameState={gameState} />
                     </>
                 );
             case GameStage.Flipping:
@@ -127,7 +106,7 @@ export default function Game(): JSX.Element {
                             <h2>Time to start flipping cards</h2>
                             <button onClick={flipCard}>Flip card</button>
                         </div>
-                        <GameBoard />
+                        <GameBoard gameState={gameState} />
                     </>
                 );
             case GameStage.Declaration:
@@ -137,7 +116,7 @@ export default function Game(): JSX.Element {
                             <h2>Quick 5s! Do you have this card?</h2>
                             <Card card={gameState.tiers[activeRow][activeIndex]} />
                         </div>
-                        <GameBoard />
+                        <GameBoard gameState={gameState} />
                     </>
                 );
             case GameStage.Bullshit:
@@ -147,7 +126,7 @@ export default function Game(): JSX.Element {
                             <h2>Did anyone have this card?</h2>
                             <Card card={gameState.tiers[activeRow][activeIndex]} />
                         </div>
-                        <GameBoard />
+                        <GameBoard gameState={gameState} />
                     </>
                 );
             case GameStage.Memory:

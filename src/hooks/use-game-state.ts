@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { GameState } from 'types/game-state';
 import { GameStage } from '../enums/game-stage';
-import { subscribeToGame, unsubscribeToGame } from '../services/firebase-db';
+import { GameStore } from '../stores/game-store';
 
-export const DEFAULT_GAME_STATE = {
+export const DEFAULT_GAME_STATE: GameState = {
     id: '',
     gameStage: GameStage.Initiation,
     activeRow: 0,
     activeIndex: 0,
-    players: null,
-    tiers: null,
+    players: [],
+    tiers: [],
 };
 
 export function useGameState(gameId: string) {
@@ -20,11 +20,11 @@ export function useGameState(gameId: string) {
             return;
         }
 
-        subscribeToGame(gameId, (updatedGameState) => {
+        GameStore.subscribeToPlayer(gameId, (updatedGameState) => {
             setGameState(updatedGameState);
         });
 
-        return () => unsubscribeToGame(gameId);
+        return () => GameStore.unsubscribeToGame();
     }, [gameId]);
 
     return gameState;

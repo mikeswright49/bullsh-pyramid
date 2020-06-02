@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout } from 'src/components/layout/layout';
-import { createGame } from 'src/services/firebase-db';
+import { GameStore } from 'src/stores/game-store';
 
 const DEFAULT_PLAYER_COUNT = 3;
 const DEFAULT_TIER_COUNT = 5;
@@ -10,7 +10,7 @@ export default function HostGame(): JSX.Element {
     const [tierCount, setTierCount] = useState(DEFAULT_TIER_COUNT);
 
     const initializeGame = async (): Promise<void> => {
-        const gameId = await createGame(playerCount, tierCount);
+        const gameId = await GameStore.createGame(playerCount, tierCount);
         window.location.assign(`/game/${gameId}`);
     };
 
