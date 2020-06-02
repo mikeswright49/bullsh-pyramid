@@ -5,11 +5,10 @@ import { Card } from 'types/card';
 import { Player } from 'types/player';
 
 export class PlayerStore {
-    public static DEFAULT_PLAYER_SCORE = 10000;
-    public static database;
-    public static subscribers = [];
-
-    private static initialized = false;
+    private static DEFAULT_PLAYER_SCORE = 10000;
+    private static database: firebase.database.Database;
+    private static subscribers;
+    private static initialized: boolean;
 
     public static subscribeToPlayer(playerId: string, updateCallback: (snapshot: Player) => void) {
         if (!PlayerStore.initialized) {
