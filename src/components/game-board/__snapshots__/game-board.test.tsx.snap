@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Unit Test> - Game board should render the pyramid if not in initialization 1`] = `
+<div
+  class="flex-center-center"
+  data-testid="at-game-board"
+>
+  <div
+    class="rightBar"
+  >
+    <div
+      data-testid="at-pyramid"
+    />
+  </div>
+</div>
+`;
+
+exports[`<Unit Test> - Game board should return an empty span if in initialization state 1`] = `
+<span
+  data-testid="at-game-board"
+/>
+`;

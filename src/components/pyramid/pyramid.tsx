@@ -1,5 +1,4 @@
 import { Card } from '../card/card';
-import { shortId } from '../../utilities/shortid';
 import React from 'react';
 import { Card as CardType } from '../../../types/card';
 
@@ -8,10 +7,10 @@ export function Pyramid({ tiers }: { tiers: CardType[][] }) {
 
     return (
         <div data-testid="at-pyramid">
-            {renderedTiers.map((tier) => (
-                <div key={shortId()} className={'flex-center-center stack-y-3'}>
-                    {tier.map((card: CardType) => (
-                        <Card key={shortId()} card={card} />
+            {renderedTiers.map((tier, tierIndex) => (
+                <div key={`pyramid-tier-${tierIndex}`} className={'flex-center-center stack-y-3'}>
+                    {tier.map((card: CardType, cardIndex) => (
+                        <Card key={`pyramid-tier-${tierIndex}-card-${cardIndex}`} card={card} />
                     ))}
                 </div>
             ))}

@@ -16,7 +16,7 @@
         "build": "next build",
         "prepare": "cd functions && yarn",
         "start": "next dev",
-        "test": "yarn eslint && yarn jest"
+        "test": "yarn eslint && yarn jest --ci"
     },
     "dependencies": {
         "next": "9.3.5",
