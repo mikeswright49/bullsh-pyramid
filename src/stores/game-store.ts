@@ -6,9 +6,9 @@ import { Hand } from 'types/hand';
 import { getFirebaseConfig } from '../../config/firebase-config';
 
 export class GameStore {
-    private static database;
+    private static database: firebase.database.Database;
     private static subscribers = [];
-    private static initialized = false;
+    private static initialized: boolean;
 
     public static async createGame(playerCount: number, tierCount: number): Promise<string> {
         if (!GameStore.initialized) {
@@ -99,7 +99,6 @@ export class GameStore {
         }
 
         GameStore.database = firebase.database();
-        GameStore.subscribers = [];
         GameStore.initialized = true;
     }
 }
