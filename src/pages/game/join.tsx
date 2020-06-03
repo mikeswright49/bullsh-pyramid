@@ -4,13 +4,15 @@ import { PlayerStore } from '../../stores/player-store';
 import { GameStore } from '../../stores/game-store';
 
 export default function JoinGame(): JSX.Element {
-    const gameId = useRef();
-    const playerName = useRef();
+    const gameIdRef = useRef<HTMLInputElement>();
+    const playerNameRef = useRef<HTMLInputElement>();
 
     const createPlayerAndJoin = async (): Promise<void> => {
-        const playerId = await PlayerStore.createPlayer(playerName.current);
-        await GameStore.joinGame(gameId.current, playerId);
-        window.location.assign(`/game/${gameId.current}/player/${playerId}`);
+        const gameId = gameIdRef.current.value;
+        const playerName = playerNameRef.current.value;
+        const playerId = await PlayerStore.createPlayer(playerName);
+        await GameStore.joinGame(gameId, playerId);
+        window.location.assign(`/game/${gameId}/player/${playerId}`);
     };
 
     return (
@@ -21,17 +23,22 @@ export default function JoinGame(): JSX.Element {
                 <div className="stack-y-2">
                     <label>
                         Game id:
-                        <input ref={gameId} type="text" />
+                        <input ref={gameIdRef} type="text" />
                     </label>
                 </div>
                 <div className="stack-y-2">
                     <label>
                         Player name:
-                        <input ref={playerName} type="text" />
+                        <input ref={playerNameRef} type="text" />
                     </label>
                 </div>
                 <div>
-                    <button onClick={createPlayerAndJoin}>Join the game</button>
+                    <button
+                        className="pure-button pure-button-primary"
+                        onClick={createPlayerAndJoin}
+                    >
+                        Join the game
+                    </button>
                 </div>
             </>
         </Layout>

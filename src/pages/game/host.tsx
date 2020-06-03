@@ -40,7 +40,9 @@ export default function HostGame(): JSX.Element {
                     </label>
                 </div>
                 <div>
-                    <button onClick={initializeGame}>Start a new game</button>
+                    <button className="pure-button pure-button-primary" onClick={initializeGame}>
+                        Start a new game
+                    </button>
                 </div>
             </>
         </Layout>

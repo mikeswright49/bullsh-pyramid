@@ -16,10 +16,10 @@ describe('<Unit Test> - useGameState', () => {
             gameStage: GameStage.Complete,
         };
         let cb;
-        (GameStore.subscribeToPlayer as jest.Mock) = jest.fn((id, _cb) => (cb = _cb));
+        (GameStore.subscribeToGame as jest.Mock) = jest.fn((id, _cb) => (cb = _cb));
         const { result, unmount } = renderHook(() => useGameState('123'));
 
-        expect(GameStore.subscribeToPlayer).toHaveBeenCalledWith('123', expect.any(Function));
+        expect(GameStore.subscribeToGame).toHaveBeenCalledWith('123', expect.any(Function));
 
         act(() => cb(updatedGameState));
         expect(result.current.gameStage).toBe(GameStage.Complete);
