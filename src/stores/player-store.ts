@@ -7,13 +7,9 @@ import { Player } from 'types/player';
 export class PlayerStore {
     private static DEFAULT_PLAYER_SCORE = 10000;
     private static database: firebase.database.Database;
-    private static subscribers;
-    private static initialized: boolean;
+    private static subscribers = [];
 
     public static subscribeToPlayer(playerId: string, updateCallback: (snapshot: Player) => void) {
-        if (!PlayerStore.initialized) {
-            PlayerStore.init();
-        }
         const game = PlayerStore.database.ref(`players/${playerId}`);
         PlayerStore.subscribers.push(
             game.on('value', (val: { val: () => Player }) => {
@@ -23,18 +19,10 @@ export class PlayerStore {
         );
     }
     public static unsubscribeToPlayer() {
-        if (!PlayerStore.initialized) {
-            return;
-        }
-
         PlayerStore.subscribers.forEach((sub) => sub.off('value'));
     }
 
     public static async createPlayer(name: string): Promise<string> {
-        if (!PlayerStore.initialized) {
-            PlayerStore.init();
-        }
-
         const playerId = shortId();
 
         const player: Player = {
@@ -55,11 +43,10 @@ export class PlayerStore {
 
     public static setHand(hand: Card[]) {}
 
-    private static init() {
+    public static init() {
         if (!firebase.apps.length) {
             firebase.initializeApp(getFirebaseConfig());
         }
         PlayerStore.database = firebase.database();
-        PlayerStore.initialized = true;
     }
 }

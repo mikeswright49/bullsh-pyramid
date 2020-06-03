@@ -8,13 +8,16 @@ import { getFirebaseConfig } from '../../config/firebase-config';
 export class GameStore {
     private static database: firebase.database.Database;
     private static subscribers = [];
-    private static initialized: boolean;
 
-    public static async createGame(playerCount: number, tierCount: number): Promise<string> {
-        if (!GameStore.initialized) {
-            GameStore.init();
+    public static init() {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(getFirebaseConfig());
         }
 
+        GameStore.database = firebase.database();
+    }
+
+    public static async createGame(playerCount: number, tierCount: number): Promise<string> {
         const ID_LENGTH = 4;
         const gameId = shortId(ID_LENGTH);
 
@@ -35,10 +38,6 @@ export class GameStore {
     }
 
     public static subscribeToPlayer(gameId: string, updateCallback: (snapshot: GameState) => void) {
-        if (!GameStore.initialized) {
-            GameStore.init();
-        }
-
         const game = GameStore.database.ref(`games/${gameId}`);
         GameStore.subscribers.push(
             game.on('value', (val) => {
@@ -57,20 +56,12 @@ export class GameStore {
     }
 
     public static async updateGameStage(gameId: string, gameStage: GameStage) {
-        if (!GameStore.initialized) {
-            GameStore.init();
-        }
-
         await GameStore.database.ref(`games/${gameId}`).update({
             gameStage,
         });
     }
 
     public static async setHand(gameId: string, hand: Hand) {
-        if (!GameStore.initialized) {
-            GameStore.init();
-        }
-
         await GameStore.database.ref(`games/${gameId}`).update(hand);
     }
 
@@ -78,27 +69,10 @@ export class GameStore {
         gameId: string,
         index: { activeRow: number; activeIndex: number }
     ) {
-        if (!GameStore.initialized) {
-            GameStore.init();
-        }
-
         await GameStore.database.ref(`games/${gameId}`).update(index);
     }
 
     public static async joinGame(gameId: string, playerId: string) {
-        if (!GameStore.initialized) {
-            GameStore.init();
-        }
-
         await GameStore.database.ref(`games/${gameId}/players`).push(playerId);
-    }
-
-    private static init() {
-        if (!firebase.apps.length) {
-            firebase.initializeApp(getFirebaseConfig());
-        }
-
-        GameStore.database = firebase.database();
-        GameStore.initialized = true;
     }
 }
