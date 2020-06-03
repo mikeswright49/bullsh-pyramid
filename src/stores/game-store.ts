@@ -2,8 +2,9 @@ import * as firebase from 'firebase';
 import { shortId } from '../utilities/shortid';
 import { GameStage } from '../enums/game-stage';
 import { GameState } from 'types/game-state';
-import { Hand } from 'types/hand';
 import { getFirebaseConfig } from '../../config/firebase-config';
+import { Player } from 'types/player';
+import { Card } from 'types/card';
 
 export class GameStore {
     private static database: firebase.database.Database;
@@ -22,6 +23,7 @@ export class GameStore {
         const gameId = shortId(ID_LENGTH);
 
         const gameState = {
+            id: gameId,
             gameStage: GameStage.Initiation,
             activeIndex: 0,
             activeRow: 0,
@@ -37,18 +39,26 @@ export class GameStore {
         }
     }
 
-    public static subscribeToPlayer(gameId: string, updateCallback: (snapshot: GameState) => void) {
+    public static subscribeToGame(gameId: string, updateCallback: (snapshot: GameState) => void) {
         const game = GameStore.database.ref(`games/${gameId}`);
         GameStore.subscribers.push(
             game.on('value', (val) => {
                 const value = val.val();
                 updateCallback(value as GameState);
-            }),
-            game.child('/players').on('child_added', (child) => {
-                const player = child.val();
-                console.log(player);
             })
         );
+    }
+
+    public static subscribeToPlayers(gameId: string, updateCallback: (snapshot: Player) => void) {
+        const game = GameStore.database.ref(`games/${gameId}/players`);
+        const players = GameStore.database.ref(`players`);
+        game.on('child_added', (child) => {
+            const playerId = child.val();
+            players.child(playerId).once('value', (val) => {
+                const value = val.val();
+                updateCallback(value as Player);
+            });
+        });
     }
 
     public static unsubscribeToGame() {
@@ -61,8 +71,10 @@ export class GameStore {
         });
     }
 
-    public static async setHand(gameId: string, hand: Hand) {
-        await GameStore.database.ref(`games/${gameId}`).update(hand);
+    public static async updateTiers(gameId: string, tiers: Card[][]) {
+        await GameStore.database.ref(`games/${gameId}`).update({
+            tiers,
+        });
     }
 
     public static async setActiveCard(

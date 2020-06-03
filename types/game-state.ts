@@ -8,6 +8,6 @@ export type GameState = {
     activeRow: number;
     playerCount?: number;
     tierCount?: number;
-    players: Card[][];
+    players: { key: string }[];
     tiers: Card[][];
 };

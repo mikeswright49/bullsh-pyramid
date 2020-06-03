@@ -18,6 +18,11 @@ export class PlayerStore {
             })
         );
     }
+
+    public static async updatePlayer(player: Player) {
+        await PlayerStore.database.ref(`players/${player.id}`).update(player);
+    }
+
     public static unsubscribeToPlayer() {
         PlayerStore.subscribers.forEach((sub) => sub.off('value'));
     }

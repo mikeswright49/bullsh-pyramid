@@ -17,6 +17,20 @@ export default function Player(): JSX.Element {
 
     const { gameStage, activeRow, activeIndex } = gameState;
 
+    function PlayerHand() {
+        if (!player || !player.hand) {
+            return <></>;
+        }
+
+        return (
+            <>
+                {player.hand.map((card, index) => (
+                    <Card key={`${playerId}-card-${index}`} card={card} />
+                ))}
+            </>
+        );
+    }
+
     function PlayerDisplay() {
         switch (gameStage) {
             case GameStage.Initiation:
@@ -33,6 +47,7 @@ export default function Player(): JSX.Element {
                         <div className="stack-y-2">
                             <h2>You have 30s to remember your cards!</h2>
                         </div>
+                        <PlayerHand />
                         <GameBoard gameState={gameState} />
                     </>
                 );
@@ -70,6 +85,14 @@ export default function Player(): JSX.Element {
                     <>
                         <div className="stack-y-2">
                             <h2>Well which cards did you have?</h2>
+                        </div>
+                    </>
+                );
+            case GameStage.Complete:
+                return (
+                    <>
+                        <div className="stack-y-2">
+                            <h2>Congrats you're soft in the head</h2>
                         </div>
                     </>
                 );

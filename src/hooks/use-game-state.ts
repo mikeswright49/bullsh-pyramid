@@ -20,7 +20,7 @@ export function useGameState(gameId: string) {
             return;
         }
 
-        GameStore.subscribeToPlayer(gameId, (updatedGameState) => {
+        GameStore.subscribeToGame(gameId, (updatedGameState) => {
             setGameState(updatedGameState);
         });
 

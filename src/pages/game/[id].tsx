@@ -1,22 +1,27 @@
 import React, { useEffect } from 'react';
 import { Layout } from 'src/components/layout/layout';
 import { dealHand, generateDeck } from 'src/utilities/cards';
-import { Card as CardType } from 'types/card';
 import { Card } from 'src/components/card/card';
 import { GameStage } from 'src/enums/game-stage';
 import { useGameState } from 'src/hooks/use-game-state';
 import { useRouter } from 'next/router';
 import { GameStore } from 'src/stores/game-store';
 import { GameBoard } from 'src/components/game-board/game-board';
+import { PlayerList } from 'src/components/player-list/player-list';
+import { usePlayers } from 'src/hooks/use-players';
+import { PlayerStore } from 'src/stores/player-store';
+import Link from 'next/link';
 
 const MEMORIZATION_TIMEOUT = 5000;
 const DECLARATION_TIMEOUT = 1000;
 const BULLSHIT_TIMEOUT = 1000;
+const MEMORY_TIMEOUT = 1000;
 
 export default function Game(): JSX.Element {
     const router = useRouter();
     const gameId: string = router.query.id as string;
     const gameState = useGameState(gameId);
+    const players = usePlayers(gameId);
     const { gameStage, activeRow, activeIndex } = gameState;
     /**
      * Transition to the flip phase of the game
@@ -31,6 +36,8 @@ export default function Game(): JSX.Element {
             ref = setTimeout(transitionToBullshit, DECLARATION_TIMEOUT);
         } else if (gameStage === GameStage.Bullshit) {
             ref = setTimeout(transitionFromBullShit, BULLSHIT_TIMEOUT);
+        } else if (gameStage === GameStage.Memory) {
+            ref = setTimeout(transitionToNewGame, MEMORY_TIMEOUT);
         }
         return () => {
             clearTimeout(ref);
@@ -40,7 +47,7 @@ export default function Game(): JSX.Element {
     const flipCard = (event: { preventDefault: () => void }) => {
         event.preventDefault();
         gameState.tiers[activeRow][activeIndex].hidden = false;
-        GameStore.setHand(gameId, gameState);
+        GameStore.updateTiers(gameId, gameState.tiers);
         GameStore.updateGameStage(gameId, GameStage.Declaration);
     };
 
@@ -62,21 +69,33 @@ export default function Game(): JSX.Element {
         }
     };
 
-    const transitionToFlipping = () => {
-        const players: CardType[][] = [].concat(gameState.players);
+    const transitionToFlipping = async () => {
         players.forEach((player) => {
-            player.forEach((card) => (card.hidden = true));
+            player.hand.forEach((card) => (card.hidden = true));
         });
-        GameStore.setHand(gameId, gameState);
+        await Promise.all(players.map((player) => PlayerStore.updatePlayer(player)));
         GameStore.updateGameStage(gameId, GameStage.Flipping);
     };
 
-    const transitionToMemorization = (event: { preventDefault: () => void }): void => {
+    const transitionToMemorization = async (event: {
+        preventDefault: () => void;
+    }): Promise<void> => {
         event.preventDefault();
 
-        const hand = dealHand(generateDeck(), gameState.tierCount, gameState.playerCount);
-        GameStore.setHand(gameId, hand);
+        const hand = dealHand(generateDeck(), gameState.tierCount, players.length);
+        await Promise.all(
+            hand.players.map((playerHand, index) => {
+                players[index].hand = playerHand;
+                return PlayerStore.updatePlayer(players[index]);
+            })
+        );
+
+        GameStore.updateTiers(gameId, hand.tiers);
         GameStore.updateGameStage(gameId, GameStage.Memorization);
+    };
+
+    const transitionToNewGame = async () => {
+        GameStore.updateGameStage(gameId, GameStage.Complete);
     };
 
     function GameDisplay() {
@@ -85,8 +104,14 @@ export default function Game(): JSX.Element {
                 return (
                     <>
                         <div className="stack-y-2">
+                            <PlayerList gameId={gameState.id} />
                             <h2>All players joined!</h2>
-                            <button onClick={transitionToMemorization}>Start game</button>
+                            <button
+                                className="pure-button pure-button-primary"
+                                onClick={transitionToMemorization}
+                            >
+                                Start game
+                            </button>
                         </div>
                     </>
                 );
@@ -104,7 +129,9 @@ export default function Game(): JSX.Element {
                     <>
                         <div className="stack-y-2">
                             <h2>Time to start flipping cards</h2>
-                            <button onClick={flipCard}>Flip card</button>
+                            <button className="pure-button pure-button-primary" onClick={flipCard}>
+                                Flip card
+                            </button>
                         </div>
                         <GameBoard gameState={gameState} />
                     </>
@@ -134,6 +161,25 @@ export default function Game(): JSX.Element {
                     <>
                         <div className="stack-y-2">
                             <h2>Well which cards did you have?</h2>
+                        </div>
+                    </>
+                );
+            case GameStage.Complete:
+                return (
+                    <>
+                        <div className="stack-y-2">
+                            <h2>Well time for a new game</h2>
+                            <button
+                                className="pure-button pure-button-primary"
+                                onClick={transitionToMemorization}
+                            >
+                                Start a new game with same players
+                            </button>
+                            <Link href="/game/host">
+                                <button className="pure-button pure-button-secondary">
+                                    Host a new game
+                                </button>
+                            </Link>
                         </div>
                     </>
                 );
