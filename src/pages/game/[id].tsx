@@ -104,8 +104,22 @@ export default function Game(): JSX.Element {
                 return (
                     <>
                         <div className="stack-y-2">
+                            <h2>To join the game go to:</h2>
+                            <ul>
+                                <li>
+                                    <Link href={`/game/join/${gameId}`}>
+                                        <a>Go to the join screen</a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    Or type in <strong>{gameId}</strong> at
+                                    https://bullsh-pyramid.now.sh/game/join
+                                </li>
+                            </ul>
+
                             <PlayerList gameId={gameState.id} />
-                            <h2>All players joined!</h2>
+
+                            <h3>All players joined!</h3>
                             <button
                                 className="pure-button pure-button-primary"
                                 onClick={transitionToMemorization}
