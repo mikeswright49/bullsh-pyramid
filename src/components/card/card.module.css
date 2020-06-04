@@ -1,11 +1,17 @@
 .card {
-    height: 150px;
-    width: 75px;
-    border: 1px solid black;
-    text-align: center;
+    height: 123px;
+    width: 79px;
+    border-radius: 6px;
     margin-right: 12px;
+    background-image: url('/card-deck.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
 }
 
+/*
+* Yes important.
+* We're setting the position for the cards based on data in a style object
+**/
 .cardHidden {
-    background-color: black;
+    background-position: -158px -492px !important;
 }

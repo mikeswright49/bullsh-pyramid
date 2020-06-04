@@ -1,4 +1,4 @@
-name: Unit Test PR Action
+name: PR Validations
 
 on:
     pull_request:
