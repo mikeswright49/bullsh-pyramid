@@ -11,19 +11,16 @@ exports[`<Unit Test> Hand should be able to render the component 1`] = `
   >
     <div
       class="flex-center-center card"
-    >
-      1
-    </div>
+      style="background-position: -79px -0px;"
+    />
     <div
       class="flex-center-center card"
-    >
-      2
-    </div>
+      style="background-position: -158px -0px;"
+    />
     <div
       class="flex-center-center card"
-    >
-      3
-    </div>
+      style="background-position: -237px -0px;"
+    />
   </div>
 </div>
 `;
