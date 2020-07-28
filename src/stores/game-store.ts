@@ -29,6 +29,7 @@ export class GameStore {
             activeRow: 0,
             playerCount,
             tierCount,
+            votes: [],
         } as GameState;
 
         try {

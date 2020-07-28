@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useGameState } from 'src/hooks/use-game-state';
 import { Layout } from 'src/components/layout/layout';
@@ -6,16 +6,25 @@ import { GameBoard } from 'src/components/game-board/game-board';
 import { usePlayer } from 'src/hooks/use-player';
 import { GameStage } from 'src/enums/game-stage';
 import { Card } from 'src/components/card/card';
+import { VoteStore } from 'src/stores/vote-store';
 
 export default function Player(): JSX.Element {
     const router = useRouter();
     const gameId: string = router.query.id as string;
     const playerId: string = router.query.player as string;
 
+    const [voted, setVoted] = useState(false);
+
     const gameState = useGameState(gameId);
     const player = usePlayer(playerId);
 
     const { gameStage, activeRow, activeIndex } = gameState;
+
+    function onPlayerProofCallback(index: number) {}
+    async function onPlayerDeclaration() {
+        setVoted(true);
+        await VoteStore.addDeclaration(gameId, playerId);
+    }
 
     function PlayerHand() {
         if (!player || !player.hand) {
@@ -25,7 +34,12 @@ export default function Player(): JSX.Element {
         return (
             <>
                 {player.hand.map((card, index) => (
-                    <Card key={`${playerId}-card-${index}`} card={card} />
+                    <>
+                        {gameStage === GameStage.Bullshit && (
+                            <button onClick={() => onPlayerProofCallback(index)}>This one!</button>
+                        )}
+                        <Card key={`${playerId}-card-${index}`} card={card} />
+                    </>
                 ))}
             </>
         );
@@ -67,7 +81,7 @@ export default function Player(): JSX.Element {
                             <h2>Quick 5s! Do you have this card?</h2>
                             <Card card={gameState.tiers[activeRow][activeIndex]} />
                         </div>
-                        <GameBoard gameState={gameState} />
+                        <button onClick={onPlayerDeclaration}>I totally do!</button>
                     </>
                 );
             case GameStage.Bullshit:

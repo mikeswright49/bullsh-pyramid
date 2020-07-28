@@ -10,4 +10,5 @@ export type GameState = {
     tierCount?: number;
     players: { key: string }[];
     tiers: Card[][];
+    votes: string[];
 };

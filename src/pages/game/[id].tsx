@@ -32,8 +32,6 @@ export default function Game(): JSX.Element {
         let ref: NodeJS.Timeout;
         if (gameStage === GameStage.Memorization) {
             ref = setTimeout(transitionToFlipping, MEMORIZATION_TIMEOUT);
-        } else if (gameStage === GameStage.Declaration) {
-            ref = setTimeout(transitionToBullshit, DECLARATION_TIMEOUT);
         } else if (gameStage === GameStage.Bullshit) {
             ref = setTimeout(transitionFromBullShit, BULLSHIT_TIMEOUT);
         } else if (gameStage === GameStage.Memory) {
@@ -156,6 +154,7 @@ export default function Game(): JSX.Element {
                         <div className="stack-y-2">
                             <h2>Quick 5s! Do you have this card?</h2>
                             <Card card={gameState.tiers[activeRow][activeIndex]} />
+                            <button onClick={transitionToBullshit}>Calling bullshit</button>
                         </div>
                         <GameBoard gameState={gameState} />
                     </>
