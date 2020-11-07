@@ -3,6 +3,10 @@ import React from 'react';
 import { Card as CardType } from '../../../types/card';
 
 export function Pyramid({ tiers }: { tiers: CardType[][] }) {
+    if (!tiers) {
+        return null;
+    }
+
     const renderedTiers: CardType[][] = [].concat(tiers).reverse();
 
     return (

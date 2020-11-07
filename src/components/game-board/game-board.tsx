@@ -2,7 +2,6 @@ import React from 'react';
 import { GameStage } from '../../enums/game-stage';
 import { Pyramid } from '../pyramid/pyramid';
 import { GameState } from 'types/game-state';
-import styles from './game-board.module.css';
 
 export function GameBoard(props: { gameState: GameState }) {
     const { gameState } = props;
@@ -11,9 +10,7 @@ export function GameBoard(props: { gameState: GameState }) {
     }
     return (
         <div className="flex-center-center" data-testid="at-game-board">
-            <div className={styles.rightBar}>
-                <Pyramid tiers={gameState.tiers} />
-            </div>
+            <Pyramid tiers={gameState.tiers} />
         </div>
     );
 }
