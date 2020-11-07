@@ -3,13 +3,24 @@ import styles from './hand.module.css';
 import React from 'react';
 import { Card as CardType } from '../../../types/card';
 
-export function Hand({ cards, name }: { cards: CardType[]; name: string }): JSX.Element {
+export interface HandProps {
+    cards: CardType[];
+    showSelector: boolean;
+}
+export function Hand({ cards, showSelector }: HandProps): JSX.Element {
+    if (!cards) {
+        return null;
+    }
+
     return (
         <>
-            <h3>Player: {name}</h3>
+            <h3>Your hand</h3>
             <div className={styles.hand}>
-                {cards.map((card, idx) => (
-                    <Card key={`hand-${name}-card-${idx}`} card={card} />
+                {cards.map((card) => (
+                    <div key={`hand-card-${card.value}-${card.suit}`}>
+                        <Card card={card} />
+                        {showSelector && <button>This one</button>}
+                    </div>
                 ))}
             </div>
         </>

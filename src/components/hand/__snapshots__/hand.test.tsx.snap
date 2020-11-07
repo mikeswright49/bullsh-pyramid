@@ -3,24 +3,68 @@
 exports[`<Unit Test> Hand should be able to render the component 1`] = `
 <div>
   <h3>
-    Player: 
-    Frank
+    Your hand
   </h3>
   <div
     class="hand"
   >
-    <div
-      class="flex-center-center card"
-      style="background-position: -79px -0px;"
-    />
-    <div
-      class="flex-center-center card"
-      style="background-position: -158px -0px;"
-    />
-    <div
-      class="flex-center-center card"
-      style="background-position: -237px -0px;"
-    />
+    <div>
+      <div
+        class="flex-center-center card"
+        style="background-position: -79px -0px;"
+      />
+    </div>
+    <div>
+      <div
+        class="flex-center-center card"
+        style="background-position: -158px -0px;"
+      />
+    </div>
+    <div>
+      <div
+        class="flex-center-center card"
+        style="background-position: -237px -0px;"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
+<div>
+  <h3>
+    Your hand
+  </h3>
+  <div
+    class="hand"
+  >
+    <div>
+      <div
+        class="flex-center-center card"
+        style="background-position: -79px -0px;"
+      />
+      <button>
+        This one
+      </button>
+    </div>
+    <div>
+      <div
+        class="flex-center-center card"
+        style="background-position: -158px -0px;"
+      />
+      <button>
+        This one
+      </button>
+    </div>
+    <div>
+      <div
+        class="flex-center-center card"
+        style="background-position: -237px -0px;"
+      />
+      <button>
+        This one
+      </button>
+    </div>
   </div>
 </div>
 `;

@@ -6,12 +6,8 @@ exports[`<Unit Test> - Game board should render the pyramid if not in initializa
   data-testid="at-game-board"
 >
   <div
-    class="rightBar"
-  >
-    <div
-      data-testid="at-pyramid"
-    />
-  </div>
+    data-testid="at-pyramid"
+  />
 </div>
 `;
 

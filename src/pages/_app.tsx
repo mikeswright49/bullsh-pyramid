@@ -1,4 +1,5 @@
 import '../styles/app.css';
+import '../styles/simple-grid.css';
 import { GameStore } from 'src/stores/game-store';
 import { PlayerStore } from 'src/stores/player-store';
 export default function App({ Component, pageProps }) {
