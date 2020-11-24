@@ -6,4 +6,5 @@ export enum GameStage {
     Bullshit,
     Memory,
     Complete,
+    Reveal,
 }

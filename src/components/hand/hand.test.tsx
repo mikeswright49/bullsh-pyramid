@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { Hand, HandProps } from './hand';
 
@@ -24,6 +24,7 @@ describe('<Unit Test> Hand', () => {
                     suit: 0,
                 },
             ],
+            onSelected: jest.fn(),
         };
     });
 
@@ -36,5 +37,13 @@ describe('<Unit Test> Hand', () => {
         mockProps.showSelector = true;
         const { container } = render(<Hand {...mockProps} />);
         expect(container).toMatchSnapshot();
+    });
+
+    it('should call the props callback if the button is clicked', () => {
+        mockProps.showSelector = true;
+
+        const { container } = render(<Hand {...mockProps} />);
+        fireEvent.click(container.querySelector('[data-testid="1-0-select-button"]'));
+        expect(mockProps.onSelected).toHaveBeenCalled();
     });
 });
