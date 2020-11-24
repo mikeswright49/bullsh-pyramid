@@ -7,7 +7,7 @@ export function PlayerList({ gameId }: { gameId: string }) {
     return (
         <>
             <h2>Players Joined</h2>
-            {players.map((player) => (
+            {Object.values(players).map((player) => (
                 <h3 key={`player-${player.id}`}>{player.name}</h3>
             ))}
         </>

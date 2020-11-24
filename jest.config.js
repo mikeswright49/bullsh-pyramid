@@ -3,7 +3,7 @@ module.exports = {
         // jest requires updates to use along side react and next
         // https://medium.com/@kjaer/setting-up-jest-and-enzyme-for-typescript-next-js-apps-ce383167643
         'ts-jest': {
-            tsConfig: 'tsconfig.jest.json',
+            tsconfig: 'tsconfig.jest.json',
             diagnostics: false,
         },
     },
@@ -18,4 +18,5 @@ module.exports = {
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
     testRegex: '.*\\.test\\.tsx?$',
+    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
 };

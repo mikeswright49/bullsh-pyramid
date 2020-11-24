@@ -6,4 +6,7 @@ export type Player = {
     hand: Card[];
     score: number;
     isHost: boolean;
+    declaration: Card;
+    hasVoted: boolean;
+    haters: Player[];
 };

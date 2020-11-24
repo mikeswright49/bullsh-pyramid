@@ -43,7 +43,9 @@ exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
         class="flex-center-center card"
         style="background-position: -79px -0px;"
       />
-      <button>
+      <button
+        data-testid="1-0-select-button"
+      >
         This one
       </button>
     </div>
@@ -52,7 +54,9 @@ exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
         class="flex-center-center card"
         style="background-position: -158px -0px;"
       />
-      <button>
+      <button
+        data-testid="2-0-select-button"
+      >
         This one
       </button>
     </div>
@@ -61,7 +65,9 @@ exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
         class="flex-center-center card"
         style="background-position: -237px -0px;"
       />
-      <button>
+      <button
+        data-testid="3-0-select-button"
+      >
         This one
       </button>
     </div>

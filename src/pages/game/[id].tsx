@@ -13,7 +13,7 @@ import { PlayerStore } from 'src/stores/player-store';
 import Link from 'next/link';
 
 const MEMORIZATION_TIMEOUT = 5000;
-const DECLARATION_TIMEOUT = 1000;
+const DECLARATION_TIMEOUT = 5000;
 const BULLSHIT_TIMEOUT = 1000;
 const MEMORY_TIMEOUT = 1000;
 
@@ -33,9 +33,7 @@ export default function Game(): JSX.Element {
         if (gameStage === GameStage.Memorization) {
             ref = setTimeout(transitionToFlipping, MEMORIZATION_TIMEOUT);
         } else if (gameStage === GameStage.Declaration) {
-            ref = setTimeout(transitionToBullshit, DECLARATION_TIMEOUT);
         } else if (gameStage === GameStage.Bullshit) {
-            ref = setTimeout(transitionFromBullShit, BULLSHIT_TIMEOUT);
         } else if (gameStage === GameStage.Memory) {
             ref = setTimeout(transitionToNewGame, MEMORY_TIMEOUT);
         }
@@ -70,10 +68,13 @@ export default function Game(): JSX.Element {
     };
 
     const transitionToFlipping = async () => {
-        players.forEach((player) => {
+        const updates = [];
+        for (let playerId in players) {
+            const player = players[playerId];
             player.hand.forEach((card) => (card.hidden = true));
-        });
-        await Promise.all(players.map((player) => PlayerStore.updatePlayer(player)));
+            updates.push(PlayerStore.updatePlayer(player));
+        }
+        await Promise.all(updates);
         GameStore.updateGameStage(gameId, GameStage.Flipping);
     };
 
@@ -82,7 +83,7 @@ export default function Game(): JSX.Element {
     }): Promise<void> => {
         event.preventDefault();
 
-        const hand = dealHand(generateDeck(), gameState.tierCount, players.length);
+        const hand = dealHand(generateDeck(), gameState.tierCount, Object.entries(players).length);
         await Promise.all(
             hand.players.map((playerHand, index) => {
                 players[index].hand = playerHand;
@@ -99,6 +100,7 @@ export default function Game(): JSX.Element {
     };
 
     function GameDisplay() {
+        console.log(players);
         switch (gameStage) {
             case GameStage.Initiation:
                 return (
@@ -155,8 +157,13 @@ export default function Game(): JSX.Element {
                     <>
                         <div className="stack-y-2">
                             <h2>Quick 5s! Do you have this card?</h2>
-                            <Card card={gameState.tiers[activeRow][activeIndex]} />
+                            {Object.values(players)
+                                .filter((player) => !!player.declaration)
+                                .map((player) => {
+                                    return <h3>{player.name} says they do</h3>;
+                                })}
                         </div>
+                        <button onClick={() => transitionToBullshit()}>Move along</button>
                         <GameBoard gameState={gameState} />
                     </>
                 );

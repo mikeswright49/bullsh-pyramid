@@ -4,9 +4,8 @@ import { useGameState } from 'src/hooks/use-game-state';
 import { Layout } from 'src/components/layout/layout';
 import { GameBoard } from 'src/components/game-board/game-board';
 import { usePlayer } from 'src/hooks/use-player';
-import { GameStage } from 'src/enums/game-stage';
-import { Hand } from 'src/components/hand/hand';
 import { PlayerDisplay } from 'src/components/player-display/player-display';
+import { HostDisplay } from 'src/components/host-display/host-display';
 
 export default function Player(): JSX.Element {
     const router = useRouter();
@@ -18,22 +17,18 @@ export default function Player(): JSX.Element {
 
     const { gameStage } = gameState;
 
+    if (!player) {
+        return null;
+    }
+
     return (
         <Layout>
             <>
                 <div className="container">
                     <div className="row">
                         <div className="col-3">
-                            {player && (
-                                <Hand
-                                    cards={player.hand}
-                                    showSelector={
-                                        gameStage === GameStage.Declaration ||
-                                        gameStage === GameStage.Bullshit
-                                    }
-                                />
-                            )}
-                            <PlayerDisplay gameStage={gameStage} />
+                            {player.isHost && <HostDisplay />}
+                            <PlayerDisplay gameStage={gameStage} player={player} gameId={gameId} />
                         </div>
                         <div className="col-9">
                             <GameBoard gameState={gameState} />

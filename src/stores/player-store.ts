@@ -10,11 +10,25 @@ export class PlayerStore {
     private static subscribers = [];
 
     public static subscribeToPlayer(playerId: string, updateCallback: (snapshot: Player) => void) {
-        const game = PlayerStore.database.ref(`players/${playerId}`);
+        const player = PlayerStore.database.ref(`players/${playerId}`);
         PlayerStore.subscribers.push(
-            game.on('value', (val: { val: () => Player }) => {
+            player.on('value', (val: { val: () => Player }) => {
                 const value = val.val();
                 updateCallback(value as Player);
+            })
+        );
+    }
+
+    public static subscribeToHaters(playerId: string, updateCallback: (hater: Player) => void) {
+        const player = PlayerStore.database.ref(`players/${playerId}/hatersmap`);
+        const players = PlayerStore.database.ref(`players`);
+        PlayerStore.subscribers.push(
+            player.on('child_added', (child) => {
+                const playerId = child.val();
+                players.child(playerId).once('value', (val) => {
+                    const value = val.val();
+                    updateCallback(value as Player);
+                });
             })
         );
     }
@@ -36,6 +50,9 @@ export class PlayerStore {
             hand: [],
             score: PlayerStore.DEFAULT_PLAYER_SCORE,
             isHost: false,
+            declaration: null,
+            hasVoted: false,
+            haters: [],
         };
 
         try {
@@ -46,7 +63,34 @@ export class PlayerStore {
         }
     }
 
-    public static setHand(hand: Card[]) {}
+    public static async setDeclaration(playerId: string, card: Card) {
+        try {
+            await PlayerStore.database.ref(`players/${playerId}`).update({
+                declaration: card,
+                hasVoted: true,
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    public static async setHasVoted(playerId: string, hasVoted: boolean) {
+        try {
+            await PlayerStore.database.ref(`players/${playerId}`).update({
+                hasVoted,
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    public static async addHater(playerId: string, haterId: string) {
+        try {
+            await PlayerStore.database.ref(`players/${playerId}/hatersmap`).push(haterId);
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     public static init() {
         if (!firebase.apps.length) {

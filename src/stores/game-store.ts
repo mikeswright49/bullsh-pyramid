@@ -54,7 +54,7 @@ export class GameStore {
         const players = GameStore.database.ref(`players`);
         game.on('child_added', (child) => {
             const playerId = child.val();
-            players.child(playerId).once('value', (val) => {
+            players.child(playerId).on('value', (val) => {
                 const value = val.val();
                 updateCallback(value as Player);
             });
