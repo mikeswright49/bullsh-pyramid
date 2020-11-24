@@ -13,8 +13,6 @@ import { PlayerStore } from 'src/stores/player-store';
 import Link from 'next/link';
 
 const MEMORIZATION_TIMEOUT = 5000;
-const DECLARATION_TIMEOUT = 5000;
-const BULLSHIT_TIMEOUT = 1000;
 const MEMORY_TIMEOUT = 1000;
 
 export default function Game(): JSX.Element {
@@ -32,8 +30,6 @@ export default function Game(): JSX.Element {
         let ref: NodeJS.Timeout;
         if (gameStage === GameStage.Memorization) {
             ref = setTimeout(transitionToFlipping, MEMORIZATION_TIMEOUT);
-        } else if (gameStage === GameStage.Declaration) {
-        } else if (gameStage === GameStage.Bullshit) {
         } else if (gameStage === GameStage.Memory) {
             ref = setTimeout(transitionToNewGame, MEMORY_TIMEOUT);
         }
@@ -83,11 +79,12 @@ export default function Game(): JSX.Element {
     }): Promise<void> => {
         event.preventDefault();
 
-        const hand = dealHand(generateDeck(), gameState.tierCount, Object.entries(players).length);
+        const hand = dealHand(generateDeck(), gameState.tierCount, Object.values(players).length);
         await Promise.all(
-            hand.players.map((playerHand, index) => {
-                players[index].hand = playerHand;
-                return PlayerStore.updatePlayer(players[index]);
+            Object.values(players).map((player, index) => {
+                const playerHand = hand.players[index];
+                player.hand = playerHand;
+                return PlayerStore.updatePlayer(player);
             })
         );
 
@@ -161,6 +158,11 @@ export default function Game(): JSX.Element {
                                 .filter((player) => !!player.declaration)
                                 .map((player) => {
                                     return <h3>{player.name} says they do</h3>;
+                                })}
+                            {Object.values(players)
+                                .filter((player) => !player.declaration && player.hasVoted)
+                                .map((player) => {
+                                    return <h3>{player.name} says they don't</h3>;
                                 })}
                         </div>
                         <button onClick={() => transitionToBullshit()}>Move along</button>
