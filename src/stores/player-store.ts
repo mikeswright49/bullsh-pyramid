@@ -53,6 +53,7 @@ export class PlayerStore {
             declaration: null,
             hasVoted: false,
             haters: [],
+            hatersmap: {},
         };
 
         try {

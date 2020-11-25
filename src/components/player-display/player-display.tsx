@@ -3,26 +3,21 @@ import { GameStage } from 'src/enums/game-stage';
 import { Hand } from '../hand/hand';
 import { PlayerStore } from 'src/stores/player-store';
 import { Player } from 'types/player';
-import { Card } from 'types/card';
+import { Card as CardType } from 'types/card';
 import { usePlayers } from 'src/hooks/use-players';
 import isEmpty from 'lodash.isempty';
+import { useGameState } from 'src/hooks/use-game-state';
 
-export function PlayerDisplay({
-    gameId,
-    gameStage,
-    player,
-}: {
-    gameId: string;
-    gameStage: GameStage;
-    player: Player;
-}) {
+export function PlayerDisplay({ gameId, player }: { gameId: string; player: Player }) {
     const players = usePlayers(gameId);
+    const gameState = useGameState(gameId);
+    const { gameStage, activeRow, activeIndex } = gameState;
 
     const otherPlayers = Object.values(players).filter(
         (otherPlayer) => player.id !== otherPlayer.id
     );
 
-    function onDeclarationSelected(card: Card) {
+    function onDeclarationSelected(card: CardType) {
         PlayerStore.setDeclaration(player.id, card);
     }
     function onDeclarationDeferred() {
@@ -31,6 +26,12 @@ export function PlayerDisplay({
     function addHater(playerId: string) {
         PlayerStore.addHater(playerId, player.id);
     }
+
+    if (!player || !gameState) {
+        return null;
+    }
+
+    const otherDeclaredPlayers = otherPlayers.filter((otherPlayers) => otherPlayers.declaration);
 
     switch (gameStage) {
         case GameStage.Initiation:
@@ -94,9 +95,6 @@ export function PlayerDisplay({
                 </>
             );
         case GameStage.Bullshit:
-            const otherDeclaredPlayers = otherPlayers.filter(
-                (otherPlayers) => otherPlayers.declaration
-            );
             return (
                 <>
                     {!isEmpty(otherDeclaredPlayers) ? (
@@ -136,6 +134,79 @@ export function PlayerDisplay({
                             <h3>Apparently no one here has the balls</h3>
                         </div>
                     )}
+                </>
+            );
+        case GameStage.Reveal:
+            const activeCard = gameState.tiers[activeRow][activeIndex];
+
+            const activeCardValue = activeCard.value;
+            const liars = Object.values(players).filter(
+                (otherPlayer) =>
+                    otherPlayer.declaration && otherPlayer.declaration.value !== activeCardValue
+            );
+            const truthers = Object.values(players).filter(
+                (otherPlayer) =>
+                    otherPlayer.declaration && otherPlayer.declaration.value === activeCardValue
+            );
+            return (
+                <>
+                    <div className="stack-y-2">
+                        <h3>This means that</h3>
+                        {isEmpty(truthers) ? (
+                            <h3>No one was telling the truth</h3>
+                        ) : (
+                            <>
+                                {truthers.map((truther) => {
+                                    return (
+                                        <div>
+                                            <h4>{truther.name} was telling the truth</h4>
+                                            {!isEmpty(truther.haters) && (
+                                                <>
+                                                    <p>
+                                                        Therefore the following people can eat shit
+                                                    </p>
+                                                    <div>
+                                                        {truther.haters.map((hater) => (
+                                                            <p>{hater.name}</p>
+                                                        ))}
+                                                    </div>
+                                                </>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </>
+                        )}
+                        <h3>This means that</h3>
+                        {isEmpty(liars) ? (
+                            <h3>No one was telling the lieing</h3>
+                        ) : (
+                            <>
+                                {liars.map((liar) => {
+                                    return (
+                                        <div>
+                                            <h4>{liar.name} was lieing through their teeth</h4>
+                                            {!isEmpty(liar.haters) ? (
+                                                <>
+                                                    <p>
+                                                        Therefore the following people can tell{' '}
+                                                        {liar.name} to eat shit
+                                                    </p>
+                                                    <div>
+                                                        {liar.haters.map((hater) => (
+                                                            <p>{hater.name}</p>
+                                                        ))}
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <p>and got away with it</p>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </>
+                        )}
+                    </div>
                 </>
             );
         case GameStage.Memory:
