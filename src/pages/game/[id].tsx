@@ -79,7 +79,7 @@ export default function Game(): JSX.Element {
 
     async function transitionToFlipping() {
         const updates = [];
-        for (let playerId in players) {
+        for (const playerId in players) {
             const player = players[playerId];
             player.hand.forEach((card) => (card.hidden = true));
             updates.push(PlayerStore.updatePlayer(player));
@@ -169,12 +169,14 @@ export default function Game(): JSX.Element {
                             {Object.values(players)
                                 .filter((player) => !!player.declaration)
                                 .map((player) => {
-                                    return <h3>{player.name} says they do</h3>;
+                                    return <h3 key={player.id}>{player.name} says they do</h3>;
                                 })}
                             {Object.values(players)
                                 .filter((player) => !player.declaration && player.hasVoted)
                                 .map((player) => {
-                                    return <h3>{player.name} says they don't</h3>;
+                                    return (
+                                        <h3 key={player.id}>{player.name} says they don&apos;t</h3>
+                                    );
                                 })}
                         </div>
                         <button onClick={() => transitionToBullshit()}>Move along</button>
