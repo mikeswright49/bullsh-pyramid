@@ -15,8 +15,6 @@ export default function Player(): JSX.Element {
     const gameState = useGameState(gameId);
     const player = usePlayer(playerId);
 
-    const { gameStage } = gameState;
-
     if (!player) {
         return null;
     }
@@ -28,7 +26,7 @@ export default function Player(): JSX.Element {
                     <div className="row">
                         <div className="col-3">
                             {player.isHost && <HostDisplay />}
-                            <PlayerDisplay gameStage={gameStage} player={player} gameId={gameId} />
+                            <PlayerDisplay player={player} gameId={gameId} />
                         </div>
                         <div className="col-9">
                             <GameBoard gameState={gameState} />

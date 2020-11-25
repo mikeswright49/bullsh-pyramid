@@ -38,18 +38,32 @@ export default function Game(): JSX.Element {
         };
     }, [gameStage]);
 
-    const flipCard = (event: { preventDefault: () => void }) => {
+    function flipCard(event: { preventDefault: () => void }) {
         event.preventDefault();
         gameState.tiers[activeRow][activeIndex].hidden = false;
         GameStore.updateTiers(gameId, gameState.tiers);
         GameStore.updateGameStage(gameId, GameStage.Declaration);
-    };
+    }
 
-    const transitionToBullshit = () => {
+    function transitionToBullshit() {
         GameStore.updateGameStage(gameId, GameStage.Bullshit);
-    };
+    }
 
-    const transitionFromBullShit = () => {
+    function transitionToReveal() {
+        GameStore.updateGameStage(gameId, GameStage.Reveal);
+    }
+
+    async function transitionFromReveal() {
+        await Promise.all(
+            Object.values(players).map(async (player) => {
+                player.hasVoted = false;
+                player.declaration = null;
+                player.hatersmap = null;
+                player.haters = null;
+                await PlayerStore.updatePlayer(player);
+            })
+        );
+
         if (activeRow === gameState.tierCount - 1 && activeIndex === 0) {
             GameStore.updateGameStage(gameId, GameStage.Memory);
         } else {
@@ -61,9 +75,9 @@ export default function Game(): JSX.Element {
             });
             GameStore.updateGameStage(gameId, GameStage.Flipping);
         }
-    };
+    }
 
-    const transitionToFlipping = async () => {
+    async function transitionToFlipping() {
         const updates = [];
         for (let playerId in players) {
             const player = players[playerId];
@@ -72,11 +86,9 @@ export default function Game(): JSX.Element {
         }
         await Promise.all(updates);
         GameStore.updateGameStage(gameId, GameStage.Flipping);
-    };
+    }
 
-    const transitionToMemorization = async (event: {
-        preventDefault: () => void;
-    }): Promise<void> => {
+    async function transitionToMemorization(event: { preventDefault: () => void }): Promise<void> {
         event.preventDefault();
 
         const hand = dealHand(generateDeck(), gameState.tierCount, Object.values(players).length);
@@ -90,11 +102,11 @@ export default function Game(): JSX.Element {
 
         GameStore.updateTiers(gameId, hand.tiers);
         GameStore.updateGameStage(gameId, GameStage.Memorization);
-    };
+    }
 
-    const transitionToNewGame = async () => {
+    async function transitionToNewGame() {
         GameStore.updateGameStage(gameId, GameStage.Complete);
-    };
+    }
 
     function GameDisplay() {
         console.log(players);
@@ -176,6 +188,17 @@ export default function Game(): JSX.Element {
                             <h2>Did anyone have this card?</h2>
                             <Card card={gameState.tiers[activeRow][activeIndex]} />
                         </div>
+                        <button onClick={() => transitionToReveal()}>Move along</button>
+                        <GameBoard gameState={gameState} />
+                    </>
+                );
+            case GameStage.Reveal:
+                return (
+                    <>
+                        <div className="stack-y-2">
+                            <h2>Time to find out who eats shit</h2>
+                        </div>
+                        <button onClick={() => transitionFromReveal()}>Move along</button>
                         <GameBoard gameState={gameState} />
                     </>
                 );
