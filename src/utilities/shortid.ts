@@ -1,6 +1,6 @@
 import { getRandomInt } from './random';
 
-export function shortId(length: number = 3): string {
+export function shortId(length = 3): string {
     let response = '';
     const ASCII_A = 97;
     const ASCII_Z = 122;

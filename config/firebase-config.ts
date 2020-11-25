@@ -20,6 +20,6 @@ const PROD_CONFIG = {
     measurementId: 'G-LCWS99DCYR',
 };
 
-export function getFirebaseConfig(env: string = 'staging') {
+export function getFirebaseConfig(env = 'staging') {
     return env === 'prod' ? PROD_CONFIG : STAGING_CONFIG;
 }

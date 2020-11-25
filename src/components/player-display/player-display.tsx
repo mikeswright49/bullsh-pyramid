@@ -110,7 +110,7 @@ export function PlayerDisplay({ gameId, player }: { gameId: string; player: Play
                                                 <>
                                                     <div>The following people disagree:</div>
                                                     {otherPlayer.haters.map((hater) => (
-                                                        <p>{hater.name}</p>
+                                                        <p key={hater.id}>{hater.name}</p>
                                                     ))}
                                                 </>
                                             )}
@@ -158,7 +158,7 @@ export function PlayerDisplay({ gameId, player }: { gameId: string; player: Play
                             <>
                                 {truthers.map((truther) => {
                                     return (
-                                        <div>
+                                        <div key={truther.id}>
                                             <h4>{truther.name} was telling the truth</h4>
                                             {!isEmpty(truther.haters) && (
                                                 <>
@@ -167,7 +167,7 @@ export function PlayerDisplay({ gameId, player }: { gameId: string; player: Play
                                                     </p>
                                                     <div>
                                                         {truther.haters.map((hater) => (
-                                                            <p>{hater.name}</p>
+                                                            <p key={hater.id}>{hater.name}</p>
                                                         ))}
                                                     </div>
                                                 </>
@@ -184,7 +184,7 @@ export function PlayerDisplay({ gameId, player }: { gameId: string; player: Play
                             <>
                                 {liars.map((liar) => {
                                     return (
-                                        <div>
+                                        <div key={liar.id}>
                                             <h4>{liar.name} was lieing through their teeth</h4>
                                             {!isEmpty(liar.haters) ? (
                                                 <>
@@ -194,7 +194,7 @@ export function PlayerDisplay({ gameId, player }: { gameId: string; player: Play
                                                     </p>
                                                     <div>
                                                         {liar.haters.map((hater) => (
-                                                            <p>{hater.name}</p>
+                                                            <p key={hater.id}>{hater.name}</p>
                                                         ))}
                                                     </div>
                                                 </>
@@ -221,7 +221,7 @@ export function PlayerDisplay({ gameId, player }: { gameId: string; player: Play
             return (
                 <>
                     <div className="stack-y-2">
-                        <h3>Congrats you're soft in the head</h3>
+                        <h3>Congrats you&apos;re soft in the head</h3>
                     </div>
                 </>
             );
