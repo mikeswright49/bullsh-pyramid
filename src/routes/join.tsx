@@ -25,7 +25,8 @@ export function Join({ gameId }: { gameId?: string }) {
                 <div className="stack-y-2">
                     <label>
                         Game id:
-                        <input ref={gameIdRef} type="text" />
+                        {!gameId && <input ref={gameIdRef} type="text" />}
+                        {!!gameId && gameId}
                     </label>
                 </div>
                 <div className="stack-y-2">
