@@ -62,7 +62,17 @@ export class PlayerStore {
     }
 
     public static async updatePlayer(player: Player) {
+        PlayerStore.init();
         await PlayerStore.database.ref(`players/${player.id}`).update(player);
+    }
+
+    public static async addHater(playerId: string, haterId: string) {
+        PlayerStore.init();
+        try {
+            await PlayerStore.database.ref(`players/${playerId}/hatersmap`).push(haterId);
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     public static unsubscribeToPlayer() {
@@ -85,14 +95,6 @@ export class PlayerStore {
             await PlayerStore.database.ref(`players/${playerId}`).update({
                 hasVoted,
             });
-        } catch (e) {
-            console.error(e);
-        }
-    }
-
-    public static async addHater(playerId: string, haterId: string) {
-        try {
-            await PlayerStore.database.ref(`players/${playerId}/hatersmap`).push(haterId);
         } catch (e) {
             console.error(e);
         }
