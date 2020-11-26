@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { useEffect, useContext } from 'react';
 import { GameStore } from 'src/stores/game-store';
 import { PlayerStore } from 'src/stores/player-store';
-import { dealHand, generateDeck } from 'src/utilities/cards';
 import { GameBoard } from 'src/components/game-board/game-board';
 import { GameContext } from 'src/context/game-context';
 import { PlayersContext } from 'src/context/players-context';
-import { PlayerList } from 'src/components/player-list/player-list';
 import { Card } from 'src/components/card/card';
+import { GameInitiation } from './stages/game-initiation';
+import { GameDeclaration } from './stages/game-declaration';
 
 const MEMORIZATION_TIMEOUT = 5000;
 const MEMORY_TIMEOUT = 1000;
@@ -40,10 +40,6 @@ export function GameDisplay() {
         gameState.tiers[activeRow][activeIndex].hidden = false;
         GameStore.updateTiers(gameId, gameState.tiers);
         GameStore.updateGameStage(gameId, GameStage.Declaration);
-    }
-
-    function transitionToBullshit() {
-        GameStore.updateGameStage(gameId, GameStage.Bullshit);
     }
 
     function transitionToReveal() {
@@ -85,56 +81,13 @@ export function GameDisplay() {
         GameStore.updateGameStage(gameId, GameStage.Flipping);
     }
 
-    async function transitionToMemorization(event: { preventDefault: () => void }): Promise<void> {
-        event.preventDefault();
-
-        const hand = dealHand(generateDeck(), gameState.tierCount, players.length);
-        await Promise.all(
-            players.map((player, index) => {
-                const playerHand = hand.players[index];
-                player.hand = playerHand;
-                return PlayerStore.updatePlayer(player);
-            })
-        );
-
-        GameStore.updateTiers(gameId, hand.tiers);
-        GameStore.updateGameStage(gameId, GameStage.Memorization);
-    }
-
     async function transitionToNewGame() {
         GameStore.updateGameStage(gameId, GameStage.Complete);
     }
 
     switch (gameStage) {
         case GameStage.Initiation:
-            return (
-                <>
-                    <div className="stack-y-2">
-                        <h2>To join the game go to:</h2>
-                        <ul>
-                            <li>
-                                <Link href={`/game/join/${gameId}`}>
-                                    <a>Go to the join screen</a>
-                                </Link>
-                            </li>
-                            <li>
-                                Or type in <strong>{gameId}</strong> at
-                                https://bullsh-pyramid.now.sh/game/join
-                            </li>
-                        </ul>
-
-                        <PlayerList />
-
-                        <h3>All players joined!</h3>
-                        <button
-                            className="pure-button pure-button-primary"
-                            onClick={transitionToMemorization}
-                        >
-                            Start game
-                        </button>
-                    </div>
-                </>
-            );
+            return <GameInitiation />;
         case GameStage.Memorization:
             return (
                 <>
@@ -157,25 +110,7 @@ export function GameDisplay() {
                 </>
             );
         case GameStage.Declaration:
-            return (
-                <>
-                    <div className="stack-y-2">
-                        <h2>Quick 5s! Do you have this card?</h2>
-                        {players
-                            .filter((player) => !!player.declaration)
-                            .map((player) => {
-                                return <h3 key={player.id}>{player.name} says they do</h3>;
-                            })}
-                        {players
-                            .filter((player) => !player.declaration && player.hasVoted)
-                            .map((player) => {
-                                return <h3 key={player.id}>{player.name} says they don&apos;t</h3>;
-                            })}
-                    </div>
-                    <button onClick={() => transitionToBullshit()}>Move along</button>
-                    <GameBoard />
-                </>
-            );
+            return <GameDeclaration />;
         case GameStage.Bullshit:
             return (
                 <>
@@ -210,10 +145,7 @@ export function GameDisplay() {
                 <>
                     <div className="stack-y-2">
                         <h2>Well time for a new game</h2>
-                        <button
-                            className="pure-button pure-button-primary"
-                            onClick={transitionToMemorization}
-                        >
+                        <button className="pure-button pure-button-primary">
                             Start a new game with same players
                         </button>
                         <Link href="/game/host">

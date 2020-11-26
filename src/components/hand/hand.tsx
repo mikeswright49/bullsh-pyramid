@@ -6,7 +6,7 @@ import { Card as CardType } from 'types/card';
 export interface HandProps {
     cards: CardType[];
     showSelector: boolean;
-    onSelected: (card: CardType) => void;
+    onSelected?: (card: CardType) => void;
 }
 export function Hand({ cards, showSelector, onSelected }: HandProps): JSX.Element {
     if (!cards) {
@@ -23,7 +23,9 @@ export function Hand({ cards, showSelector, onSelected }: HandProps): JSX.Elemen
                         {showSelector && (
                             <button
                                 data-testid={`${card.value}-${card.suit}-select-button`}
-                                onClick={() => onSelected(card)}
+                                onClick={() => {
+                                    !!onSelected && onSelected(card);
+                                }}
                             >
                                 This one
                             </button>
