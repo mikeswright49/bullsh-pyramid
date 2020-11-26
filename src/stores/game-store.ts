@@ -11,7 +11,6 @@ export class GameStore {
     private static subscribers = [];
 
     public static async createGame(playerCount: number, tierCount: number): Promise<string> {
-        GameStore.init();
         const ID_LENGTH = 4;
         const gameId = shortId(ID_LENGTH);
 
@@ -33,7 +32,6 @@ export class GameStore {
     }
 
     public static subscribeToGame(gameId: string, updateCallback: (snapshot: GameState) => void) {
-        GameStore.init();
         const game = GameStore.database.ref(`games/${gameId}`);
         GameStore.subscribers.push(
             game.on('value', (val) => {
@@ -44,7 +42,6 @@ export class GameStore {
     }
 
     public static subscribeToPlayers(gameId: string, updateCallback: (snapshot: Player) => void) {
-        GameStore.init();
         const game = GameStore.database.ref(`games/${gameId}/players`);
         const players = GameStore.database.ref(`players`);
         game.on('child_added', (child) => {
@@ -57,7 +54,6 @@ export class GameStore {
     }
 
     public static async joinGame(gameId: string, playerId: string) {
-        GameStore.init();
         await GameStore.database.ref(`games/${gameId}/players`).push(playerId);
     }
 
@@ -84,7 +80,7 @@ export class GameStore {
         await GameStore.database.ref(`games/${gameId}`).update(index);
     }
 
-    private static init() {
+    public static init() {
         if (!firebase.apps.length) {
             firebase.initializeApp(getFirebaseConfig());
         }
