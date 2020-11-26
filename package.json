@@ -16,7 +16,7 @@
         "build": "next build",
         "lint": "eslint . --ext .ts,.tsx",
         "start": "next dev",
-        "test": "yarn lint && yarn jest --ci"
+        "test": "yarn lint && yarn jest --ci --maxWorkers=2"
     },
     "dependencies": {
         "next": "9.3.5",

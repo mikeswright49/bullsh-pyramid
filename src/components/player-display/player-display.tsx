@@ -1,35 +1,19 @@
 import React, { useContext } from 'react';
 import { GameStage } from 'src/enums/game-stage';
 import { Hand } from 'src/components/hand/hand';
-import { PlayerStore } from 'src/stores/player-store';
 import { Player } from 'types/player';
-import { Card as CardType } from 'types/card';
-import isEmpty from 'lodash.isempty';
-import { PlayersContext } from 'src/context/players-context';
 import { GameContext } from 'src/context/game-context';
+import { PlayerDeclaration } from './stages/player-declaration';
+import { PlayerBullshit } from './stages/player-bullshit';
+import { PlayerReveal } from './stages/player-reveal';
 
 export function PlayerDisplay({ player }: { player: Player }) {
-    const players = useContext(PlayersContext);
     const gameState = useContext(GameContext);
-    const { gameStage, activeRow, activeIndex } = gameState;
-
-    const otherPlayers = players.filter((otherPlayer) => player.id !== otherPlayer.id);
-
-    function onDeclarationSelected(card: CardType) {
-        PlayerStore.setDeclaration(player.id, card);
-    }
-    function onDeclarationDeferred() {
-        PlayerStore.setHasVoted(player.id, true);
-    }
-    function addHater(playerId: string) {
-        PlayerStore.addHater(playerId, player.id);
-    }
+    const { gameStage } = gameState;
 
     if (!player || !gameState) {
         return null;
     }
-
-    const otherDeclaredPlayers = otherPlayers.filter((otherPlayers) => otherPlayers.declaration);
 
     switch (gameStage) {
         case GameStage.Initiation:
@@ -46,11 +30,7 @@ export function PlayerDisplay({ player }: { player: Player }) {
                     <div className="stack-y-2">
                         <h3>You have 30s to remember your cards!</h3>
                         <div className="stack-y-2">
-                            <Hand
-                                cards={player.hand}
-                                showSelector={false}
-                                onSelected={onDeclarationSelected}
-                            />
+                            <Hand cards={player.hand} showSelector={false} />
                         </div>
                     </div>
                 </>
@@ -61,152 +41,17 @@ export function PlayerDisplay({ player }: { player: Player }) {
                     <div className="stack-y-2">
                         <h3>Flipping a card</h3>
                         <div className="stack-y-2">
-                            <Hand
-                                cards={player.hand}
-                                showSelector={false}
-                                onSelected={onDeclarationSelected}
-                            />
+                            <Hand cards={player.hand} showSelector={false} />
                         </div>
                     </div>
                 </>
             );
         case GameStage.Declaration:
-            return (
-                <>
-                    <div className="stack-y-2">
-                        <h3>Quick 5s! Do you have this card?</h3>
-                        <div className="stack-y-2">
-                            <Hand
-                                cards={player.hand}
-                                showSelector={
-                                    gameStage === GameStage.Declaration && !player.hasVoted
-                                }
-                                onSelected={onDeclarationSelected}
-                            />
-                        </div>
-                        <div className="stack-y-2">
-                            {gameStage === GameStage.Declaration && !player.hasVoted && (
-                                <button onClick={onDeclarationDeferred}>Fuck no</button>
-                            )}
-                        </div>
-                    </div>
-                </>
-            );
+            return <PlayerDeclaration player={player} />;
         case GameStage.Bullshit:
-            return (
-                <>
-                    {!isEmpty(otherDeclaredPlayers) ? (
-                        <div className="stack-y-2">
-                            <h3>The following people might be full of shit</h3>
-                            {otherDeclaredPlayers.map((otherPlayer) => {
-                                const hasHaters = !isEmpty(otherPlayer.haters);
-                                return (
-                                    <div key={otherPlayer.id} className="stack-y-4 row">
-                                        <div className="col8">
-                                            <h4>{otherPlayer.name} says they have it</h4>
-                                            {hasHaters && (
-                                                <>
-                                                    <div>The following people disagree:</div>
-                                                    {otherPlayer.haters.map((hater) => (
-                                                        <p key={hater.id}>{hater.name}</p>
-                                                    ))}
-                                                </>
-                                            )}
-                                        </div>
-                                        {(!hasHaters ||
-                                            !otherPlayer.haters.find(
-                                                (hater) => hater.id === player.id
-                                            )) && (
-                                            <div className="col4">
-                                                <button onClick={() => addHater(otherPlayer.id)}>
-                                                    Fuck that guy
-                                                </button>
-                                            </div>
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    ) : (
-                        <div className="stack-y-2">
-                            <h3>Apparently no one here has the balls</h3>
-                        </div>
-                    )}
-                </>
-            );
+            return <PlayerBullshit player={player} />;
         case GameStage.Reveal:
-            const activeCard = gameState.tiers[activeRow][activeIndex];
-
-            const activeCardValue = activeCard.value;
-            const liars = players.filter(
-                (otherPlayer) =>
-                    otherPlayer.declaration && otherPlayer.declaration.value !== activeCardValue
-            );
-            const truthers = players.filter(
-                (otherPlayer) =>
-                    otherPlayer.declaration && otherPlayer.declaration.value === activeCardValue
-            );
-            return (
-                <>
-                    <div className="stack-y-2">
-                        <h3>This means that</h3>
-                        {isEmpty(truthers) ? (
-                            <h3>No one was telling the truth</h3>
-                        ) : (
-                            <>
-                                {truthers.map((truther) => {
-                                    return (
-                                        <div key={truther.id}>
-                                            <h4>{truther.name} was telling the truth</h4>
-                                            {!isEmpty(truther.haters) && (
-                                                <>
-                                                    <p>
-                                                        Therefore the following people can eat shit
-                                                    </p>
-                                                    <div>
-                                                        {truther.haters.map((hater) => (
-                                                            <p key={hater.id}>{hater.name}</p>
-                                                        ))}
-                                                    </div>
-                                                </>
-                                            )}
-                                        </div>
-                                    );
-                                })}
-                            </>
-                        )}
-                        <h3>This means that</h3>
-                        {isEmpty(liars) ? (
-                            <h3>No one was telling the lieing</h3>
-                        ) : (
-                            <>
-                                {liars.map((liar) => {
-                                    return (
-                                        <div key={liar.id}>
-                                            <h4>{liar.name} was lieing through their teeth</h4>
-                                            {!isEmpty(liar.haters) ? (
-                                                <>
-                                                    <p>
-                                                        Therefore the following people can tell{' '}
-                                                        {liar.name} to eat shit
-                                                    </p>
-                                                    <div>
-                                                        {liar.haters.map((hater) => (
-                                                            <p key={hater.id}>{hater.name}</p>
-                                                        ))}
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <p>and got away with it</p>
-                                            )}
-                                        </div>
-                                    );
-                                })}
-                            </>
-                        )}
-                    </div>
-                </>
-            );
+            return <PlayerReveal />;
         case GameStage.Memory:
             return (
                 <>
