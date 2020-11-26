@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GameStage } from 'src/enums/game-stage';
-import { Hand } from '../hand/hand';
+import { Hand } from 'src/components/hand/hand';
 import { PlayerStore } from 'src/stores/player-store';
 import { Player } from 'types/player';
 import { Card as CardType } from 'types/card';
-import { usePlayers } from 'src/hooks/use-players';
 import isEmpty from 'lodash.isempty';
-import { useGameState } from 'src/hooks/use-game-state';
+import { PlayersContext } from 'src/context/players-context';
+import { GameContext } from 'src/context/game-context';
 
-export function PlayerDisplay({ gameId, player }: { gameId: string; player: Player }) {
-    const players = usePlayers(gameId);
-    const gameState = useGameState(gameId);
+export function PlayerDisplay({ player }: { player: Player }) {
+    const players = useContext(PlayersContext);
+    const gameState = useContext(GameContext);
     const { gameStage, activeRow, activeIndex } = gameState;
 
-    const otherPlayers = Object.values(players).filter(
-        (otherPlayer) => player.id !== otherPlayer.id
-    );
+    const otherPlayers = players.filter((otherPlayer) => player.id !== otherPlayer.id);
 
     function onDeclarationSelected(card: CardType) {
         PlayerStore.setDeclaration(player.id, card);
@@ -140,11 +138,11 @@ export function PlayerDisplay({ gameId, player }: { gameId: string; player: Play
             const activeCard = gameState.tiers[activeRow][activeIndex];
 
             const activeCardValue = activeCard.value;
-            const liars = Object.values(players).filter(
+            const liars = players.filter(
                 (otherPlayer) =>
                     otherPlayer.declaration && otherPlayer.declaration.value !== activeCardValue
             );
-            const truthers = Object.values(players).filter(
+            const truthers = players.filter(
                 (otherPlayer) =>
                     otherPlayer.declaration && otherPlayer.declaration.value === activeCardValue
             );

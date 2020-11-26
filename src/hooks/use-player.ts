@@ -1,6 +1,6 @@
 import { Player } from 'types/player';
 import { useState, useEffect } from 'react';
-import { PlayerStore } from '../stores/player-store';
+import { PlayerStore } from 'src/stores/player-store';
 
 export function usePlayer(playerId: string) {
     const [player, setPlayer] = useState<Player>();
