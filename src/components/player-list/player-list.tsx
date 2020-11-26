@@ -1,13 +1,12 @@
-import React from 'react';
-import { usePlayers } from '../../hooks/use-players';
+import React, { useContext } from 'react';
+import { PlayersContext } from 'src/context/players-context';
 
-export function PlayerList({ gameId }: { gameId: string }) {
-    const players = usePlayers(gameId);
-
+export function PlayerList() {
+    const players = useContext(PlayersContext);
     return (
         <>
             <h2>Players Joined</h2>
-            {Object.values(players).map((player) => (
+            {players.map((player) => (
                 <h3 key={`player-${player.id}`}>{player.name}</h3>
             ))}
         </>

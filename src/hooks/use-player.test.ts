@@ -1,8 +1,8 @@
-jest.mock('../stores/player-store');
+jest.mock('src/stores/player-store');
 
 import { renderHook, act } from '@testing-library/react-hooks';
 import { usePlayer } from './use-player';
-import { PlayerStore } from '../stores/player-store';
+import { PlayerStore } from 'src/stores/player-store';
 
 describe('<Unit Test> - usePlayer', () => {
     it('should update when the underlying service updates', () => {

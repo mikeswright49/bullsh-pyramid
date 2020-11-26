@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { Layout } from '../../../components/layout/layout';
-import { PlayerStore } from '../../../stores/player-store';
-import { GameStore } from '../../../stores/game-store';
 import { useRouter } from 'next/router';
+import { PlayerStore } from 'src/stores/player-store';
+import { GameStore } from 'src/stores/game-store';
+import { Layout } from 'src/components/layout/layout';
 
 export default function JoinGame(): JSX.Element {
     const router = useRouter();

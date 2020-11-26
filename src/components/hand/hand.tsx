@@ -1,7 +1,7 @@
-import { Card } from '../card/card';
 import styles from './hand.module.css';
 import React from 'react';
-import { Card as CardType } from '../../../types/card';
+import { Card } from 'src/components/card/card';
+import { Card as CardType } from 'types/card';
 
 export interface HandProps {
     cards: CardType[];

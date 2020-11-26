@@ -1,16 +1,16 @@
-import React from 'react';
-import { GameStage } from '../../enums/game-stage';
-import { Pyramid } from '../pyramid/pyramid';
-import { GameState } from 'types/game-state';
+import React, { useContext } from 'react';
+import { GameContext } from 'src/context/game-context';
+import { GameStage } from 'src/enums/game-stage';
+import { Pyramid } from 'src/components/pyramid/pyramid';
 
-export function GameBoard(props: { gameState: GameState }) {
-    const { gameState } = props;
-    if (gameState.gameStage === GameStage.Initiation) {
+export function GameBoard() {
+    const { gameStage, tiers } = useContext(GameContext);
+    if (gameStage === GameStage.Initiation) {
         return <span data-testid="at-game-board"></span>;
     }
     return (
         <div className="flex-center-center" data-testid="at-game-board">
-            <Pyramid tiers={gameState.tiers} />
+            <Pyramid tiers={tiers} />
         </div>
     );
 }

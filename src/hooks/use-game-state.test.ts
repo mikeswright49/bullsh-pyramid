@@ -1,8 +1,8 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useGameState, DEFAULT_GAME_STATE } from './use-game-state';
-import { GameStore } from '../stores/game-store';
-import { GameStage } from '../enums/game-stage';
-jest.mock('../stores/game-store');
+import { GameStage } from 'src/enums/game-stage';
+import { GameStore } from 'src/stores/game-store';
+jest.mock('src/stores/game-store');
 
 describe('<Unit Test> - useGameState', () => {
     it('should return null if the game id is not provided', () => {
