@@ -8,8 +8,6 @@ export function Join({ gameId }: { gameId?: string }) {
     const playerNameRef = useRef<HTMLInputElement>();
 
     const createPlayerAndJoin = async (): Promise<void> => {
-        GameStore.init();
-
         const gameToJoin = gameId || gameIdRef.current.value;
         const playerName = playerNameRef.current.value;
         const playerId = await PlayerStore.createPlayer(playerName);

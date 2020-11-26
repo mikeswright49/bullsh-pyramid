@@ -9,39 +9,9 @@ export class PlayerStore {
     private static database: firebase.database.Database;
     private static subscribers = [];
 
-    public static subscribeToPlayer(playerId: string, updateCallback: (snapshot: Player) => void) {
-        const player = PlayerStore.database.ref(`players/${playerId}`);
-        PlayerStore.subscribers.push(
-            player.on('value', (val: { val: () => Player }) => {
-                const value = val.val();
-                updateCallback(value as Player);
-            })
-        );
-    }
-
-    public static subscribeToHaters(playerId: string, updateCallback: (hater: Player) => void) {
-        const player = PlayerStore.database.ref(`players/${playerId}/hatersmap`);
-        const players = PlayerStore.database.ref(`players`);
-        PlayerStore.subscribers.push(
-            player.on('child_added', (child) => {
-                const playerId = child.val();
-                players.child(playerId).once('value', (val) => {
-                    const value = val.val();
-                    updateCallback(value as Player);
-                });
-            })
-        );
-    }
-
-    public static async updatePlayer(player: Player) {
-        await PlayerStore.database.ref(`players/${player.id}`).update(player);
-    }
-
-    public static unsubscribeToPlayer() {
-        PlayerStore.subscribers.forEach((sub) => sub.off('value'));
-    }
-
     public static async createPlayer(name: string): Promise<string> {
+        PlayerStore.init();
+
         const playerId = shortId();
 
         const player: Player = {
@@ -62,6 +32,41 @@ export class PlayerStore {
         } catch (error) {
             console.error(error);
         }
+    }
+
+    public static subscribeToPlayer(playerId: string, updateCallback: (snapshot: Player) => void) {
+        PlayerStore.init();
+        const player = PlayerStore.database.ref(`players/${playerId}`);
+        PlayerStore.subscribers.push(
+            player.on('value', (val: { val: () => Player }) => {
+                const value = val.val();
+                updateCallback(value as Player);
+            })
+        );
+    }
+
+    public static subscribeToHaters(playerId: string, updateCallback: (hater: Player) => void) {
+        PlayerStore.init();
+
+        const player = PlayerStore.database.ref(`players/${playerId}/hatersmap`);
+        const players = PlayerStore.database.ref(`players`);
+        PlayerStore.subscribers.push(
+            player.on('child_added', (child) => {
+                const playerId = child.val();
+                players.child(playerId).once('value', (val) => {
+                    const value = val.val();
+                    updateCallback(value as Player);
+                });
+            })
+        );
+    }
+
+    public static async updatePlayer(player: Player) {
+        await PlayerStore.database.ref(`players/${player.id}`).update(player);
+    }
+
+    public static unsubscribeToPlayer() {
+        PlayerStore.subscribers.forEach((sub) => sub.off('value'));
     }
 
     public static async setDeclaration(playerId: string, card: Card) {
@@ -93,10 +98,12 @@ export class PlayerStore {
         }
     }
 
-    public static init() {
+    private static init() {
         if (!firebase.apps.length) {
             firebase.initializeApp(getFirebaseConfig());
         }
-        PlayerStore.database = firebase.database();
+        if (!PlayerStore.database) {
+            PlayerStore.database = firebase.database();
+        }
     }
 }

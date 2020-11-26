@@ -10,7 +10,6 @@ export default function HostGame(): JSX.Element {
     const [tierCount, setTierCount] = useState(DEFAULT_TIER_COUNT);
 
     const initializeGame = async (): Promise<void> => {
-        GameStore.init();
         const gameId = await GameStore.createGame(playerCount, tierCount);
         window.location.assign(`/game/${gameId}`);
     };
