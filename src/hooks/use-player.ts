@@ -9,7 +9,6 @@ export function usePlayer(playerId: string) {
         if (!playerId) {
             return;
         }
-
         PlayerStore.subscribeToPlayer(playerId, (updatedPlayer) => {
             setPlayer(updatedPlayer);
         });

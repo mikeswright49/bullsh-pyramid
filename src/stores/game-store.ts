@@ -10,15 +10,8 @@ export class GameStore {
     private static database: firebase.database.Database;
     private static subscribers = [];
 
-    public static init() {
-        if (!firebase.apps.length) {
-            firebase.initializeApp(getFirebaseConfig());
-        }
-
-        GameStore.database = firebase.database();
-    }
-
     public static async createGame(playerCount: number, tierCount: number): Promise<string> {
+        GameStore.init();
         const ID_LENGTH = 4;
         const gameId = shortId(ID_LENGTH);
 
@@ -40,6 +33,7 @@ export class GameStore {
     }
 
     public static subscribeToGame(gameId: string, updateCallback: (snapshot: GameState) => void) {
+        GameStore.init();
         const game = GameStore.database.ref(`games/${gameId}`);
         GameStore.subscribers.push(
             game.on('value', (val) => {
@@ -50,6 +44,7 @@ export class GameStore {
     }
 
     public static subscribeToPlayers(gameId: string, updateCallback: (snapshot: Player) => void) {
+        GameStore.init();
         const game = GameStore.database.ref(`games/${gameId}/players`);
         const players = GameStore.database.ref(`players`);
         game.on('child_added', (child) => {
@@ -86,5 +81,14 @@ export class GameStore {
 
     public static async joinGame(gameId: string, playerId: string) {
         await GameStore.database.ref(`games/${gameId}/players`).push(playerId);
+    }
+
+    private static init() {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(getFirebaseConfig());
+        }
+        if (!GameStore.database) {
+            GameStore.database = firebase.database();
+        }
     }
 }
