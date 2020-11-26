@@ -56,6 +56,11 @@ export class GameStore {
         });
     }
 
+    public static async joinGame(gameId: string, playerId: string) {
+        GameStore.init();
+        await GameStore.database.ref(`games/${gameId}/players`).push(playerId);
+    }
+
     public static unsubscribeToGame() {
         GameStore.subscribers.forEach((sub) => sub.off('value'));
     }
@@ -77,10 +82,6 @@ export class GameStore {
         index: { activeRow: number; activeIndex: number }
     ) {
         await GameStore.database.ref(`games/${gameId}`).update(index);
-    }
-
-    public static async joinGame(gameId: string, playerId: string) {
-        await GameStore.database.ref(`games/${gameId}/players`).push(playerId);
     }
 
     private static init() {
