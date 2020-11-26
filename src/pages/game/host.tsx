@@ -22,7 +22,7 @@ export default function HostGame(): JSX.Element {
                 <span>Holy shit this is gonna work</span>
                 <div className="stack-y-2">
                     <label>
-                        Max players:
+                        <span className="stack-x-1">Max players:</span>
                         <input
                             value={playerCount}
                             type="number"
@@ -32,7 +32,7 @@ export default function HostGame(): JSX.Element {
                 </div>
                 <div className="stack-y-2">
                     <label>
-                        Tier count:
+                        <span className="stack-x-1">Tier count:</span>
                         <input
                             value={tierCount}
                             type="number"

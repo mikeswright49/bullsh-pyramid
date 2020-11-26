@@ -10,11 +10,11 @@ export function Join({ gameId }: { gameId?: string }) {
     const createPlayerAndJoin = async (): Promise<void> => {
         GameStore.init();
 
-        const gameId = gameIdRef.current.value;
+        const gameToJoin = gameId || gameIdRef.current.value;
         const playerName = playerNameRef.current.value;
         const playerId = await PlayerStore.createPlayer(playerName);
-        await GameStore.joinGame(gameId, playerId);
-        window.location.assign(`/game/${gameId}/player/${playerId}`);
+        await GameStore.joinGame(gameToJoin, playerId);
+        window.location.assign(`/game/${gameToJoin}/player/${playerId}`);
     };
 
     return (
@@ -24,14 +24,14 @@ export function Join({ gameId }: { gameId?: string }) {
                 <span>Enter your info and we can get this party started</span>
                 <div className="stack-y-2">
                     <label>
-                        Game id:
+                        <span className="stack-x-1">Game id:</span>
                         {!gameId && <input ref={gameIdRef} type="text" />}
-                        {!!gameId && gameId}
+                        {!!gameId && <strong>{gameId}</strong>}
                     </label>
                 </div>
                 <div className="stack-y-2">
                     <label>
-                        Player name:
+                        <span className="stack-x-1">Player name:</span>
                         <input ref={playerNameRef} type="text" />
                     </label>
                 </div>
