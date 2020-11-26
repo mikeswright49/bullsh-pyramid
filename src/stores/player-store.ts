@@ -10,8 +10,6 @@ export class PlayerStore {
     private static subscribers = [];
 
     public static async createPlayer(name: string): Promise<string> {
-        PlayerStore.init();
-
         const playerId = shortId();
 
         const player: Player = {
@@ -35,7 +33,6 @@ export class PlayerStore {
     }
 
     public static subscribeToPlayer(playerId: string, updateCallback: (snapshot: Player) => void) {
-        PlayerStore.init();
         const player = PlayerStore.database.ref(`players/${playerId}`);
         PlayerStore.subscribers.push(
             player.on('value', (val: { val: () => Player }) => {
@@ -46,8 +43,6 @@ export class PlayerStore {
     }
 
     public static subscribeToHaters(playerId: string, updateCallback: (hater: Player) => void) {
-        PlayerStore.init();
-
         const player = PlayerStore.database.ref(`players/${playerId}/hatersmap`);
         const players = PlayerStore.database.ref(`players`);
         PlayerStore.subscribers.push(
@@ -62,12 +57,10 @@ export class PlayerStore {
     }
 
     public static async updatePlayer(player: Player) {
-        PlayerStore.init();
         await PlayerStore.database.ref(`players/${player.id}`).update(player);
     }
 
     public static async addHater(playerId: string, haterId: string) {
-        PlayerStore.init();
         try {
             await PlayerStore.database.ref(`players/${playerId}/hatersmap`).push(haterId);
         } catch (e) {
@@ -100,7 +93,7 @@ export class PlayerStore {
         }
     }
 
-    private static init() {
+    public static init() {
         if (!firebase.apps.length) {
             firebase.initializeApp(getFirebaseConfig());
         }
