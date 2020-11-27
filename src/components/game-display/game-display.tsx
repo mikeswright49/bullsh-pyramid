@@ -17,7 +17,7 @@ const MEMORY_TIMEOUT = 1000;
 export function GameDisplay() {
     const gameState = useContext(GameContext);
     const players = useContext(PlayersContext);
-    const { gameStage, activeRow, activeIndex, id: gameId } = gameState;
+    const { gameStage, activeRow, activeIndex, id: gameId, flipDelay } = gameState;
     /**
      * Transition to the flip phase of the game
      * This is some fucked up shit right here.
@@ -27,6 +27,8 @@ export function GameDisplay() {
         let ref: NodeJS.Timeout;
         if (gameStage === GameStage.Memorization) {
             ref = setTimeout(transitionToFlipping, MEMORIZATION_TIMEOUT);
+        } else if (gameStage === GameStage.Declaration) {
+            ref = setTimeout(transitionToBullshit, flipDelay);
         } else if (gameStage === GameStage.Memory) {
             ref = setTimeout(transitionToNewGame, MEMORY_TIMEOUT);
         }
@@ -34,6 +36,10 @@ export function GameDisplay() {
             clearTimeout(ref);
         };
     }, [gameStage]);
+
+    function transitionToBullshit() {
+        GameStore.updateGameStage(gameId, GameStage.Bullshit);
+    }
 
     function flipCard(event: { preventDefault: () => void }) {
         event.preventDefault();

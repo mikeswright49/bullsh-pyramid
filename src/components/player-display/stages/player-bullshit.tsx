@@ -22,8 +22,8 @@ export function PlayerBullshit({ player }: { player: Player }) {
                         const hasHaters = !isEmpty(otherPlayer.haters);
                         return (
                             <div key={otherPlayer.id} className="stack-y-4 row">
-                                <div className="col8">
-                                    <h4>{otherPlayer.name} says they have it</h4>
+                                <div className="col-8">
+                                    <h4>{otherPlayer.name}</h4>
                                     {hasHaters && (
                                         <>
                                             <div>The following people disagree:</div>
@@ -37,9 +37,9 @@ export function PlayerBullshit({ player }: { player: Player }) {
                                     !otherPlayer.haters.find(
                                         (hater) => hater.id === player.id
                                     )) && (
-                                    <div className="col4">
+                                    <div className="col-4 flex-center-center">
                                         <button onClick={() => addHater(otherPlayer.id)}>
-                                            Fuck that guy
+                                            &#128169;&nbsp;&nbsp;
                                         </button>
                                     </div>
                                 )}
@@ -49,7 +49,7 @@ export function PlayerBullshit({ player }: { player: Player }) {
                 </div>
             ) : (
                 <div className="stack-y-2">
-                    <h3>Apparently no one here has the balls</h3>
+                    <h3>No one had it</h3>
                 </div>
             )}
         </>

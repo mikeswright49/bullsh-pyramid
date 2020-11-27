@@ -1,6 +1,6 @@
-import { Card } from '../card/card';
+import { Card } from 'src/components/card/card';
 import React from 'react';
-import { Card as CardType } from '../../../types/card';
+import { Card as CardType } from 'types/card';
 
 export function Pyramid({ tiers }: { tiers: CardType[][] }) {
     if (!tiers) {

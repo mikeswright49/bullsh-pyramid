@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './card.module.css';
 import cn from 'classnames';
-import { Card as CardType } from '../../../types/card';
+import { Card as CardType } from 'types/card';
 
 const CARD_HEIGHT = 123;
 const CARD_WIDTH = 79;
