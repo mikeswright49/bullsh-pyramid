@@ -23,7 +23,7 @@ export function PlayerDeclaration({ player }: { player: Player }) {
                     />
                 </div>
                 <div className="stack-y-2">
-                    {!player.hasVoted && <button onClick={onDeclarationDeferred}>Fuck no</button>}
+                    {!player.hasVoted && <button onClick={onDeclarationDeferred}>Nope</button>}
                 </div>
             </div>
         </>

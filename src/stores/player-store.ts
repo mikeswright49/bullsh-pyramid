@@ -1,8 +1,8 @@
 import * as firebase from 'firebase';
-import { getFirebaseConfig } from '../../config/firebase-config';
-import { shortId } from '../utilities/shortid';
 import { Card } from 'types/card';
 import { Player } from 'types/player';
+import { shortId } from 'src/utilities/shortid';
+import { getFirebaseConfig } from 'config/firebase-config';
 
 export class PlayerStore {
     private static DEFAULT_PLAYER_SCORE = 10000;

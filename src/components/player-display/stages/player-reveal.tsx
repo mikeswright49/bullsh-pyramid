@@ -22,7 +22,6 @@ export function PlayerReveal() {
     return (
         <>
             <div className="stack-y-2">
-                <h3>This means that</h3>
                 {isEmpty(truthers) ? (
                     <h3>No one was telling the truth</h3>
                 ) : (
@@ -33,7 +32,7 @@ export function PlayerReveal() {
                                     <h4>{truther.name} was telling the truth</h4>
                                     {!isEmpty(truther.haters) && (
                                         <>
-                                            <p>Therefore the following people can eat shit</p>
+                                            <p>The following people can eat &#128169;</p>
                                             <div>
                                                 {truther.haters.map((hater) => (
                                                     <p key={hater.id}>{hater.name}</p>
@@ -48,7 +47,7 @@ export function PlayerReveal() {
                 )}
                 <h3>This means that</h3>
                 {isEmpty(liars) ? (
-                    <h3>No one was telling the lieing</h3>
+                    <h3>No one was lieing</h3>
                 ) : (
                     <>
                         {liars.map((liar) => {
@@ -58,8 +57,7 @@ export function PlayerReveal() {
                                     {!isEmpty(liar.haters) ? (
                                         <>
                                             <p>
-                                                Therefore the following people can tell {liar.name}{' '}
-                                                to eat shit
+                                                The following people can tell {liar.name} &#128169;
                                             </p>
                                             <div>
                                                 {liar.haters.map((hater) => (

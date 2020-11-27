@@ -6,8 +6,9 @@ export type GameState = {
     gameStage: GameStage;
     activeIndex: number;
     activeRow: number;
-    playerCount?: number;
-    tierCount?: number;
     players: { key: string }[];
     tiers: Card[][];
+    flipDelay: number;
+    playerCount?: number;
+    tierCount?: number;
 };

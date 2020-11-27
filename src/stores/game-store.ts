@@ -1,17 +1,25 @@
 import * as firebase from 'firebase';
-import { shortId } from '../utilities/shortid';
-import { GameStage } from '../enums/game-stage';
 import { GameState } from 'types/game-state';
-import { getFirebaseConfig } from '../../config/firebase-config';
 import { Player } from 'types/player';
 import { Card } from 'types/card';
+import { shortId } from 'src/utilities/shortid';
+import { GameStage } from 'src/enums/game-stage';
+import { getFirebaseConfig } from 'config/firebase-config';
+const ID_LENGTH = 4;
 
 export class GameStore {
     private static database: firebase.database.Database;
     private static subscribers = [];
 
-    public static async createGame(playerCount: number, tierCount: number): Promise<string> {
-        const ID_LENGTH = 4;
+    public static async createGame({
+        playerCount,
+        tierCount,
+        flipDelay,
+    }: {
+        playerCount: number;
+        tierCount: number;
+        flipDelay: number;
+    }): Promise<string> {
         const gameId = shortId(ID_LENGTH);
 
         const gameState = {
@@ -21,6 +29,7 @@ export class GameStore {
             activeRow: 0,
             playerCount,
             tierCount,
+            flipDelay: flipDelay * 1000,
         } as GameState;
 
         try {
