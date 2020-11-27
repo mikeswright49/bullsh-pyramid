@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Unit Test> Host Page should render the page 1`] = `
+<div
+  data-testid="host-page"
+>
+  <h1>
+    Host Game
+  </h1>
+  <span>
+    Holy shit this is gonna work
+  </span>
+  <form
+    data-testid="host-form"
+  >
+    <div
+      class="stack-y-2"
+    >
+      <label>
+        <span
+          class="stack-x-1"
+        >
+          Max players:
+        </span>
+        <input
+          data-testid="player-count"
+          type="number"
+          value="3"
+        />
+      </label>
+    </div>
+    <div
+      class="stack-y-2"
+    >
+      <label>
+        <span
+          class="stack-x-1"
+        >
+          Tier count:
+        </span>
+        <input
+          data-testid="tier-count"
+          type="number"
+          value="5"
+        />
+      </label>
+    </div>
+    <div
+      class="stack-y-2"
+    >
+      <label>
+        <span
+          class="stack-x-1"
+        >
+          Flipping delay in seconds:
+        </span>
+        <input
+          data-testid="flip-delay"
+          type="number"
+          value="5"
+        />
+      </label>
+    </div>
+    <div>
+      <button
+        class="pure-button pure-button-primary"
+        data-testid="host-form-submit"
+        type="submit"
+      >
+        Start a new game
+      </button>
+    </div>
+  </form>
+</div>
+`;

@@ -22,37 +22,54 @@ export default function HostGame(): JSX.Element {
 
     return (
         <Layout>
-            <>
+            <div data-testid="host-page">
                 <h1>Host Game</h1>
                 <span>Holy shit this is gonna work</span>
-                <div className="stack-y-2">
-                    <label>
-                        <span className="stack-x-1">Max players:</span>
-                        <input
-                            type="number"
-                            ref={playerCount}
-                            defaultValue={DEFAULT_PLAYER_COUNT}
-                        />
-                    </label>
-                </div>
-                <div className="stack-y-2">
-                    <label>
-                        <span className="stack-x-1">Tier count:</span>
-                        <input type="number" defaultValue={DEFAULT_TIER_COUNT} ref={tierCount} />
-                    </label>
-                </div>
-                <div className="stack-y-2">
-                    <label>
-                        <span className="stack-x-1">Flipping delay in seconds:</span>
-                        <input type="number" defaultValue={DEFAULT_FLIP_DELAY} ref={flipDelay} />
-                    </label>
-                </div>
-                <div>
-                    <button className="pure-button pure-button-primary" onClick={initializeGame}>
-                        Start a new game
-                    </button>
-                </div>
-            </>
+                <form onSubmit={initializeGame} data-testid="host-form">
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Max players:</span>
+                            <input
+                                data-testid="player-count"
+                                type="number"
+                                ref={playerCount}
+                                defaultValue={DEFAULT_PLAYER_COUNT}
+                            />
+                        </label>
+                    </div>
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Tier count:</span>
+                            <input
+                                data-testid="tier-count"
+                                type="number"
+                                defaultValue={DEFAULT_TIER_COUNT}
+                                ref={tierCount}
+                            />
+                        </label>
+                    </div>
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Flipping delay in seconds:</span>
+                            <input
+                                data-testid="flip-delay"
+                                type="number"
+                                defaultValue={DEFAULT_FLIP_DELAY}
+                                ref={flipDelay}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <button
+                            data-testid="host-form-submit"
+                            className="pure-button pure-button-primary"
+                            type="submit"
+                        >
+                            Start a new game
+                        </button>
+                    </div>
+                </form>
+            </div>
         </Layout>
     );
 }
