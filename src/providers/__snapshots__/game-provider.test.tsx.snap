@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Unit Test> Game Provider should subscribe to the useGameState, and provide it as a value 1`] = `
+<div>
+  <div>
+    {"id":"","gameStage":0,"activeRow":0,"activeIndex":0,"flipDelay":5000,"players":[],"tiers":[]}
+  </div>
+</div>
+`;

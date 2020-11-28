@@ -1,33 +1,13 @@
 import React, { useContext } from 'react';
 import { GameContext } from 'src/context/game-context';
-import { dealHand, generateDeck } from 'src/utilities/cards';
-import { PlayerStore } from 'src/stores/player-store';
-import { GameStore } from 'src/stores/game-store';
-import { GameStage } from 'src/enums/game-stage';
 import Link from 'next/link';
-import { PlayerList } from 'src/components/player-list/player-list';
 import { PlayersContext } from 'src/context/players-context';
+import { transitionToMemorization } from 'src/components/host-display/transitions/to-memorization';
 
 export function GameInitiation() {
     const gameState = useContext(GameContext);
     const players = useContext(PlayersContext);
     const { id: gameId } = gameState;
-
-    async function transitionToMemorization(event: { preventDefault: () => void }): Promise<void> {
-        event.preventDefault();
-
-        const hand = dealHand(generateDeck(), gameState.tierCount, players.length);
-        await Promise.all(
-            players.map((player, index) => {
-                const playerHand = hand.players[index];
-                player.hand = playerHand;
-                return PlayerStore.updatePlayer(player);
-            })
-        );
-
-        GameStore.updateTiers(gameId, hand.tiers);
-        GameStore.updateGameStage(gameId, GameStage.Memorization);
-    }
 
     return (
         <>
@@ -45,12 +25,15 @@ export function GameInitiation() {
                     </li>
                 </ul>
 
-                <PlayerList />
+                <h2>Players Joined</h2>
+                {players.map((player) => (
+                    <h3 key={`player-${player.id}`}>{player.name}</h3>
+                ))}
 
                 <h3>All players joined!</h3>
                 <button
                     className="pure-button pure-button-primary"
-                    onClick={transitionToMemorization}
+                    onClick={() => transitionToMemorization(players, gameState)}
                 >
                     Start game
                 </button>
