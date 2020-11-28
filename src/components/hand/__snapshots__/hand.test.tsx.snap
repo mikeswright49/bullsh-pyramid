@@ -11,18 +11,21 @@ exports[`<Unit Test> Hand should be able to render the component 1`] = `
     <div>
       <div
         class="flex-center-center card"
+        data-testid="card-0-1"
         style="background-position: -79px -0px;"
       />
     </div>
     <div>
       <div
         class="flex-center-center card"
+        data-testid="card-0-2"
         style="background-position: -158px -0px;"
       />
     </div>
     <div>
       <div
         class="flex-center-center card"
+        data-testid="card-0-3"
         style="background-position: -237px -0px;"
       />
     </div>
@@ -41,6 +44,7 @@ exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
     <div>
       <div
         class="flex-center-center card"
+        data-testid="card-0-1"
         style="background-position: -79px -0px;"
       />
       <button
@@ -52,6 +56,7 @@ exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
     <div>
       <div
         class="flex-center-center card"
+        data-testid="card-0-2"
         style="background-position: -158px -0px;"
       />
       <button
@@ -63,6 +68,7 @@ exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
     <div>
       <div
         class="flex-center-center card"
+        data-testid="card-0-3"
         style="background-position: -237px -0px;"
       />
       <button

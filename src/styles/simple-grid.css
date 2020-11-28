@@ -62,18 +62,7 @@ p {
   font-size: 1.125rem;
   font-weight: 200;
   line-height: 1.8;
-}
-
-.font-light {
-  font-weight: 300;
-}
-
-.font-regular {
-  font-weight: 400;
-}
-
-.font-heavy {
-  font-weight: 700;
+  margin: 0;
 }
 
 /* POSITIONING */

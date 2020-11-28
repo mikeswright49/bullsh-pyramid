@@ -4,6 +4,7 @@ exports[`<Unit Test> Card shold be able to change styles on visibility 1`] = `
 <div>
   <div
     class="flex-center-center card cardHidden"
+    data-testid="card-2-1"
     style="background-position: -79px -246px;"
   />
 </div>
@@ -13,6 +14,7 @@ exports[`<Unit Test> Card should be able to render the component 1`] = `
 <div>
   <div
     class="flex-center-center card"
+    data-testid="card-2-1"
     style="background-position: -79px -246px;"
   />
 </div>
