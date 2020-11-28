@@ -10,7 +10,7 @@ import { transitionToDeclaration } from './transitions/to-declaration';
 import { transitionToReveal } from './transitions/to-reveal';
 import { transitionFromReveal } from './transitions/from-reveal';
 
-const MEMORIZATION_TIMEOUT = 5000;
+const MEMORIZATION_TIMEOUT = 30000;
 const MEMORY_TIMEOUT = 1000;
 
 export function HostDisplay() {
