@@ -24,9 +24,9 @@ export function GameInitiation() {
                     </li>
                 </ul>
 
-                <h2>Players Joined</h2>
+                <h3>Players Joined</h3>
                 {players.map((player) => (
-                    <h3 key={`player-${player.id}`}>{player.name}</h3>
+                    <h4 key={`player-${player.id}`}>{player.name}</h4>
                 ))}
             </div>
         </>

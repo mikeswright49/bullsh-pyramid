@@ -64,7 +64,7 @@ export function PlayerDisplay({ player }: { player: Player }) {
             return (
                 <>
                     <div className="stack-y-2">
-                        <h3>Congrats you&apos;re soft in the head</h3>
+                        <h3>Game Over Everyone</h3>
                     </div>
                 </>
             );

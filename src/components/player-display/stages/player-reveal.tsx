@@ -45,7 +45,6 @@ export function PlayerReveal() {
                         })}
                     </>
                 )}
-                <h3>This means that</h3>
                 {isEmpty(liars) ? (
                     <h3>No one was lieing</h3>
                 ) : (

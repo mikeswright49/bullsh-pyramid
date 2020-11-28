@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Unit Test> - Game board should render the mobile friendly version if on a mobile device 1`] = `
+<div
+  class="stack-y-2"
+  data-testid="mobile-game-board"
+>
+  <h3>
+    Current Row: 
+    1
+  </h3>
+  <h3>
+    Current card
+  </h3>
+  <div
+    class="flex-center-center card"
+    data-testid="card-2-1"
+    style="background-position: -79px -246px;"
+  />
+</div>
+`;
+
 exports[`<Unit Test> - Game board should render the pyramid if not in initialization 1`] = `
 <div
   class="flex-center-center"

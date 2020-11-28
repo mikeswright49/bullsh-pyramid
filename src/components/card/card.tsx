@@ -9,6 +9,7 @@ const CARD_WIDTH = 79;
 export function Card({ card }: { card: CardType }): JSX.Element {
     return (
         <div
+            data-testid={`card-${card.suit}-${card.value}`}
             style={{
                 backgroundPosition: `-${card.value * CARD_WIDTH}px -${card.suit * CARD_HEIGHT}px`,
             }}
