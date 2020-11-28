@@ -6,8 +6,7 @@ import { PlayerStore } from 'src/stores/player-store';
 
 export function PlayerBullshit({ player }: { player: Player }) {
     const players = useContext(PlayersContext);
-    const otherPlayers = players.filter((otherPlayer) => player.id !== otherPlayer.id);
-    const otherDeclaredPlayers = otherPlayers.filter((otherPlayers) => otherPlayers.declaration);
+    const otherDeclaredPlayers = players.filter((otherPlayer) => otherPlayer.declaration);
 
     function addHater(playerId: string) {
         PlayerStore.addHater(playerId, player.id);
@@ -20,6 +19,10 @@ export function PlayerBullshit({ player }: { player: Player }) {
                     <h3>The following people might be full of shit</h3>
                     {otherDeclaredPlayers.map((otherPlayer) => {
                         const hasHaters = !isEmpty(otherPlayer.haters);
+                        const showHating =
+                            otherPlayer.id !== player.id &&
+                            (!hasHaters ||
+                                !otherPlayer.haters.find((hater) => hater.id === player.id));
                         return (
                             <div key={otherPlayer.id} className="stack-y-4 row">
                                 <div className="col-8">
@@ -33,10 +36,7 @@ export function PlayerBullshit({ player }: { player: Player }) {
                                         </>
                                     )}
                                 </div>
-                                {(!hasHaters ||
-                                    !otherPlayer.haters.find(
-                                        (hater) => hater.id === player.id
-                                    )) && (
+                                {showHating && (
                                     <div className="col-4 flex-center-center">
                                         <button onClick={() => addHater(otherPlayer.id)}>
                                             &#128169;&nbsp;&nbsp;

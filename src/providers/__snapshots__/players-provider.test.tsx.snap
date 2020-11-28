@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Unit Test> Players Provider should subscribe to the usePlayers, and map the players to an array it as a value 1`] = `
+<div>
+  <div>
+    [{"name":"Frank"}]
+  </div>
+</div>
+`;

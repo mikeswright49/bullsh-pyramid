@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Layout } from 'src/components/layout/layout';
 import { GameStore } from 'src/stores/game-store';
 

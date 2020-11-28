@@ -5,7 +5,7 @@ import { GameStore } from 'src/stores/game-store';
 
 jest.mock('src/stores/game-store');
 describe('<Unit Test> Host Page', () => {
-    beforeAll(() => {
+    beforeEach(() => {
         const oldWindowLocation = window.location;
         delete window.location;
 

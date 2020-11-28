@@ -17,31 +17,33 @@ export function Join({ gameId }: { gameId?: string }) {
 
     return (
         <Layout>
-            <>
+            <div data-testid="join-page">
                 <h1>Join Game</h1>
                 <span>Enter your info and we can get this party started</span>
-                <div className="stack-y-2">
-                    <label>
-                        <span className="stack-x-1">Game id:</span>
-                        {!gameId && <input ref={gameIdRef} type="text" />}
-                        {!!gameId && <strong>{gameId}</strong>}
-                    </label>
-                </div>
-                <div className="stack-y-2">
-                    <label>
-                        <span className="stack-x-1">Player name:</span>
-                        <input ref={playerNameRef} type="text" />
-                    </label>
-                </div>
-                <div>
-                    <button
-                        className="pure-button pure-button-primary"
-                        onClick={createPlayerAndJoin}
-                    >
-                        Join the game
-                    </button>
-                </div>
-            </>
+                <form data-testid="join-form" onSubmit={createPlayerAndJoin}>
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Game id:</span>
+                            {!gameId && <input data-testid="game-id" ref={gameIdRef} type="text" />}
+                            {!!gameId && <strong>{gameId}</strong>}
+                        </label>
+                    </div>
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Player name:</span>
+                            <input data-testid="player-name" ref={playerNameRef} type="text" />
+                        </label>
+                    </div>
+                    <div>
+                        <button
+                            data-testid="join-submit"
+                            className="pure-button pure-button-primary"
+                        >
+                            Join the game
+                        </button>
+                    </div>
+                </form>
+            </div>
         </Layout>
     );
 }
