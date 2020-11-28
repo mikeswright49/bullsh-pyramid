@@ -2,6 +2,7 @@
 
 exports[`<Unit Test> Join Route should be able to create the player and add them to the game on submit 1`] = `
 <div
+  class="container"
   data-testid="join-page"
 >
   <h1>
@@ -56,6 +57,7 @@ exports[`<Unit Test> Join Route should be able to create the player and add them
 
 exports[`<Unit Test> Join Route should render a strong gameId if provided 1`] = `
 <div
+  class="container"
   data-testid="join-page"
 >
   <h1>
@@ -110,6 +112,7 @@ exports[`<Unit Test> Join Route should render a strong gameId if provided 1`] = 
 
 exports[`<Unit Test> Join Route should render the form with a game id input if no id is provided 1`] = `
 <div
+  class="container"
   data-testid="join-page"
 >
   <h1>

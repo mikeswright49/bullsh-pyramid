@@ -8,7 +8,6 @@ export function GameDeclaration() {
     return (
         <>
             <div className="stack-y-2">
-                <h2>Quick 5s! Do you have this card?</h2>
                 {players
                     .filter((player) => !!player.declaration)
                     .map((player) => {

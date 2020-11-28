@@ -9,7 +9,7 @@ export class PlayerStore {
     private static database: firebase.database.Database;
     private static subscribers = [];
 
-    public static async createPlayer(name: string): Promise<string> {
+    public static async createPlayer(name: string, isHost: boolean): Promise<string> {
         const playerId = shortId();
 
         const player: Player = {
@@ -17,7 +17,7 @@ export class PlayerStore {
             name,
             hand: [],
             score: PlayerStore.DEFAULT_PLAYER_SCORE,
-            isHost: false,
+            isHost,
             declaration: null,
             hasVoted: false,
             haters: [],
@@ -72,10 +72,11 @@ export class PlayerStore {
         PlayerStore.subscribers.forEach((sub) => sub.off('value'));
     }
 
-    public static async setDeclaration(playerId: string, card: Card) {
+    public static async setDeclaration(playerId: string, card: Card, cards: Card[]) {
         try {
             await PlayerStore.database.ref(`players/${playerId}`).update({
                 declaration: card,
+                hand: cards,
                 hasVoted: true,
             });
         } catch (e) {

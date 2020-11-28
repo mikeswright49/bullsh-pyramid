@@ -11,7 +11,8 @@ export default function HostGame(): JSX.Element {
     const tierCount = useRef<HTMLInputElement>();
     const flipDelay = useRef<HTMLInputElement>();
 
-    const initializeGame = async (): Promise<void> => {
+    const initializeGame = async (event: React.FormEvent): Promise<void> => {
+        event.preventDefault();
         const gameId = await GameStore.createGame({
             playerCount: parseInt(playerCount.current.value, 10),
             tierCount: parseInt(tierCount.current.value, 10),
@@ -22,9 +23,8 @@ export default function HostGame(): JSX.Element {
 
     return (
         <Layout>
-            <div data-testid="host-page">
+            <div data-testid="host-page" className="container">
                 <h1>Host Game</h1>
-                <span>Holy shit this is gonna work</span>
                 <form onSubmit={initializeGame} data-testid="host-form">
                     <div className="stack-y-2">
                         <label>

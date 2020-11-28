@@ -3,6 +3,7 @@ import { GameStore } from 'src/stores/game-store';
 import { GameStage } from 'src/enums/game-stage';
 import { Player } from 'types/player';
 import { PlayerStore } from 'src/stores/player-store';
+import { transitionToDeclaration } from './to-declaration';
 
 export async function transitionFromReveal(players: Player[], gameState: GameState) {
     const { activeIndex, activeRow, id: gameId } = gameState;
@@ -13,6 +14,7 @@ export async function transitionFromReveal(players: Player[], gameState: GameSta
             player.declaration = null;
             player.hatersmap = null;
             player.haters = null;
+            player.hand.forEach((card) => (card.hidden = true));
             await PlayerStore.updatePlayer(player);
         })
     );
@@ -22,10 +24,14 @@ export async function transitionFromReveal(players: Player[], gameState: GameSta
     } else {
         const updatedIndex = (activeIndex + 1) % gameState.tiers[activeRow].length;
         const updatedRow = updatedIndex === 0 ? activeRow + 1 : activeRow;
-        GameStore.setActiveCard(gameId, {
+        // need to overwrite local state, as there is a desync period where the BE has gotten the write,
+        // but the event hasn't published fully yet
+        gameState = {
+            ...gameState,
             activeRow: updatedRow,
             activeIndex: updatedIndex,
-        });
-        GameStore.updateGameStage(gameId, GameStage.Flipping);
+        };
+        await GameStore.setActiveCard(gameId, gameState);
+        await transitionToDeclaration(gameState);
     }
 }

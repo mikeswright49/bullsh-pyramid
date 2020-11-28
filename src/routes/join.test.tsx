@@ -42,7 +42,7 @@ describe('<Unit Test> Join Route', () => {
         await act(async () =>
             fireEvent.submit(container.querySelector('[data-testid="join-form"]'))
         );
-        expect(PlayerStore.createPlayer).toHaveBeenCalledWith('frank');
+        expect(PlayerStore.createPlayer).toHaveBeenCalledWith('frank', true);
         expect(GameStore.joinGame).toHaveBeenCalledWith('1234', 'a-player-id');
         expect(container.querySelector('[data-testid="join-page"]')).toMatchSnapshot();
         expect(window.location.assign).toHaveBeenCalledWith('/game/1234/player/a-player-id');
