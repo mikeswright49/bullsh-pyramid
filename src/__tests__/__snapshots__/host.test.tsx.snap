@@ -2,14 +2,12 @@
 
 exports[`<Unit Test> Host Page should render the page 1`] = `
 <div
+  class="container"
   data-testid="host-page"
 >
   <h1>
     Host Game
   </h1>
-  <span>
-    Holy shit this is gonna work
-  </span>
   <form
     data-testid="host-form"
   >

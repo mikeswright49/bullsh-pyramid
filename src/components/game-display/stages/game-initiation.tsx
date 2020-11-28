@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { GameContext } from 'src/context/game-context';
 import Link from 'next/link';
 import { PlayersContext } from 'src/context/players-context';
-import { transitionToMemorization } from 'src/components/host-display/transitions/to-memorization';
 
 export function GameInitiation() {
     const gameState = useContext(GameContext);
@@ -29,14 +28,6 @@ export function GameInitiation() {
                 {players.map((player) => (
                     <h3 key={`player-${player.id}`}>{player.name}</h3>
                 ))}
-
-                <h3>All players joined!</h3>
-                <button
-                    className="pure-button pure-button-primary"
-                    onClick={() => transitionToMemorization(players, gameState)}
-                >
-                    Start game
-                </button>
             </div>
         </>
     );

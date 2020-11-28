@@ -6,7 +6,8 @@ import { Player } from 'types/player';
 
 export function PlayerDeclaration({ player }: { player: Player }) {
     function onDeclarationSelected(card: CardType) {
-        PlayerStore.setDeclaration(player.id, card);
+        card.hidden = false;
+        PlayerStore.setDeclaration(player.id, card, player.hand);
     }
     function onDeclarationDeferred() {
         PlayerStore.setHasVoted(player.id, true);

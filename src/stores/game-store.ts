@@ -62,6 +62,11 @@ export class GameStore {
         });
     }
 
+    public static async getPlayers(gameId: string): Promise<{ [key: string]: string }> {
+        const reference = await GameStore.database.ref(`games/${gameId}/players`).once('value');
+        return reference.val();
+    }
+
     public static async joinGame(gameId: string, playerId: string) {
         await GameStore.database.ref(`games/${gameId}/players`).push(playerId);
     }
