@@ -5,11 +5,13 @@ import { GameStore } from 'src/stores/game-store';
 const DEFAULT_PLAYER_COUNT = 3;
 const DEFAULT_TIER_COUNT = 5;
 const DEFAULT_FLIP_DELAY = 5;
+const DEFAULT_CARD_COUNT = 4;
 
 export default function HostGame(): JSX.Element {
     const playerCount = useRef<HTMLInputElement>();
     const tierCount = useRef<HTMLInputElement>();
     const flipDelay = useRef<HTMLInputElement>();
+    const cardCount = useRef<HTMLInputElement>();
 
     const initializeGame = async (event: React.FormEvent): Promise<void> => {
         event.preventDefault();
@@ -17,6 +19,7 @@ export default function HostGame(): JSX.Element {
             playerCount: parseInt(playerCount.current.value, 10),
             tierCount: parseInt(tierCount.current.value, 10),
             flipDelay: parseInt(flipDelay.current.value, 10),
+            cardCount: parseInt(cardCount.current.value, 10),
         });
         window.location.assign(`/game/${gameId}`);
     };
@@ -45,6 +48,17 @@ export default function HostGame(): JSX.Element {
                                 type="number"
                                 defaultValue={DEFAULT_TIER_COUNT}
                                 ref={tierCount}
+                            />
+                        </label>
+                    </div>
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Cards in hand:</span>
+                            <input
+                                data-testid="card-count"
+                                type="number"
+                                defaultValue={DEFAULT_CARD_COUNT}
+                                ref={cardCount}
                             />
                         </label>
                     </div>

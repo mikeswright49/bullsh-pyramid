@@ -11,4 +11,5 @@ export type GameState = {
     flipDelay: number;
     playerCount?: number;
     tierCount?: number;
+    cardCount: number;
 };
