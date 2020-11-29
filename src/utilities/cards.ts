@@ -78,13 +78,13 @@ export function dealCard(deck: Card[]) {
  * @param tiers Number of tiers to be generated
  * @param players Number of players in the game
  */
-export function dealHand(deck: Card[], tiers: number, players: number): Hand {
+export function dealHand(deck: Card[], tiers: number, players: number, handSize = 3): Hand {
     const response: Hand = {
         players: [],
         tiers: [],
     };
 
-    response.players = generatePlayers(deck, players);
+    response.players = generatePlayers(deck, players, handSize);
     response.tiers = generateTiers(deck, tiers);
 
     return response;

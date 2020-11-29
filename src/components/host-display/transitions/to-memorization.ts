@@ -9,7 +9,7 @@ export async function transitionToMemorization(
     players: Player[],
     gameState: GameState
 ): Promise<void> {
-    const hand = dealHand(generateDeck(), gameState.tierCount, players.length);
+    const hand = dealHand(generateDeck(), gameState.tierCount, players.length, gameState.cardCount);
     await Promise.all(
         players.map((player, index) => {
             const playerHand = hand.players[index];

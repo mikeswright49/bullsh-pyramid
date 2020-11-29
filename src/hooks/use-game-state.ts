@@ -7,6 +7,7 @@ export const DEFAULT_GAME_STATE: GameState = {
     gameStage: GameStage.Initiation,
     activeRow: 0,
     activeIndex: 0,
+    cardCount: 4,
     flipDelay: 5000,
     players: [],
     tiers: [],

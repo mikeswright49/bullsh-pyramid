@@ -42,6 +42,7 @@ describe('<Unit Test> Host Page', () => {
             fireEvent.submit(container.querySelector('[data-testid="host-form"]'))
         );
         expect(GameStore.createGame).toHaveBeenCalledWith({
+            cardCount: 4,
             flipDelay: 789,
             playerCount: 123,
             tierCount: 456,

@@ -15,10 +15,12 @@ export class GameStore {
         playerCount,
         tierCount,
         flipDelay,
+        cardCount,
     }: {
         playerCount: number;
         tierCount: number;
         flipDelay: number;
+        cardCount: number;
     }): Promise<string> {
         const gameId = shortId(ID_LENGTH);
 
@@ -30,6 +32,7 @@ export class GameStore {
             playerCount,
             tierCount,
             flipDelay: flipDelay * 1000,
+            cardCount,
         } as GameState;
 
         try {

@@ -50,6 +50,22 @@ exports[`<Unit Test> Host Page should render the page 1`] = `
         <span
           class="stack-x-1"
         >
+          Cards in hand:
+        </span>
+        <input
+          data-testid="card-count"
+          type="number"
+          value="4"
+        />
+      </label>
+    </div>
+    <div
+      class="stack-y-2"
+    >
+      <label>
+        <span
+          class="stack-x-1"
+        >
           Flipping delay in seconds:
         </span>
         <input
