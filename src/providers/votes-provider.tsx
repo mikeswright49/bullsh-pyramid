@@ -1,17 +1,23 @@
 import React from 'react';
-import { useVotes } from 'src/hooks/use-votes';
 import { useState, useEffect } from 'react';
 import { Vote } from 'types/vote';
+import { VoteStore } from 'src/stores/vote-store';
 export const VotesContext = React.createContext<Vote[]>([]);
 
 export function VotesProvider(props: React.PropsWithChildren<{ gameId: string }>) {
-    const votes = useVotes(props.gameId);
-    const [votesArray, setVotesArray] = useState([]);
-
+    const [votes, setVotes] = useState([]);
     useEffect(() => {
-        const votesArray = Object.values(votes);
-        setVotesArray(votesArray);
-    }, [votes]);
+        if (!votes) {
+            return;
+        }
 
-    return <VotesContext.Provider value={votesArray}>{props.children}</VotesContext.Provider>;
+        VoteStore.subscribeToVotes(props.gameId, (vote: Vote) => {
+            votes[vote.id] = vote;
+            setVotes({ ...votes });
+        });
+    }, [props.gameId]);
+
+    return (
+        <VotesContext.Provider value={Object.values(votes)}>{props.children}</VotesContext.Provider>
+    );
 }

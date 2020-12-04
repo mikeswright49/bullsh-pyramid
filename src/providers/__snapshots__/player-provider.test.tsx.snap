@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Player Provider should update when the underlying service updates 1`] = `
+<div>
+  <div>
+    {"id":"123","name":"Cam","hand":[],"score":10000,"isHost":false}
+  </div>
+</div>
+`;
