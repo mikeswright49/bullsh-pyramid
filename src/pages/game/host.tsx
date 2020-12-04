@@ -13,7 +13,7 @@ export default function HostGame(): JSX.Element {
     const flipDelay = useRef<HTMLInputElement>();
     const cardCount = useRef<HTMLInputElement>();
 
-    const initializeGame = async (event: React.FormEvent): Promise<void> => {
+    async function initializeGame(event: React.FormEvent): Promise<void> {
         event.preventDefault();
         const gameId = await GameStore.createGame({
             playerCount: parseInt(playerCount.current.value, 10),
@@ -22,7 +22,7 @@ export default function HostGame(): JSX.Element {
             cardCount: parseInt(cardCount.current.value, 10),
         });
         window.location.assign(`/game/${gameId}`);
-    };
+    }
 
     return (
         <Layout>

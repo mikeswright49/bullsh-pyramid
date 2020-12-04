@@ -9,7 +9,7 @@ export function PlayerDeclaration({ player }: { player: Player }) {
         card.hidden = false;
         PlayerStore.setDeclaration(player.id, card, player.hand);
     }
-    function onDeclarationDeferred() {
+    function onDeclarationCompleted() {
         PlayerStore.setHasVoted(player.id, true);
     }
     return (
@@ -24,7 +24,7 @@ export function PlayerDeclaration({ player }: { player: Player }) {
                     />
                 </div>
                 <div className="stack-y-2">
-                    {!player.hasVoted && <button onClick={onDeclarationDeferred}>Nope</button>}
+                    {!player.hasVoted && <button onClick={onDeclarationCompleted}>Done</button>}
                 </div>
             </div>
         </>

@@ -3,8 +3,9 @@ export enum GameStage {
     Memorization,
     Flipping,
     Declaration,
+    Assign,
     Bullshit,
+    Reveal,
     Memory,
     Complete,
-    Reveal,
 }

@@ -12,7 +12,7 @@ import { transitionToReveal } from './transitions/to-reveal';
 import { transitionFromReveal } from './transitions/from-reveal';
 
 const MEMORIZATION_TIMEOUT = 30000;
-const MEMORY_TIMEOUT = 1000;
+const MEMORY_TIMEOUT = 10000;
 
 export function HostDisplay() {
     const gameState = useContext(GameContext);
