@@ -2,7 +2,8 @@ import React from 'react';
 import { GameStage } from 'src/enums/game-stage';
 import { useContext } from 'react';
 import { GameBoard } from 'src/components/game-board/game-board';
-import { GameContext } from 'src/context/game-context';
+import { GameContext } from 'src/providers/game-provider';
+
 import { GameInitiation } from './stages/game-initiation';
 import { GameDeclaration } from './stages/game-declaration';
 import { Leaderboard } from 'src/components/leaderboard/leaderboard';

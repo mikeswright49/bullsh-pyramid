@@ -3,6 +3,7 @@ import 'src/styles/app.css';
 import 'src/styles/simple-grid.css';
 import { GameStore } from 'src/stores/game-store';
 import { PlayerStore } from 'src/stores/player-store';
+import { VoteStore } from 'src/stores/vote-store';
 
 export default function App({
     Component,
@@ -13,5 +14,6 @@ export default function App({
 }) {
     GameStore.init();
     PlayerStore.init();
+    VoteStore.init();
     return <Component {...pageProps} />;
 }

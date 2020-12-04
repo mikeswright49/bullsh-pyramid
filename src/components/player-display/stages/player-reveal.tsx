@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import React, { useContext } from 'react';
-import { GameContext } from 'src/context/game-context';
-import { PlayersContext } from 'src/context/players-context';
+import { GameContext } from 'src/providers/game-provider';
+import { PlayersContext } from 'src/providers/players-provider';
 
 export function PlayerReveal() {
     const players = useContext(PlayersContext);

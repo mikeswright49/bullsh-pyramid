@@ -1,16 +1,15 @@
 module.exports = {
-    globals: {
-        // jest requires updates to use along side react and next
-        // https://medium.com/@kjaer/setting-up-jest-and-enzyme-for-typescript-next-js-apps-ce383167643
-        'ts-jest': {
-            tsconfig: 'tsconfig.jest.json',
-            diagnostics: false,
-        },
-    },
-    preset: 'ts-jest',
+    globals: {},
     cacheDirectory: '<rootDir>/jest-cache',
     transform: {
-        '^.+\\.tsx?$': 'ts-jest',
+        '^.+\\.(t|j)sx?$': [
+            '@swc-node/jest',
+            // configuration
+            {
+                dynamicImport: true,
+                sourcemap: true,
+            },
+        ],
         '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|svg)$': 'jest-transform-stub',
     },
     moduleNameMapper: {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { usePlayers } from 'src/hooks/use-players';
-import { PlayersContext } from 'src/context/players-context';
 import { useState, useEffect } from 'react';
+import { Player } from 'types/player';
+export const PlayersContext = React.createContext<Player[]>([]);
 
 export function PlayersProvider(props: React.PropsWithChildren<{ gameId: string }>) {
     const players = usePlayers(props.gameId);

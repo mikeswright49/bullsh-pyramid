@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import { GameContext } from 'src/context/game-context';
+import { GameContext } from 'src/providers/game-provider';
+
 import { GameStage } from 'src/enums/game-stage';
-import { PlayersContext } from 'src/context/players-context';
+import { PlayersContext } from 'src/providers/players-provider';
 import { transitionToMemorization } from './transitions/to-memorization';
 import { transitionToFlipping } from './transitions/to-flipping';
 import { transitionToBullshit } from './transitions/to-bullshit';

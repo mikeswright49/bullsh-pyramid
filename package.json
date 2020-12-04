@@ -25,6 +25,7 @@
         "react-dom": "16.13.1"
     },
     "devDependencies": {
+        "@swc-node/jest": "^1.0.2",
         "@testing-library/react": "^10.0.4",
         "@testing-library/react-hooks": "^3.2.1",
         "@types/classnames": "^2.2.10",
@@ -46,7 +47,6 @@
         "lodash.isempty": "^4.4.0",
         "prettier": "^2.0.5",
         "react-test-renderer": "^16.13.1",
-        "ts-jest": "^26.0.0",
         "typescript": "^3.9.3"
     }
 }

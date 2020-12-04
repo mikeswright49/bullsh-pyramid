@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { PlayersContext } from 'src/context/players-context';
+import { PlayersContext } from 'src/providers/players-provider';
 import { PlayersProvider } from './players-provider';
 import { render, act } from '@testing-library/react';
 import { usePlayers } from 'src/hooks/use-players';

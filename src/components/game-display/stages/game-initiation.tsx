@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { GameContext } from 'src/context/game-context';
+import { GameContext } from 'src/providers/game-provider';
+
 import Link from 'next/link';
-import { PlayersContext } from 'src/context/players-context';
+import { PlayersContext } from 'src/providers/players-provider';
 
 export function GameInitiation() {
     const gameState = useContext(GameContext);

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { PlayersContext } from 'src/context/players-context';
+import { PlayersContext } from 'src/providers/players-provider';
 export function GameDeclaration() {
     const players = useContext(PlayersContext);
     return (
