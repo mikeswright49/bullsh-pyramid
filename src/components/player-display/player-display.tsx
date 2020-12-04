@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { GameStage } from 'src/enums/game-stage';
 import { Hand } from 'src/components/hand/hand';
 import { Player } from 'types/player';
-import { GameContext } from 'src/context/game-context';
+import { GameContext } from 'src/providers/game-provider';
+
 import { PlayerDeclaration } from './stages/player-declaration';
 import { PlayerBullshit } from './stages/player-bullshit';
 import { PlayerReveal } from './stages/player-reveal';

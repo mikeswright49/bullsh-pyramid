@@ -1,10 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { GameBoard } from './game-board';
-import { GameContext } from 'src/context/game-context';
-import { DEFAULT_GAME_STATE } from 'src/hooks/use-game-state';
 import { GameStage } from 'src/enums/game-stage';
 import { useDeviceSize, Breakpoint } from 'src/hooks/use-device-size';
+import { DEFAULT_GAME_STATE, GameContext } from 'src/providers/game-provider';
 jest.mock('src/hooks/use-device-size');
 describe('<Unit Test> - Game board', () => {
     beforeEach(() => {

@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import React, { useContext } from 'react';
 import { Player } from 'types/player';
-import { PlayersContext } from 'src/context/players-context';
+import { PlayersContext } from 'src/providers/players-provider';
 import { PlayerStore } from 'src/stores/player-store';
 
 export function PlayerBullshit({ player }: { player: Player }) {

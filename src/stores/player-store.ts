@@ -1,12 +1,10 @@
-import * as firebase from 'firebase';
 import { Card } from 'types/card';
 import { Player } from 'types/player';
 import { shortId } from 'src/utilities/shortid';
-import { getFirebaseConfig } from 'config/firebase-config';
+import { BaseStore } from './base-store';
 
-export class PlayerStore {
+export class PlayerStore extends BaseStore {
     private static DEFAULT_PLAYER_SCORE = 10000;
-    private static database: firebase.database.Database;
     private static subscribers = [];
 
     public static async createPlayer(name: string, isHost: boolean): Promise<string> {
@@ -91,15 +89,6 @@ export class PlayerStore {
             });
         } catch (e) {
             console.error(e);
-        }
-    }
-
-    public static init() {
-        if (!firebase.apps.length) {
-            firebase.initializeApp(getFirebaseConfig());
-        }
-        if (!PlayerStore.database) {
-            PlayerStore.database = firebase.database();
         }
     }
 }

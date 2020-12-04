@@ -1,14 +1,12 @@
-import * as firebase from 'firebase';
 import { GameState } from 'types/game-state';
 import { Player } from 'types/player';
 import { Card } from 'types/card';
 import { shortId } from 'src/utilities/shortid';
 import { GameStage } from 'src/enums/game-stage';
-import { getFirebaseConfig } from 'config/firebase-config';
+import { BaseStore } from './base-store';
 const ID_LENGTH = 4;
 
-export class GameStore {
-    private static database: firebase.database.Database;
+export class GameStore extends BaseStore {
     private static subscribers = [];
 
     public static async createGame({
@@ -95,14 +93,5 @@ export class GameStore {
         index: { activeRow: number; activeIndex: number }
     ) {
         await GameStore.database.ref(`games/${gameId}`).update(index);
-    }
-
-    public static init() {
-        if (!firebase.apps.length) {
-            firebase.initializeApp(getFirebaseConfig());
-        }
-        if (!GameStore.database) {
-            GameStore.database = firebase.database();
-        }
     }
 }
