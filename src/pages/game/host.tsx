@@ -64,7 +64,7 @@ export default function HostGame(): JSX.Element {
                     </div>
                     <div className="stack-y-2">
                         <label>
-                            <span className="stack-x-1">Flipping delay in seconds:</span>
+                            <span className="stack-x-1">How long to wait to declare</span>
                             <input
                                 data-testid="flip-delay"
                                 type="number"

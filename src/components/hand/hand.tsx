@@ -20,7 +20,7 @@ export function Hand({ cards, showSelector, onSelected }: HandProps): JSX.Elemen
                 {cards.map((card) => (
                     <div key={`hand-card-${card.value}-${card.suit}`}>
                         <Card card={card} />
-                        {showSelector && (
+                        {showSelector && !card.selected && (
                             <button
                                 data-testid={`${card.value}-${card.suit}-select-button`}
                                 onClick={() => {

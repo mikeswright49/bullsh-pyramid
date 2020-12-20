@@ -1,11 +1,13 @@
 import { isEmpty } from 'lodash';
 import React, { useContext } from 'react';
-import { Player } from 'types/player';
 import { PlayersContext } from 'src/providers/players-provider';
 import { PlayerStore } from 'src/stores/player-store';
+import { PlayerContext } from 'src/providers/player-provider';
 
-export function PlayerBullshit({ player }: { player: Player }) {
+export function PlayerBullshit() {
     const players = useContext(PlayersContext);
+    const player = useContext(PlayerContext);
+
     const otherDeclaredPlayers = players.filter((otherPlayer) => otherPlayer.declaration);
 
     function addHater(playerId: string) {

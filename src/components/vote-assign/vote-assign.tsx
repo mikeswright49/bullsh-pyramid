@@ -3,16 +3,20 @@ import { PlayersContext } from 'src/providers/players-provider';
 import { PlayerContext } from 'src/providers/player-provider';
 import { VoteStore } from 'src/stores/vote-store';
 import { GameContext } from 'src/providers/game-provider';
+import { Card as CardType } from 'types/card';
+import { Card } from '../card/card';
 
-export function VoteAssign({ count }: { count: number }) {
+export function VoteAssign({ card }: { card: CardType }) {
     const players = useContext(PlayersContext);
     const player = useContext(PlayerContext);
     const gameState = useContext(GameContext);
 
     const [errorMessage, setErrorMessage] = useState('');
+    const voteInputs = useRef([]);
+    const [submitted, setSubmitted] = useState(false);
 
     const otherPlayers = players.filter((otherPlayer) => otherPlayer.id !== player.id);
-    const voteInputs = useRef([]);
+    const count = gameState.activeRow + 1;
 
     async function createVotes(event: React.FormEvent): Promise<void> {
         event.preventDefault();
@@ -27,6 +31,7 @@ export function VoteAssign({ count }: { count: number }) {
                     playerId: player.id,
                     targetId: otherPlayers[index],
                     amount: assigned,
+                    card,
                 });
             }
         });
@@ -42,36 +47,57 @@ export function VoteAssign({ count }: { count: number }) {
                 VoteStore.addVote(gameState.id, voteId);
             })
         );
+
+        setSubmitted(true);
     }
 
     return (
-        <div>
-            <h3>Assign your votes out</h3>
-            <form onSubmit={createVotes} data-testid="host-form">
-                <div className="row">
-                    <h4 className="col-8-sm">Player name</h4>
-                    <h4 className="col-3-sm">Points</h4>
-                </div>
-                {otherPlayers.map((player, index) => {
-                    return (
-                        <div key={player.id} className="row">
-                            <label className="col-8-sm" htmlFor={`player-${player.id}-amount`}>
-                                {player.name}
-                            </label>
-                            <input
-                                className="col-3-sm"
-                                type="number"
-                                defaultValue={0}
-                                max={10}
-                                ref={(ref) => (voteInputs.current[index] = ref)}
-                                name={`player-${player.id}-amount`}
-                            ></input>
+        <>
+            {!submitted ? (
+                <>
+                    <h4>Assign {count} &quote;points&quote; out</h4>
+                    <form
+                        onSubmit={createVotes}
+                        data-testid="host-form"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Card card={card} />
+                        <div>
+                            <div className="row">
+                                <h4 className="col-8-sm">Player name</h4>
+                                <h4 className="col-3-sm">Points</h4>
+                            </div>
+                            {otherPlayers.map((player, index) => {
+                                return (
+                                    <div key={player.id} className="row">
+                                        <label
+                                            className="col-8-sm"
+                                            htmlFor={`player-${player.id}-amount`}
+                                        >
+                                            {player.name}
+                                        </label>
+                                        <input
+                                            className="col-3-sm"
+                                            type="number"
+                                            defaultValue={0}
+                                            max={10}
+                                            ref={(ref) => (voteInputs.current[index] = ref)}
+                                            name={`player-${player.id}-amount`}
+                                        ></input>
+                                    </div>
+                                );
+                            })}
+                            {errorMessage && <div>{errorMessage}</div>}
+                            <button type="submit">All done</button>
                         </div>
-                    );
-                })}
-                {errorMessage && <div>{errorMessage}</div>}
-                <button type="submit">All done</button>
-            </form>
-        </div>
+                    </form>
+                </>
+            ) : (
+                <h5>Just sit back and relax</h5>
+            )}
+        </>
     );
 }

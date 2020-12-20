@@ -6,7 +6,7 @@ export type Player = {
     hand: Card[];
     score: number;
     isHost: boolean;
-    declaration: Card;
+    declaration: Card[];
     hatersmap: { [key: string]: string };
     hasVoted: boolean;
     haters: Player[];

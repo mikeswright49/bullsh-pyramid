@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { GameContext } from 'src/providers/game-provider';
 
 import { GameStage } from 'src/enums/game-stage';
@@ -10,14 +10,16 @@ import { transitionToNewGame } from './transitions/to-new-game';
 import { transitionToDeclaration } from './transitions/to-declaration';
 import { transitionToReveal } from './transitions/to-reveal';
 import { transitionFromReveal } from './transitions/from-reveal';
+import { transitionToAssignment } from './transitions/to-assignment';
 
 const MEMORIZATION_TIMEOUT = 30000;
-const MEMORY_TIMEOUT = 10000;
+const MEMORY_TIMEOUT = 1000;
 
 export function HostDisplay() {
     const gameState = useContext(GameContext);
     const players = useContext(PlayersContext);
     const { gameStage, id: gameId, flipDelay } = gameState;
+    const timeoutRef = useRef(null);
 
     /**
      * Transition to the flip phase of the game
@@ -25,16 +27,20 @@ export function HostDisplay() {
      * This is where hooks sucks
      */
     useEffect(() => {
-        let ref: NodeJS.Timeout;
         if (gameStage === GameStage.Memorization) {
-            ref = setTimeout(() => transitionToFlipping(players, gameState), MEMORIZATION_TIMEOUT);
+            timeoutRef.current = setTimeout(
+                () => transitionToFlipping(players, gameState),
+                MEMORIZATION_TIMEOUT
+            );
         } else if (gameStage === GameStage.Declaration) {
-            ref = setTimeout(() => transitionToBullshit(gameId), flipDelay);
+            timeoutRef.current = setTimeout(() => transitionToAssignment(gameId), flipDelay);
         } else if (gameStage === GameStage.Memory) {
-            ref = setTimeout(() => transitionToNewGame(gameId), MEMORY_TIMEOUT);
+            timeoutRef.current = setTimeout(() => transitionToNewGame(gameId), MEMORY_TIMEOUT);
         }
         return () => {
-            clearTimeout(ref);
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
         };
     }, [gameStage]);
 
@@ -58,7 +64,8 @@ export function HostDisplay() {
         case GameStage.Memorization:
             return (
                 <div className="stack-y-2">
-                    <h3>Everone has 30s to remember your cards!</h3>
+                    <h3>You&apos;re still the host</h3>
+                    <h4>Everone has 30s to remember their cards!</h4>
                 </div>
             );
         case GameStage.Flipping:
@@ -70,6 +77,43 @@ export function HostDisplay() {
                         onClick={() => transitionToDeclaration(gameState)}
                     >
                         Flip card
+                    </button>
+                </div>
+            );
+        case GameStage.Declaration:
+            return (
+                <div className="stack-y-2">
+                    <h3>Players who have finished:</h3>
+                    {players
+                        .filter((player) => player.hasVoted)
+                        .map((player) => {
+                            <span>{player.name}</span>;
+                        })}
+                    <button
+                        className="pure-button pure-button-primary"
+                        onClick={() => {
+                            clearTimeout(timeoutRef.current);
+                            transitionToAssignment(gameState.id);
+                        }}
+                    >
+                        Start giving out drinks
+                    </button>
+                </div>
+            );
+        case GameStage.Assign:
+            return (
+                <div className="stack-y-2">
+                    <h3>Players who have finished:</h3>
+                    {players
+                        .filter((player) => player.hasVoted)
+                        .map((player) => {
+                            <div className="stack-y-2">{player.name}</div>;
+                        })}
+                    <button
+                        className="pure-button pure-button-primary"
+                        onClick={() => transitionToBullshit(gameState.id)}
+                    >
+                        Find who has to do what
                     </button>
                 </div>
             );
