@@ -36,6 +36,9 @@ const DISPLAY_CONFIGURATION: { [key: number]: DisplayConfiguration } = {
         hideGameboard: false,
         hideLeaderboard: true,
     },
+    [GameStage.Assign]: {
+        text: 'Players are beginning to lie left right and center',
+    },
     [GameStage.Bullshit]: {
         text: 'People should know who you think was lieing',
     },

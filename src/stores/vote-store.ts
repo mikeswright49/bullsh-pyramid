@@ -1,20 +1,23 @@
 import { BaseStore } from './base-store';
 import { shortId } from 'src/utilities/shortid';
 import { Vote } from 'types/vote';
+import { Card } from 'types/card';
 
 export class VoteStore extends BaseStore {
     public static async createVote({
         amount,
         playerId,
         targetId,
+        card,
     }: {
         amount: number;
         playerId: string;
         targetId: string;
+        card: Card;
     }): Promise<string> {
         const voteId = shortId();
         try {
-            await VoteStore.database.ref(`votes/${voteId}`).set({ amount });
+            await VoteStore.database.ref(`votes/${voteId}`).set({ amount, card });
             await VoteStore.database.ref(`votes/${voteId}/playerref`).push(playerId);
             await VoteStore.database.ref(`votes/${voteId}/targetref`).push(targetId);
             return voteId;

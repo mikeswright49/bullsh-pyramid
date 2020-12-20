@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import { Hand } from 'src/components/hand/hand';
 import { PlayerStore } from 'src/stores/player-store';
 import { Card as CardType } from 'types/card';
-import { Player } from 'types/player';
+import { PlayerContext } from 'src/providers/player-provider';
 
-export function PlayerDeclaration({ player }: { player: Player }) {
+export function PlayerDeclaration() {
+    const player = useContext(PlayerContext);
+    const delcaredValues = useRef<CardType[]>([]);
+
     function onDeclarationSelected(card: CardType) {
-        card.hidden = false;
-        PlayerStore.setDeclaration(player.id, card, player.hand);
+        card.selected = true;
+        delcaredValues.current.push(card);
     }
     function onDeclarationCompleted() {
-        PlayerStore.setHasVoted(player.id, true);
+        player.declaration = delcaredValues.current;
+        PlayerStore.setHasVoted(player);
     }
     return (
         <>

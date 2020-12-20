@@ -16,7 +16,7 @@ export class PlayerStore extends BaseStore {
             hand: [],
             score: PlayerStore.DEFAULT_PLAYER_SCORE,
             isHost,
-            declaration: null,
+            declaration: [],
             hasVoted: false,
             haters: [],
             hatersmap: {},
@@ -82,10 +82,11 @@ export class PlayerStore extends BaseStore {
         }
     }
 
-    public static async setHasVoted(playerId: string, hasVoted: boolean) {
+    public static async setHasVoted(player: Player) {
         try {
-            await PlayerStore.database.ref(`players/${playerId}`).update({
-                hasVoted,
+            await PlayerStore.database.ref(`players/${player.id}`).update({
+                declaration: player.declaration,
+                hasVoted: true,
             });
         } catch (e) {
             console.error(e);

@@ -7,6 +7,7 @@ import { GameContext } from 'src/providers/game-provider';
 import { PlayerDeclaration } from './stages/player-declaration';
 import { PlayerBullshit } from './stages/player-bullshit';
 import { PlayerReveal } from './stages/player-reveal';
+import { PlayerAssign } from './stages/player-assignment';
 
 export function PlayerDisplay({ player }: { player: Player }) {
     const gameState = useContext(GameContext);
@@ -19,38 +20,34 @@ export function PlayerDisplay({ player }: { player: Player }) {
     switch (gameStage) {
         case GameStage.Initiation:
             return (
-                <>
-                    <div className="stack-y-2">
-                        <h3>Waiting for the game to start</h3>
-                    </div>
-                </>
+                <div className="stack-y-2">
+                    <h3>Waiting for the game to start</h3>
+                </div>
             );
         case GameStage.Memorization:
             return (
-                <>
+                <div className="stack-y-2">
+                    <h3>You have 30s to remember your cards!</h3>
                     <div className="stack-y-2">
-                        <h3>You have 30s to remember your cards!</h3>
-                        <div className="stack-y-2">
-                            <Hand cards={player.hand} showSelector={false} />
-                        </div>
+                        <Hand cards={player.hand} showSelector={false} />
                     </div>
-                </>
+                </div>
             );
         case GameStage.Flipping:
             return (
-                <>
+                <div className="stack-y-2">
+                    <h3>Flipping a card</h3>
                     <div className="stack-y-2">
-                        <h3>Flipping a card</h3>
-                        <div className="stack-y-2">
-                            <Hand cards={player.hand} showSelector={false} />
-                        </div>
+                        <Hand cards={player.hand} showSelector={false} />
                     </div>
-                </>
+                </div>
             );
         case GameStage.Declaration:
-            return <PlayerDeclaration player={player} />;
+            return <PlayerDeclaration />;
+        case GameStage.Assign:
+            return <PlayerAssign />;
         case GameStage.Bullshit:
-            return <PlayerBullshit player={player} />;
+            return <PlayerBullshit />;
         case GameStage.Reveal:
             return <PlayerReveal />;
         case GameStage.Memory:
