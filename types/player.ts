@@ -7,7 +7,5 @@ export type Player = {
     score: number;
     isHost: boolean;
     declaration: Card[];
-    hatersmap?: { [key: string]: string };
     hasVoted: boolean;
-    haters?: Player[];
 };

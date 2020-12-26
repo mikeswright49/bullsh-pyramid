@@ -3,10 +3,9 @@ import { PlayersContext } from 'src/providers/players-provider';
 import { PlayerContext } from 'src/providers/player-provider';
 import { VoteStore } from 'src/stores/vote-store';
 import { GameContext } from 'src/providers/game-provider';
-import { Card as CardType } from 'types/card';
-import { Card } from '../card/card';
+import { Card } from 'types/card';
 export interface VoteAssignProps {
-    card: CardType;
+    card: Card;
 }
 
 export function VoteAssign({ card }: VoteAssignProps) {
@@ -59,44 +58,34 @@ export function VoteAssign({ card }: VoteAssignProps) {
             {!submitted ? (
                 <>
                     <h4>Assign {count} &quot;points&quot; out</h4>
-                    <form
-                        onSubmit={createVotes}
-                        data-testid="vote-assign-form"
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Card card={card} />
-                        <div>
-                            <div className="row">
-                                <h4 className="col-8-sm">Player name</h4>
-                                <h4 className="col-3-sm">Points</h4>
-                            </div>
-                            {otherPlayers.map((player, index) => {
-                                return (
-                                    <div key={player.id} className="row">
-                                        <label
-                                            className="col-8-sm"
-                                            htmlFor={`player-${player.id}-amount`}
-                                        >
-                                            {player.name}
-                                        </label>
-                                        <input
-                                            className="col-3-sm"
-                                            type="number"
-                                            defaultValue={0}
-                                            max={10}
-                                            ref={(ref) => (voteInputs.current[index] = ref)}
-                                            data-testid={`player-${player.id}-amount`}
-                                            name={`player-${player.id}-amount`}
-                                        ></input>
-                                    </div>
-                                );
-                            })}
-                            {errorMessage && <div>{errorMessage}</div>}
-                            <button type="submit">All done</button>
+                    <form onSubmit={createVotes} data-testid="vote-assign-form">
+                        <div className="row">
+                            <h4 className="col-8-sm">Player name</h4>
+                            <h4 className="col-3-sm">Points</h4>
                         </div>
+                        {otherPlayers.map((player, index) => {
+                            return (
+                                <div key={player.id} className="row">
+                                    <label
+                                        className="col-8-sm"
+                                        htmlFor={`player-${player.id}-amount`}
+                                    >
+                                        {player.name}
+                                    </label>
+                                    <input
+                                        className="col-3-sm"
+                                        type="number"
+                                        defaultValue={0}
+                                        max={10}
+                                        ref={(ref) => (voteInputs.current[index] = ref)}
+                                        data-testid={`player-${player.id}-amount`}
+                                        name={`player-${player.id}-amount`}
+                                    ></input>
+                                </div>
+                            );
+                        })}
+                        {errorMessage && <div>{errorMessage}</div>}
+                        <button type="submit">All done</button>
                     </form>
                 </>
             ) : (

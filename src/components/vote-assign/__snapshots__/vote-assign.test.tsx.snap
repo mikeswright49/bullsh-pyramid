@@ -21,53 +21,45 @@ exports[`VoteAssign should be able to render the component 1`] = `
   </h4>
   <form
     data-testid="vote-assign-form"
-    style="display: flex; align-items: center;"
   >
     <div
-      class="flex-center-center card"
-      data-testid="card-0-1"
-      style="background-position: -79px -0px;"
-    />
-    <div>
-      <div
-        class="row"
+      class="row"
+    >
+      <h4
+        class="col-8-sm"
       >
-        <h4
-          class="col-8-sm"
-        >
-          Player name
-        </h4>
-        <h4
-          class="col-3-sm"
-        >
-          Points
-        </h4>
-      </div>
-      <div
-        class="row"
+        Player name
+      </h4>
+      <h4
+        class="col-3-sm"
       >
-        <label
-          class="col-8-sm"
-          for="player-ffy-amount"
-        >
-          joe
-        </label>
-        <input
-          class="col-3-sm"
-          data-testid="player-ffy-amount"
-          max="10"
-          name="player-ffy-amount"
-          type="number"
-          value="0"
-        />
-      </div>
-      
-      <button
-        type="submit"
-      >
-        All done
-      </button>
+        Points
+      </h4>
     </div>
+    <div
+      class="row"
+    >
+      <label
+        class="col-8-sm"
+        for="player-ffy-amount"
+      >
+        joe
+      </label>
+      <input
+        class="col-3-sm"
+        data-testid="player-ffy-amount"
+        max="10"
+        name="player-ffy-amount"
+        type="number"
+        value="0"
+      />
+    </div>
+    
+    <button
+      type="submit"
+    >
+      All done
+    </button>
   </form>
 </div>
 `;

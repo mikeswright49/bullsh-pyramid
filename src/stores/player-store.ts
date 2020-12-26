@@ -18,8 +18,6 @@ export class PlayerStore extends BaseStore {
             isHost,
             declaration: [],
             hasVoted: false,
-            haters: [],
-            hatersmap: {},
         };
 
         try {
@@ -40,30 +38,14 @@ export class PlayerStore extends BaseStore {
         );
     }
 
-    public static subscribeToHaters(playerId: string, updateCallback: (hater: Player) => void) {
-        const player = PlayerStore.database.ref(`players/${playerId}/hatersmap`);
+    public static async getPlayer(playerId: string) {
         const players = PlayerStore.database.ref(`players`);
-        PlayerStore.subscribers.push(
-            player.on('child_added', (child) => {
-                const playerId = child.val();
-                players.child(playerId).once('value', (val) => {
-                    const value = val.val();
-                    updateCallback(value as Player);
-                });
-            })
-        );
+        const playerRef = await players.child(playerId).once('value');
+        return playerRef.val() as Player;
     }
 
     public static async updatePlayer(player: Player) {
         await PlayerStore.database.ref(`players/${player.id}`).update(player);
-    }
-
-    public static async addHater(playerId: string, haterId: string) {
-        try {
-            await PlayerStore.database.ref(`players/${playerId}/hatersmap`).push(haterId);
-        } catch (e) {
-            console.error(e);
-        }
     }
 
     public static unsubscribeToPlayer() {
