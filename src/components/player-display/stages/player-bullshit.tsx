@@ -1,58 +1,41 @@
 import { isEmpty } from 'lodash';
 import React, { useContext } from 'react';
-import { PlayersContext } from 'src/providers/players-provider';
-import { PlayerStore } from 'src/stores/player-store';
 import { PlayerContext } from 'src/providers/player-provider';
+import { VotesContext } from 'src/providers/votes-provider';
 
 export function PlayerBullshit() {
-    const players = useContext(PlayersContext);
     const player = useContext(PlayerContext);
-
-    const otherDeclaredPlayers = players.filter((otherPlayer) => otherPlayer.declaration);
-
-    function addHater(playerId: string) {
-        PlayerStore.addHater(playerId, player.id);
-    }
+    const votes = useContext(VotesContext);
 
     return (
         <>
-            {!isEmpty(otherDeclaredPlayers) ? (
+            {!isEmpty(votes) ? (
                 <div className="stack-y-2">
-                    <h3 className="stack-y-2">The following people might be full of shit</h3>
-                    {otherDeclaredPlayers.map((otherPlayer) => {
-                        const hasHaters = !isEmpty(otherPlayer.haters);
-                        const showHating =
-                            otherPlayer.id !== player.id &&
-                            (!hasHaters ||
-                                !otherPlayer.haters.find((hater) => hater.id === player.id));
-                        return (
+                    <h3 className="stack-y-2">The following people are on the hook</h3>
+                    {votes
+                        .sort((a, b) => {
+                            return a.target.name > b.target.name ? -1 : 1;
+                        })
+                        .map((vote) => (
                             <div
-                                key={otherPlayer.id}
+                                key={vote.id}
                                 className="stack-y-4 row"
                                 style={{
                                     display: 'flex',
+                                    alignItems: 'center',
                                     justifyContent: 'space-between',
                                 }}
                             >
-                                <div>
-                                    <h4>{otherPlayer.name}</h4>
-                                    {hasHaters && (
-                                        <>
-                                            <div>The following people disagree:</div>
-                                            {otherPlayer.haters.map((hater) => (
-                                                <p key={hater.id}>{hater.name}</p>
-                                            ))}
-                                        </>
-                                    )}
-                                </div>
-                                {showHating && (
-                                    <button onClick={() => addHater(otherPlayer.id)}>
-                                        &#128169;
-                                    </button>
+                                {vote.player.name} has assigned {vote.target.name} {vote.amount}{' '}
+                                &quot;points&quot;
+                                {player.id === vote.target.id && (
+                                    <>
+                                        <button className="stack-x-2">&#9989;</button>
+                                        <button>&#128169;</button>
+                                    </>
                                 )}
                             </div>
-                        );
-                    })}
+                        ))}
                 </div>
             ) : (
                 <div className="stack-y-2">

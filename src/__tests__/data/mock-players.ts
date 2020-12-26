@@ -28,7 +28,5 @@ export const MOCK_PLAYERS: Player[] = [
         name: 'joe',
         score: 10000,
         declaration: null,
-        hatersmap: null,
-        haters: null,
     },
 ];

@@ -5,7 +5,7 @@ import { VoteStore } from 'src/stores/vote-store';
 export const VotesContext = React.createContext<Vote[]>([]);
 
 export function VotesProvider(props: React.PropsWithChildren<{ gameId: string }>) {
-    const [votes, setVotes] = useState([]);
+    const [votes, setVotes] = useState({});
     useEffect(() => {
         if (!votes) {
             return;

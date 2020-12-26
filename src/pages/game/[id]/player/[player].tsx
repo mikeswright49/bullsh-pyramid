@@ -5,6 +5,7 @@ import { GameProvider } from 'src/providers/game-provider';
 import { PlayersProvider } from 'src/providers/players-provider';
 import { PlayerProvider } from 'src/providers/player-provider';
 import { PlayerRoute } from 'src/routes/player';
+import { VotesProvider } from 'src/providers/votes-provider';
 
 export default function Player(): JSX.Element {
     const router = useRouter();
@@ -20,7 +21,9 @@ export default function Player(): JSX.Element {
             <GameProvider gameId={gameId}>
                 <PlayersProvider gameId={gameId}>
                     <PlayerProvider playerId={playerId}>
-                        <PlayerRoute />
+                        <VotesProvider gameId={gameId}>
+                            <PlayerRoute />
+                        </VotesProvider>
                     </PlayerProvider>
                 </PlayersProvider>
             </GameProvider>

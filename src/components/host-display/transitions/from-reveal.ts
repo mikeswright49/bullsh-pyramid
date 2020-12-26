@@ -4,20 +4,20 @@ import { GameStage } from 'src/enums/game-stage';
 import { Player } from 'types/player';
 import { PlayerStore } from 'src/stores/player-store';
 import { transitionToDeclaration } from './to-declaration';
+import { VoteStore } from 'src/stores/vote-store';
 
 export async function transitionFromReveal(players: Player[], gameState: GameState) {
     const { activeIndex, activeRow, id: gameId } = gameState;
 
-    await Promise.all(
+    await Promise.all([
         players.map(async (player) => {
             player.hasVoted = false;
             player.declaration = null;
-            player.hatersmap = null;
-            player.haters = null;
             player.hand.forEach((card) => (card.hidden = true));
             await PlayerStore.updatePlayer(player);
-        })
-    );
+        }),
+        VoteStore.removeVotes(gameId),
+    ]);
 
     if (activeRow === gameState.tierCount - 1 && activeIndex === 0) {
         GameStore.updateGameStage(gameId, GameStage.Memory);

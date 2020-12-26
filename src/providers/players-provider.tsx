@@ -1,18 +1,21 @@
 import React from 'react';
-import { usePlayers } from 'src/hooks/use-players';
 import { useState, useEffect } from 'react';
 import { Player } from 'types/player';
+import { GameStore } from 'src/stores/game-store';
+
 export const PlayersContext = React.createContext<Player[]>([]);
 
 export function PlayersProvider(props: React.PropsWithChildren<{ gameId: string }>) {
-    const players = usePlayers(props.gameId);
-
-    const [playersArray, setPlayersArray] = useState([]);
-
+    const [players, setPlayers] = useState({});
     useEffect(() => {
-        const mappedPlayers = Object.values(players);
-        setPlayersArray(mappedPlayers);
-    }, [players]);
-
-    return <PlayersContext.Provider value={playersArray}>{props.children}</PlayersContext.Provider>;
+        GameStore.subscribeToPlayers(props.gameId, (player: Player) => {
+            players[player.id] = player;
+            setPlayers({ ...players });
+        });
+    }, [props.gameId]);
+    return (
+        <PlayersContext.Provider value={Object.values(players)}>
+            {props.children}
+        </PlayersContext.Provider>
+    );
 }
