@@ -5,8 +5,11 @@ import { VoteStore } from 'src/stores/vote-store';
 import { GameContext } from 'src/providers/game-provider';
 import { Card as CardType } from 'types/card';
 import { Card } from '../card/card';
+export interface VoteAssignProps {
+    card: CardType;
+}
 
-export function VoteAssign({ card }: { card: CardType }) {
+export function VoteAssign({ card }: VoteAssignProps) {
     const players = useContext(PlayersContext);
     const player = useContext(PlayerContext);
     const gameState = useContext(GameContext);
@@ -29,7 +32,7 @@ export function VoteAssign({ card }: { card: CardType }) {
             if (assigned > 0) {
                 assignedPlayers.push({
                     playerId: player.id,
-                    targetId: otherPlayers[index],
+                    targetId: otherPlayers[index].id,
                     amount: assigned,
                     card,
                 });
@@ -44,7 +47,7 @@ export function VoteAssign({ card }: { card: CardType }) {
         await Promise.all(
             assignedPlayers.map(async (assignee) => {
                 const voteId = await VoteStore.createVote(assignee);
-                VoteStore.addVote(gameState.id, voteId);
+                await VoteStore.addVote(gameState.id, voteId);
             })
         );
 
@@ -52,13 +55,13 @@ export function VoteAssign({ card }: { card: CardType }) {
     }
 
     return (
-        <>
+        <div data-testid="vote-assign">
             {!submitted ? (
                 <>
-                    <h4>Assign {count} &quote;points&quote; out</h4>
+                    <h4>Assign {count} &quot;points&quot; out</h4>
                     <form
                         onSubmit={createVotes}
-                        data-testid="host-form"
+                        data-testid="vote-assign-form"
                         style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -85,6 +88,7 @@ export function VoteAssign({ card }: { card: CardType }) {
                                             defaultValue={0}
                                             max={10}
                                             ref={(ref) => (voteInputs.current[index] = ref)}
+                                            data-testid={`player-${player.id}-amount`}
                                             name={`player-${player.id}-amount`}
                                         ></input>
                                     </div>
@@ -96,8 +100,8 @@ export function VoteAssign({ card }: { card: CardType }) {
                     </form>
                 </>
             ) : (
-                <h5>Just sit back and relax</h5>
+                <h5>That was pretty easy</h5>
             )}
-        </>
+        </div>
     );
 }

@@ -11,7 +11,7 @@ export function PlayerAssign() {
     }
     return (
         <div className="stack-y-2">
-            <h3>Time to give out some &quote;points&quote;</h3>
+            <h3>Time to give out some &quot;points&quot;</h3>
             {player?.declaration?.map((declaration) => (
                 <VoteAssign key={`${declaration.suit}-${declaration.value}`} card={declaration} />
             ))}

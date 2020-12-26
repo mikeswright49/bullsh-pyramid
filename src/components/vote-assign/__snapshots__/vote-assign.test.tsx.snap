@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VoteAssign should be able to create the votes for a given set up 1`] = `
+<div
+  data-testid="vote-assign"
+>
+  <h5>
+    That was pretty easy
+  </h5>
+</div>
+`;
+
+exports[`VoteAssign should be able to render the component 1`] = `
+<div
+  data-testid="vote-assign"
+>
+  <h4>
+    Assign 
+    2
+     "points" out
+  </h4>
+  <form
+    data-testid="vote-assign-form"
+    style="display: flex; align-items: center;"
+  >
+    <div
+      class="flex-center-center card"
+      data-testid="card-0-1"
+      style="background-position: -79px -0px;"
+    />
+    <div>
+      <div
+        class="row"
+      >
+        <h4
+          class="col-8-sm"
+        >
+          Player name
+        </h4>
+        <h4
+          class="col-3-sm"
+        >
+          Points
+        </h4>
+      </div>
+      <div
+        class="row"
+      >
+        <label
+          class="col-8-sm"
+          for="player-ffy-amount"
+        >
+          joe
+        </label>
+        <input
+          class="col-3-sm"
+          data-testid="player-ffy-amount"
+          max="10"
+          name="player-ffy-amount"
+          type="number"
+          value="0"
+        />
+      </div>
+      
+      <button
+        type="submit"
+      >
+        All done
+      </button>
+    </div>
+  </form>
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Player Route should be able to render the component 1`] = `
+<div
+  class="container"
+  data-testid="player-route"
+>
+  <div
+    class="row"
+  >
+    <div
+      class="col-3"
+    >
+      <div
+        class="stack-y-2"
+      >
+        <h2>
+          You're the host
+        </h2>
+        <button
+          class="pure-button pure-button-primary"
+        >
+          Start game
+        </button>
+      </div>
+      <div
+        class="stack-y-2"
+      >
+        <h3>
+          Waiting for the game to start
+        </h3>
+      </div>
+    </div>
+    <div
+      class="col-9"
+    >
+      <span
+        data-testid="at-game-board"
+      />
+    </div>
+  </div>
+</div>
+`;
