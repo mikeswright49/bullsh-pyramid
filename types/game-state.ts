@@ -6,10 +6,11 @@ export type GameState = {
     gameStage: GameStage;
     activeIndex: number;
     activeRow: number;
-    players: { key: string }[];
+    players: { [key: string]: string };
     tiers: Card[][];
     flipDelay: number;
     playerCount?: number;
     tierCount?: number;
     cardCount: number;
+    votes: { [key: string]: string };
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { Hand } from 'src/components/hand/hand';
 import { PlayerStore } from 'src/stores/player-store';
 import { Card as CardType } from 'types/card';
@@ -6,14 +6,13 @@ import { PlayerContext } from 'src/providers/player-provider';
 
 export function PlayerDeclaration() {
     const player = useContext(PlayerContext);
-    const delcaredValues = useRef<CardType[]>([]);
+    const [declaredCards, setDeclaredCards] = useState<CardType[]>([]);
 
     function onDeclarationSelected(card: CardType) {
-        card.selected = true;
-        delcaredValues.current.push(card);
+        setDeclaredCards([...declaredCards, card]);
     }
     function onDeclarationCompleted() {
-        player.declaration = delcaredValues.current;
+        player.declaration = declaredCards;
         PlayerStore.setHasVoted(player);
     }
     return (
@@ -24,6 +23,7 @@ export function PlayerDeclaration() {
                     <Hand
                         cards={player.hand}
                         showSelector={!player.hasVoted}
+                        selectedCards={declaredCards}
                         onSelected={onDeclarationSelected}
                     />
                 </div>

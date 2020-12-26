@@ -10,8 +10,9 @@ export const DEFAULT_GAME_STATE: GameState = {
     activeIndex: 0,
     cardCount: 4,
     flipDelay: 5000,
-    players: [],
+    players: {},
     tiers: [],
+    votes: {},
 };
 export const GameContext = React.createContext<GameState>(DEFAULT_GAME_STATE);
 

@@ -24,6 +24,7 @@ describe('<Unit Test> Hand', () => {
                     suit: 0,
                 },
             ],
+            selectedCards: [],
             onSelected: jest.fn(),
         };
     });
@@ -35,6 +36,13 @@ describe('<Unit Test> Hand', () => {
 
     it('should be able to show the selection button', () => {
         mockProps.showSelector = true;
+        const { container } = render(<Hand {...mockProps} />);
+        expect(container).toMatchSnapshot();
+    });
+
+    it('should hide the card if it is selected', () => {
+        mockProps.showSelector = true;
+        mockProps.selectedCards = [{ value: 1, suit: 0, hidden: false }];
         const { container } = render(<Hand {...mockProps} />);
         expect(container).toMatchSnapshot();
     });
