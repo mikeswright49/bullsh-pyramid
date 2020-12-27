@@ -5,8 +5,13 @@ import { Player } from 'types/player';
 import { PlayerStore } from 'src/stores/player-store';
 import { transitionToDeclaration } from './to-declaration';
 import { VoteStore } from 'src/stores/vote-store';
+import { VoteAction } from 'src/providers/votes-provider';
 
-export async function transitionFromReveal(players: Player[], gameState: GameState) {
+export async function transitionFromReveal(
+    players: Player[],
+    gameState: GameState,
+    voteDispatch: (action: { type: VoteAction; payload?: unknown }) => void
+) {
     const { activeIndex, activeRow, id: gameId } = gameState;
 
     await Promise.all([
@@ -18,6 +23,10 @@ export async function transitionFromReveal(players: Player[], gameState: GameSta
         }),
         VoteStore.removeVotes(gameId),
     ]);
+
+    voteDispatch({
+        type: VoteAction.ClearVotes,
+    });
 
     if (activeRow === gameState.tierCount - 1 && activeIndex === 0) {
         GameStore.updateGameStage(gameId, GameStage.Memory);
