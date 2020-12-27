@@ -11,6 +11,7 @@ import { transitionToDeclaration } from './transitions/to-declaration';
 import { transitionToReveal } from './transitions/to-reveal';
 import { transitionFromReveal } from './transitions/from-reveal';
 import { transitionToAssignment } from './transitions/to-assignment';
+import { VotesContext } from 'src/providers/votes-provider';
 
 const MEMORIZATION_TIMEOUT = 30000;
 const MEMORY_TIMEOUT = 1000;
@@ -18,6 +19,7 @@ const MEMORY_TIMEOUT = 1000;
 export function HostDisplay() {
     const gameState = useContext(GameContext);
     const players = useContext(PlayersContext);
+    const { dispatch } = useContext(VotesContext);
     const { gameStage, id: gameId, flipDelay } = gameState;
     const timeoutRef = useRef(null);
 
@@ -135,7 +137,7 @@ export function HostDisplay() {
                     <h3>Move onto next round</h3>
                     <button
                         className="pure-button pure-button-primary"
-                        onClick={() => transitionFromReveal(players, gameState)}
+                        onClick={() => transitionFromReveal(players, gameState, dispatch)}
                     >
                         Flip card
                     </button>

@@ -3,7 +3,7 @@
 exports[`<Unit Test> Votes Provider should subscribe to the votes from the store, and map the votes to an array it as a value 1`] = `
 <div>
   <div>
-    [{"amount":1,"card":{"hidden":true,"suit":1,"value":12},"playerref":{"-MPRrYkfedrmx5dF3KPD":"ucx"},"targetref":{"-MPRrYlH53OR8GC58EJO":"opb"},"player":{"hand":[{"hidden":true,"suit":2,"value":7},{"hidden":true,"suit":3,"value":8},{"hidden":true,"suit":1,"value":11},{"hidden":true,"suit":2,"value":0}],"hasVoted":false,"id":"nez","isHost":true,"name":"frank","score":10000,"declaration":[]},"target":{"hand":[{"hidden":true,"suit":0,"value":0},{"hidden":true,"suit":2,"value":2},{"hidden":true,"suit":1,"value":6},{"hidden":true,"suit":2,"value":10}],"hasVoted":false,"id":"opb","isHost":false,"name":"frank","score":10000}}]
+    {"votes":[{"amount":1,"card":{"hidden":true,"suit":1,"value":12},"playerref":{"-MPRrYkfedrmx5dF3KPD":"ucx"},"targetref":{"-MPRrYlH53OR8GC58EJO":"opb"},"player":{"hand":[{"hidden":true,"suit":2,"value":7},{"hidden":true,"suit":3,"value":8},{"hidden":true,"suit":1,"value":11},{"hidden":true,"suit":2,"value":0}],"hasVoted":false,"id":"nez","isHost":true,"name":"frank","score":10000,"declaration":[]},"target":{"hand":[{"hidden":true,"suit":0,"value":0},{"hidden":true,"suit":2,"value":2},{"hidden":true,"suit":1,"value":6},{"hidden":true,"suit":2,"value":10}],"hasVoted":false,"id":"opb","isHost":false,"name":"frank","score":10000}}]}
   </div>
 </div>
 `;

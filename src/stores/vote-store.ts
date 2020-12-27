@@ -48,7 +48,12 @@ export class VoteStore extends BaseStore {
 
     public static async removeVotes(gameId: string) {
         try {
-            await VoteStore.database.ref(`/games/${gameId}/votes`).remove();
+            const votes = await VoteStore.database.ref(`/games/${gameId}/votes`).once('value');
+            await Promise.all(
+                votes.val().map((childId: string) => {
+                    return votes.child(childId).ref.remove();
+                })
+            );
         } catch (error) {
             console.error(error);
         }
@@ -64,6 +69,7 @@ export class VoteStore extends BaseStore {
             const voteId = child.val();
             votes.child(voteId).on('value', async (val) => {
                 const value: Vote = val.val();
+                value.id = voteId;
                 value.player = await VoteStore.getPlayer(voteId);
                 value.target = await VoteStore.getTarget(voteId);
                 callback(value as Vote);

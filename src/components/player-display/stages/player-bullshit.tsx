@@ -5,8 +5,8 @@ import { VotesContext } from 'src/providers/votes-provider';
 
 export function PlayerBullshit() {
     const player = useContext(PlayerContext);
-    const votes = useContext(VotesContext);
-
+    const { votes } = useContext(VotesContext);
+    console.log(votes);
     return (
         <>
             {!isEmpty(votes) ? (
