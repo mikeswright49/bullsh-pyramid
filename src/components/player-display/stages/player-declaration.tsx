@@ -9,12 +9,12 @@ export function PlayerDeclaration() {
     const [declaredCards, setDeclaredCards] = useState<CardType[]>([]);
 
     function onDeclarationSelected(card: CardType) {
-        setDeclaredCards([...declaredCards, card]);
+        const updatedCards = [...declaredCards, card];
+        setDeclaredCards(updatedCards);
+        player.declaration = updatedCards;
+        PlayerStore.updatePlayer(player);
     }
-    function onDeclarationCompleted() {
-        player.declaration = declaredCards;
-        PlayerStore.setHasVoted(player);
-    }
+
     return (
         <>
             <div className="stack-y-2">
@@ -22,13 +22,10 @@ export function PlayerDeclaration() {
                 <div className="stack-y-2">
                     <Hand
                         cards={player.hand}
-                        showSelector={!player.hasVoted}
+                        showSelector
                         selectedCards={declaredCards}
                         onSelected={onDeclarationSelected}
                     />
-                </div>
-                <div className="stack-y-2">
-                    {!player.hasVoted && <button onClick={onDeclarationCompleted}>Done</button>}
                 </div>
             </div>
         </>

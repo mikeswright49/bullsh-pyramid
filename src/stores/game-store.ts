@@ -73,7 +73,7 @@ export class GameStore extends BaseStore {
     }
 
     public static unsubscribeToGame() {
-        GameStore.subscribers.forEach((sub) => sub.off('value'));
+        GameStore.subscribers.forEach((sub) => sub.off && sub.off('value'));
     }
 
     public static async updateGameStage(gameId: string, gameStage: GameStage) {

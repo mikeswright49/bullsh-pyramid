@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { PlayersContext } from 'src/providers/players-provider';
 import { PlayerContext } from 'src/providers/player-provider';
-import { VoteStore } from 'src/stores/vote-store';
+import { VoteStore, VoteConfig } from 'src/stores/vote-store';
 import { GameContext } from 'src/providers/game-provider';
 import { Card } from 'types/card';
 export interface VoteAssignProps {
@@ -23,7 +23,7 @@ export function VoteAssign({ card }: VoteAssignProps) {
     async function createVotes(event: React.FormEvent): Promise<void> {
         event.preventDefault();
         let totalVotes = 0;
-        const assignedPlayers = [];
+        const assignedPlayers: VoteConfig[] = [];
 
         voteInputs.current.forEach((input, index) => {
             const assigned = parseInt(input.value, 10);
@@ -34,6 +34,7 @@ export function VoteAssign({ card }: VoteAssignProps) {
                     targetId: otherPlayers[index].id,
                     amount: assigned,
                     card,
+                    turnKey: `${gameState.activeRow}-${gameState.activeIndex}`,
                 });
             }
         });

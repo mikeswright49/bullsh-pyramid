@@ -2,11 +2,14 @@ import { Player } from './player';
 import { Card } from './card';
 
 export type Vote = {
-    playerRef: string;
+    playerRef: unknown;
     player: Player;
-    targetRef: string;
+    targetRef: unknown;
     target: Player;
     card: Card;
     id: string;
     amount: number;
+    accepted: boolean;
+    bullshit: boolean;
+    turnKey: string;
 };

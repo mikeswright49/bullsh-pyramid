@@ -17,7 +17,6 @@ export class PlayerStore extends BaseStore {
             score: PlayerStore.DEFAULT_PLAYER_SCORE,
             isHost,
             declaration: [],
-            hasVoted: false,
         };
 
         try {
@@ -52,23 +51,10 @@ export class PlayerStore extends BaseStore {
         PlayerStore.subscribers.forEach((sub) => sub.off('value'));
     }
 
-    public static async setDeclaration(playerId: string, card: Card, cards: Card[]) {
+    public static async setDeclaration(playerId: string, declaration: Card[]) {
         try {
             await PlayerStore.database.ref(`players/${playerId}`).update({
-                declaration: card,
-                hand: cards,
-                hasVoted: true,
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    }
-
-    public static async setHasVoted(player: Player) {
-        try {
-            await PlayerStore.database.ref(`players/${player.id}`).update({
-                declaration: player.declaration,
-                hasVoted: true,
+                declaration,
             });
         } catch (e) {
             console.error(e);
