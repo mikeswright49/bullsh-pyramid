@@ -7,5 +7,4 @@ export type Player = {
     score: number;
     isHost: boolean;
     declaration: Card[];
-    hasVoted: boolean;
 };

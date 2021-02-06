@@ -1,19 +1,15 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 import { useEffect } from 'react';
 import { Vote } from 'types/vote';
 import { VoteStore } from 'src/stores/vote-store';
-export const VotesContext = React.createContext<{
-    votes: Vote[];
-    dispatch: (action: { type: VoteAction; payload?: unknown }) => void;
-}>({
-    votes: [],
-    dispatch: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-});
+import { GameContext } from './game-provider';
+export const VotesContext = React.createContext<Vote[]>([]);
 
 export enum VoteAction {
     SetVotes = 'set',
     ClearVotes = 'clear',
     AddVote = 'add',
+    RemoveVote = 'remove',
 }
 
 export interface VoteState {
@@ -24,8 +20,9 @@ const DEFAULT_STATE = {
     votes: {},
 };
 
-export function VotesProvider(props: React.PropsWithChildren<{ gameId: string }>) {
+export function VotesProvider(props: React.PropsWithChildren<unknown>) {
     const [state, dispatch] = useReducer(reducer, DEFAULT_STATE);
+    const gameContext = useContext(GameContext);
 
     function reducer(state: VoteState, action: { type: VoteAction; payload?: unknown }) {
         switch (action.type) {
@@ -37,27 +34,17 @@ export function VotesProvider(props: React.PropsWithChildren<{ gameId: string }>
                 };
             case VoteAction.SetVotes:
                 return { votes: state.votes };
-            case VoteAction.ClearVotes:
+            default:
                 return DEFAULT_STATE;
         }
     }
 
     useEffect(() => {
-        if (!state.votes) {
-            return;
-        }
+        VoteStore.subscribeToVotes(gameContext.id, dispatch);
+    }, [gameContext.id]);
 
-        VoteStore.subscribeToVotes(props.gameId, (vote: Vote) => {
-            dispatch({
-                type: VoteAction.AddVote,
-                payload: vote,
-            });
-        });
-    }, [props.gameId]);
-
-    return (
-        <VotesContext.Provider value={{ votes: Object.values(state.votes), dispatch }}>
-            {props.children}
-        </VotesContext.Provider>
-    );
+    const votes = Object.values(state.votes).filter(
+        (vote: Vote) => vote.turnKey === `${gameContext.activeRow}-${gameContext.activeIndex}`
+    ) as Vote[];
+    return <VotesContext.Provider value={votes}>{props.children}</VotesContext.Provider>;
 }

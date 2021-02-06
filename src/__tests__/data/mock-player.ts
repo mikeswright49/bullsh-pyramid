@@ -7,7 +7,6 @@ export const MOCK_PLAYER: Player = {
         { hidden: true, suit: 1, value: 11 },
         { hidden: true, suit: 2, value: 0 },
     ],
-    hasVoted: false,
     id: 'nez',
     isHost: true,
     name: 'frank',

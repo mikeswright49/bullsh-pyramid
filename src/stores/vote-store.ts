@@ -4,22 +4,26 @@ import { Vote } from 'types/vote';
 import { Card } from 'types/card';
 import { PlayerStore } from './player-store';
 import { Player } from 'types/player';
+import { VoteAction } from 'src/providers/votes-provider';
 
+export type VoteConfig = {
+    amount: number;
+    playerId: string;
+    targetId: string;
+    card: Card;
+    turnKey: string;
+};
 export class VoteStore extends BaseStore {
     public static async createVote({
         amount,
         playerId,
         targetId,
         card,
-    }: {
-        amount: number;
-        playerId: string;
-        targetId: string;
-        card: Card;
-    }): Promise<string> {
+        turnKey,
+    }: VoteConfig): Promise<string> {
         const voteId = shortId();
         try {
-            await VoteStore.database.ref(`votes/${voteId}`).set({ amount, card });
+            await VoteStore.database.ref(`votes/${voteId}`).set({ amount, card, turnKey });
             await VoteStore.database.ref(`votes/${voteId}/playerref`).push(playerId);
             await VoteStore.database.ref(`votes/${voteId}/targetref`).push(targetId);
             return voteId;
@@ -36,6 +40,14 @@ export class VoteStore extends BaseStore {
         }
     }
 
+    public static async updateVote(voteUpdates: Partial<Vote>) {
+        try {
+            await VoteStore.database.ref(`/votes/${voteUpdates.id}`).update(voteUpdates);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     public static async getTarget(voteId: string): Promise<Player> {
         const ref = VoteStore.database.ref(`votes/${voteId}/targetref`);
         return VoteStore.getPlayerRef(ref);
@@ -46,20 +58,10 @@ export class VoteStore extends BaseStore {
         return VoteStore.getPlayerRef(ref);
     }
 
-    public static async removeVotes(gameId: string) {
-        try {
-            const votes = await VoteStore.database.ref(`/games/${gameId}/votes`).once('value');
-            await Promise.all(
-                votes.val().map((childId: string) => {
-                    return votes.child(childId).ref.remove();
-                })
-            );
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    public static subscribeToVotes(gameId: string, callback: (vote: Vote) => void) {
+    public static subscribeToVotes(
+        gameId: string,
+        dispatch: ({ type: VoteAction, payload: Vote }) => void
+    ) {
         if (!gameId) {
             return;
         }
@@ -70,9 +72,13 @@ export class VoteStore extends BaseStore {
             votes.child(voteId).on('value', async (val) => {
                 const value: Vote = val.val();
                 value.id = voteId;
-                value.player = await VoteStore.getPlayer(voteId);
-                value.target = await VoteStore.getTarget(voteId);
-                callback(value as Vote);
+                const [player, target] = await Promise.all([
+                    VoteStore.getPlayer(voteId),
+                    VoteStore.getTarget(voteId),
+                ]);
+                value.player = player;
+                value.target = target;
+                dispatch({ type: VoteAction.AddVote, payload: value as Vote });
             });
         });
     }

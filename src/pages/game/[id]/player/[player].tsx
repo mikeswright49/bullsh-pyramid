@@ -21,7 +21,7 @@ export default function Player(): JSX.Element {
             <GameProvider gameId={gameId}>
                 <PlayersProvider gameId={gameId}>
                     <PlayerProvider playerId={playerId}>
-                        <VotesProvider gameId={gameId}>
+                        <VotesProvider>
                             <PlayerRoute />
                         </VotesProvider>
                     </PlayerProvider>

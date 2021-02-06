@@ -10,11 +10,6 @@ export function GameDeclaration() {
                     .map((player) => {
                         return <h3 key={player.id}>{player.name} says they do</h3>;
                     })}
-                {players
-                    .filter((player) => !player.declaration && player.hasVoted)
-                    .map((player) => {
-                        return <h3 key={player.id}>{player.name} says they don&apos;t</h3>;
-                    })}
             </div>
         </>
     );

@@ -53,9 +53,17 @@ describe('VoteAssign', () => {
         );
 
         expect(container.querySelector('[data-testid="vote-assign"]')).toMatchSnapshot();
-        expect(VoteStore.createVote).toHaveBeenCalledWith(
-            expect.objectContaining({ amount: 2, playerId: 'nez', targetId: 'ffy' })
-        );
+        expect(VoteStore.createVote).toHaveBeenCalledWith({
+            amount: 2,
+            card: {
+                hidden: false,
+                suit: 0,
+                value: 1,
+            },
+            playerId: 'nez',
+            targetId: 'ffy',
+            turnKey: '1-2',
+        });
         expect(VoteStore.addVote).toHaveBeenCalledWith('mwif', 'a-vote-id');
     });
 });

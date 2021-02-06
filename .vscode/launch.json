@@ -19,7 +19,7 @@
             "request": "launch",
             "name": "Jest Current File",
             "program": "${workspaceFolder}/node_modules/.bin/jest",
-            "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
+            "args": ["${fileBasenameNoExtension}", "--config", "jest.config.debugger.js"],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "disableOptimisticBPs": true,
@@ -35,7 +35,7 @@
             "args": [
                 "${fileBasenameNoExtension}",
                 "--config",
-                "jest.config.js",
+                "jest.config.debugger.js",
                 "--detectOpenHandles"
             ],
             "console": "integratedTerminal",
@@ -50,7 +50,7 @@
             "request": "launch",
             "name": "Jest Update Snapshots (Current File)",
             "program": "${workspaceFolder}/node_modules/.bin/jest",
-            "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js", "-u"],
+            "args": ["${fileBasenameNoExtension}", "--config", "jest.config.debugger.js", "-u"],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "disableOptimisticBPs": true,
