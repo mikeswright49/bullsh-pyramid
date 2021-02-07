@@ -14,7 +14,7 @@ export function PlayerRoute() {
             <div className="row">
                 <div className="col-3">
                     {player.isHost && <HostDisplay />}
-                    <PlayerDisplay player={player} />
+                    <PlayerDisplay />
                 </div>
                 <div className="col-9">
                     <GameBoard />

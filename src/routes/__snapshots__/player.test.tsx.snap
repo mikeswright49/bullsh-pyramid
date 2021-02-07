@@ -24,11 +24,15 @@ exports[`Player Route should be able to render the component 1`] = `
         </button>
       </div>
       <div
-        class="stack-y-2"
+        data-testid="player-display"
       >
-        <h3>
-          Waiting for the game to start
-        </h3>
+        <div
+          class="stack-y-2"
+        >
+          <h3>
+            Waiting for the game to start
+          </h3>
+        </div>
       </div>
     </div>
     <div

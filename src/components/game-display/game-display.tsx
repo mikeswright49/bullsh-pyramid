@@ -6,7 +6,6 @@ import { GameContext } from 'src/providers/game-provider';
 
 import { GameInitiation } from './stages/game-initiation';
 import { GameDeclaration } from './stages/game-declaration';
-import { Leaderboard } from 'src/components/leaderboard/leaderboard';
 import { GameComplete } from './stages/game-complete';
 
 type DisplayConfiguration = {
@@ -60,12 +59,15 @@ export function GameDisplay() {
 
     const displayStage = DISPLAY_CONFIGURATION[gameStage];
 
+    if (!displayStage) {
+        return null;
+    }
+
     return (
-        <div className="row">
+        <div className="row" data-testid="game-display">
             <div className="col-3">
                 {displayStage.text && <h2>{displayStage.text}</h2>}
                 {displayStage.Component && <displayStage.Component />}
-                {!displayStage.hideLeaderboard && <Leaderboard />}
             </div>
             <div className="col-9">{!displayStage.hideGameboard && <GameBoard />}</div>
         </div>
