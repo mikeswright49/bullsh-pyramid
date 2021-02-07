@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Player Display it should be able to render the player view for Assign 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      Time to give out some "points"
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Bullshit 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      No one says they had it
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Complete 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      Game Over Everyone
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Declaration 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      Quick 5s! Do you have this card?
+    </h3>
+    <div
+      class="stack-y-2"
+    >
+      <h3>
+        Your hand
+      </h3>
+      <div
+        class="hand"
+      >
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-7"
+            style="background-position: -553px -246px;"
+          />
+          <button
+            data-testid="7-2-select-button"
+          >
+            This one
+          </button>
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-3-8"
+            style="background-position: -632px -369px;"
+          />
+          <button
+            data-testid="8-3-select-button"
+          >
+            This one
+          </button>
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-1-11"
+            style="background-position: -869px -123px;"
+          />
+          <button
+            data-testid="11-1-select-button"
+          >
+            This one
+          </button>
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-0"
+            style="background-position: -0px -246px;"
+          />
+          <button
+            data-testid="0-2-select-button"
+          >
+            This one
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Flipping 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      Flipping a card
+    </h3>
+    <div
+      class="stack-y-2"
+    >
+      <h3>
+        Your hand
+      </h3>
+      <div
+        class="hand"
+      >
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-7"
+            style="background-position: -553px -246px;"
+          />
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-3-8"
+            style="background-position: -632px -369px;"
+          />
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-1-11"
+            style="background-position: -869px -123px;"
+          />
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-0"
+            style="background-position: -0px -246px;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Initiation 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      Waiting for the game to start
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Memorization 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      You have 30s to remember your cards!
+    </h3>
+    <div
+      class="stack-y-2"
+    >
+      <h3>
+        Your hand
+      </h3>
+      <div
+        class="hand"
+      >
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-7"
+            style="background-position: -553px -246px;"
+          />
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-3-8"
+            style="background-position: -632px -369px;"
+          />
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-1-11"
+            style="background-position: -869px -123px;"
+          />
+        </div>
+        <div>
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-0"
+            style="background-position: -0px -246px;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Memory 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      Well which cards did you have?
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`Player Display it should be able to render the player view for Reveal 1`] = `
+<div
+  data-testid="player-display"
+>
+  <div
+    class="stack-y-2"
+  />
+</div>
+`;
