@@ -6,9 +6,11 @@ import { VoteAssign } from 'src/components/vote-assign/vote-assign';
 export function PlayerAssign() {
     const player = useContext(PlayerContext);
     const hasCards = !isEmpty(player.declaration);
+
     if (!hasCards) {
-        <h3>You don&apos;t have this card, just sit back and relax</h3>;
+        return <h3>You don&apos;t have this card, just sit back and relax</h3>;
     }
+
     return (
         <div className="stack-y-2">
             <h3>Time to give out some &quot;points&quot;</h3>

@@ -11,6 +11,7 @@ export type GameState = {
     flipDelay: number;
     playerCount?: number;
     tierCount?: number;
+    language?: string;
     cardCount: number;
     votes: { [key: string]: string };
 };

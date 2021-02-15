@@ -6,11 +6,10 @@ exports[`<Unit Test> - Game board should render the mobile friendly version if o
   data-testid="mobile-game-board"
 >
   <h3>
-    Current Row: 
-    1
+    game.board.current.row
   </h3>
   <h3>
-    Current card
+    game.board.current.card
   </h3>
   <div
     class="flex-center-center card"
