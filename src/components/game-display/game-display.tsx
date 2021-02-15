@@ -7,6 +7,7 @@ import { GameContext } from 'src/providers/game-provider';
 import { GameInitiation } from './stages/game-initiation';
 import { GameDeclaration } from './stages/game-declaration';
 import { GameComplete } from './stages/game-complete';
+import { TranslationContext } from 'src/providers/translation-provider';
 
 type DisplayConfiguration = {
     text: string;
@@ -22,39 +23,40 @@ const DISPLAY_CONFIGURATION: { [key: number]: DisplayConfiguration } = {
         hideLeaderboard: true,
     },
     [GameStage.Memorization]: {
-        text: 'You have 30s to remember your cards!',
+        text: 'game.display.stage.memorization.text',
         hideGameboard: false,
         hideLeaderboard: true,
     },
     [GameStage.Flipping]: {
-        text: 'The host is flipping a card',
+        text: 'game.display.stage.flipping.text',
     },
     [GameStage.Declaration]: {
-        text: 'Let the world know if you have it',
+        text: 'game.display.stage.declaration.text',
         Component: GameDeclaration,
         hideGameboard: false,
         hideLeaderboard: true,
     },
     [GameStage.Assign]: {
-        text: 'Players are beginning to lie left right and center',
+        text: 'game.display.stage.assign.text',
     },
     [GameStage.Bullshit]: {
-        text: 'People should know who you think was lieing',
+        text: 'game.display.stage.bullshit.text',
     },
     [GameStage.Reveal]: {
-        text: 'We all now know the truth',
+        text: 'game.display.stage.reveal.text',
     },
     [GameStage.Memory]: {
-        text: 'Well which cards did you have?',
+        text: 'game.display.stage.memory.text',
     },
     [GameStage.Complete]: {
-        text: 'Well time for a new game',
+        text: 'game.display.stage.complete.text',
         Component: GameComplete,
     },
 };
 
 export function GameDisplay() {
     const gameState = useContext(GameContext);
+    const { translate } = useContext(TranslationContext);
     const { gameStage } = gameState;
 
     const displayStage = DISPLAY_CONFIGURATION[gameStage];
@@ -66,7 +68,7 @@ export function GameDisplay() {
     return (
         <div className="row" data-testid="game-display">
             <div className="col-3">
-                {displayStage.text && <h2>{displayStage.text}</h2>}
+                {displayStage.text && <h2>{translate(displayStage.text)}</h2>}
                 {displayStage.Component && <displayStage.Component />}
             </div>
             <div className="col-9">{!displayStage.hideGameboard && <GameBoard />}</div>

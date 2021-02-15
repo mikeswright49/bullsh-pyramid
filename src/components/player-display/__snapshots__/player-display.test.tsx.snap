@@ -4,13 +4,9 @@ exports[`Player Display it should be able to render the player view for Assign 1
 <div
   data-testid="player-display"
 >
-  <div
-    class="stack-y-2"
-  >
-    <h3>
-      Time to give out some "points"
-    </h3>
-  </div>
+  <h3>
+    You don't have this card, just sit back and relax
+  </h3>
 </div>
 `;
 
@@ -253,8 +249,8 @@ exports[`Player Display it should be able to render the player view for Reveal 1
 <div
   data-testid="player-display"
 >
-  <div
-    class="stack-y-2"
-  />
+  <h4>
+    No one called bullshit. Time to move along.
+  </h4>
 </div>
 `;

@@ -3,11 +3,17 @@ import { VotesContext } from 'src/providers/votes-provider';
 import { Card } from 'src/components/card/card';
 import { Card as CardType } from 'types/card';
 import { GameContext } from 'src/providers/game-provider';
+import isEmpty from 'lodash.isempty';
 
 export function PlayerReveal() {
     const votes = useContext(VotesContext);
     const gameContext = useContext(GameContext);
     const activeCard = gameContext.tiers[gameContext.activeRow][gameContext.activeIndex];
+
+    if (isEmpty(votes.filter((v) => v.bullshit))) {
+        return <h4>No one called bullshit. Time to move along.</h4>;
+    }
+
     return (
         <div className="stack-y-2">
             {votes

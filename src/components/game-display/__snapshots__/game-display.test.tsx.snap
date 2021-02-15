@@ -9,7 +9,7 @@ exports[`Game Display it should be able to render the game view for Assign 1`] =
     class="col-3"
   >
     <h2>
-      Players are beginning to lie left right and center
+      game.display.stage.assign.text
     </h2>
   </div>
   <div
@@ -132,7 +132,7 @@ exports[`Game Display it should be able to render the game view for Bullshit 1`]
     class="col-3"
   >
     <h2>
-      People should know who you think was lieing
+      game.display.stage.bullshit.text
     </h2>
   </div>
   <div
@@ -255,7 +255,7 @@ exports[`Game Display it should be able to render the game view for Complete 1`]
     class="col-3"
   >
     <h2>
-      Well time for a new game
+      game.display.stage.complete.text
     </h2>
     <div
       class="stack-y-2"
@@ -392,7 +392,7 @@ exports[`Game Display it should be able to render the game view for Declaration 
     class="col-3"
   >
     <h2>
-      Let the world know if you have it
+      game.display.stage.declaration.text
     </h2>
     <div
       class="stack-y-2"
@@ -518,7 +518,7 @@ exports[`Game Display it should be able to render the game view for Flipping 1`]
     class="col-3"
   >
     <h2>
-      The host is flipping a card
+      game.display.stage.flipping.text
     </h2>
   </div>
   <div
@@ -683,7 +683,7 @@ exports[`Game Display it should be able to render the game view for Memorization
     class="col-3"
   >
     <h2>
-      You have 30s to remember your cards!
+      game.display.stage.memorization.text
     </h2>
   </div>
   <div
@@ -806,7 +806,7 @@ exports[`Game Display it should be able to render the game view for Memory 1`] =
     class="col-3"
   >
     <h2>
-      Well which cards did you have?
+      game.display.stage.memory.text
     </h2>
   </div>
   <div
@@ -929,7 +929,7 @@ exports[`Game Display it should be able to render the game view for Reveal 1`] =
     class="col-3"
   >
     <h2>
-      We all now know the truth
+      game.display.stage.reveal.text
     </h2>
   </div>
   <div
