@@ -7,10 +7,15 @@ const INTERPOLATE_REGEX = /{{.*?}}/gi;
 const INTERPOLATE_PROPERTY_REGEX = /{{(.*)?}}/i;
 const INTERPOLATE_CAPTURE_COUNT = 2;
 
-export const TranslationContext = React.createContext<{
+export type Translations = {
     translations: { [key: string]: string };
     translate: (key: string, variables?: { [key: string]: string | number | boolean }) => string;
-}>({ translate: (a) => a, translations: {} });
+};
+
+export const TranslationContext = React.createContext<Translations>({
+    translate: (a) => a,
+    translations: {},
+});
 
 export function TranslationProvider(props: React.PropsWithChildren<unknown>) {
     const { language } = useContext(GameContext);
@@ -23,7 +28,7 @@ export function TranslationProvider(props: React.PropsWithChildren<unknown>) {
      * Returns the nested property value (userMetadata.giftcard.bacon)
      * @param source property value
      */
-    function getProperty(source: string[], parent: any): any {
+    function getProperty(source: string[], parent: unknown): string {
         if (!source || !parent) {
             return;
         }
