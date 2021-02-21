@@ -10,7 +10,7 @@ export function PlayerRoute() {
         return null;
     }
     return (
-        <div className="container" data-testid="player-route">
+        <div data-testid="player-route">
             <div className="row">
                 <div className="col-3">
                     {player.isHost && <HostDisplay />}

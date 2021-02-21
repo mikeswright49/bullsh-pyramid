@@ -2,7 +2,6 @@
 
 exports[`Player Route should be able to render the component 1`] = `
 <div
-  class="container"
   data-testid="player-route"
 >
   <div
@@ -12,16 +11,20 @@ exports[`Player Route should be able to render the component 1`] = `
       class="col-3"
     >
       <div
-        class="stack-y-2"
+        data-testid="host-display"
       >
-        <h2>
-          You're the host
-        </h2>
-        <button
-          class="pure-button pure-button-primary"
+        <div
+          class="stack-y-2"
         >
-          Start game
-        </button>
+          <h2>
+            host.display.stage.initiation.title
+          </h2>
+          <button
+            class="pure-button pure-button-primary"
+          >
+            host.display.stage.initiation.button
+          </button>
+        </div>
       </div>
       <div
         data-testid="player-display"

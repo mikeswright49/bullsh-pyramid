@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HostDisplay it should be able to render the host view for Assign 1`] = `
+<div
+  data-testid="host-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      host.display.stage.assign.title
+    </h3>
+    <button
+      class="pure-button pure-button-primary"
+    >
+      host.display.stage.assign.button
+    </button>
+  </div>
+</div>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Bullshit 1`] = `
+<div
+  data-testid="host-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      host.display.stage.bullshit.title
+    </h3>
+    <button
+      class="pure-button pure-button-primary"
+    >
+      host.display.stage.bullshit.button
+    </button>
+  </div>
+</div>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Complete 1`] = `
+<div
+  data-testid="host-display"
+/>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Declaration 1`] = `
+<div
+  data-testid="host-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <button
+      class="pure-button pure-button-primary"
+    >
+      host.display.stage.declaration.button
+    </button>
+  </div>
+</div>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Flipping 1`] = `
+<div
+  data-testid="host-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      host.display.stage.flipping.title
+    </h3>
+    <button
+      class="pure-button pure-button-primary"
+    >
+      host.display.stage.flipping.button
+    </button>
+  </div>
+</div>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Initiation 1`] = `
+<div
+  data-testid="host-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h2>
+      host.display.stage.initiation.title
+    </h2>
+    <button
+      class="pure-button pure-button-primary"
+    >
+      host.display.stage.initiation.button
+    </button>
+  </div>
+</div>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Memorization 1`] = `
+<div
+  data-testid="host-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      host.display.stage.memorization.title
+    </h3>
+    <h4>
+      host.display.stage.memorization.subtitle
+    </h4>
+  </div>
+</div>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Memory 1`] = `
+<div
+  data-testid="host-display"
+/>
+`;
+
+exports[`HostDisplay it should be able to render the host view for Reveal 1`] = `
+<div
+  data-testid="host-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      host.display.stage.reveal.title
+    </h3>
+    <button
+      class="pure-button pure-button-primary"
+    >
+      host.display.stage.reveal.button
+    </button>
+  </div>
+</div>
+`;
