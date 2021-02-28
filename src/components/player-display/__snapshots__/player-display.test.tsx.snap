@@ -57,53 +57,57 @@ exports[`Player Display it should be able to render the player view for Declarat
       <div
         class="hand"
       >
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-2-7"
-            style="background-position: -553px -246px;"
-          />
-          <button
-            data-testid="7-2-select-button"
+            style="cursor: pointer;"
           >
-            This one
-          </button>
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-7"
+              style="background-position: -553px -246px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-8"
-            style="background-position: -632px -369px;"
-          />
-          <button
-            data-testid="8-3-select-button"
+            style="cursor: pointer;"
           >
-            This one
-          </button>
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-8"
+              style="background-position: -632px -369px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-11"
-            style="background-position: -869px -123px;"
-          />
-          <button
-            data-testid="11-1-select-button"
+            style="cursor: pointer;"
           >
-            This one
-          </button>
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-11"
+              style="background-position: -869px -123px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-2-0"
-            style="background-position: -0px -246px;"
-          />
-          <button
-            data-testid="0-2-select-button"
+            style="cursor: pointer;"
           >
-            This one
-          </button>
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-0"
+              style="background-position: -0px -246px;"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -130,33 +134,57 @@ exports[`Player Display it should be able to render the player view for Flipping
       <div
         class="hand"
       >
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-2-7"
-            style="background-position: -553px -246px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-7"
+              style="background-position: -553px -246px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-8"
-            style="background-position: -632px -369px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-8"
+              style="background-position: -632px -369px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-11"
-            style="background-position: -869px -123px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-11"
+              style="background-position: -869px -123px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-2-0"
-            style="background-position: -0px -246px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-0"
+              style="background-position: -0px -246px;"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -197,33 +225,57 @@ exports[`Player Display it should be able to render the player view for Memoriza
       <div
         class="hand"
       >
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-2-7"
-            style="background-position: -553px -246px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-7"
+              style="background-position: -553px -246px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-8"
-            style="background-position: -632px -369px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-8"
+              style="background-position: -632px -369px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-11"
-            style="background-position: -869px -123px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-11"
+              style="background-position: -869px -123px;"
+            />
+          </div>
         </div>
-        <div>
+        <div
+          class="stack-x-4"
+        >
           <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-2-0"
-            style="background-position: -0px -246px;"
-          />
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-0"
+              style="background-position: -0px -246px;"
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -11,9 +11,6 @@ exports[`HostDisplay it should be able to render the host view for Assign 1`] = 
       host.display.stage.assign.title
     </h3>
     <h4>
-      Players submitted:
-    </h4>
-    <h4>
       Players still assigning:
     </h4>
     <div>

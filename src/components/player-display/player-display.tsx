@@ -31,7 +31,7 @@ export function PlayerDisplay() {
                     <div className="stack-y-2">
                         <h3>You have 30s to remember your cards!</h3>
                         <div className="stack-y-2">
-                            <Hand cards={player.hand} showSelector={false} />
+                            <Hand cards={player.hand} />
                         </div>
                     </div>
                 );
@@ -40,7 +40,7 @@ export function PlayerDisplay() {
                     <div className="stack-y-2">
                         <h3>Flipping a card</h3>
                         <div className="stack-y-2">
-                            <Hand cards={player.hand} showSelector={false} />
+                            <Hand cards={player.hand} />
                         </div>
                     </div>
                 );

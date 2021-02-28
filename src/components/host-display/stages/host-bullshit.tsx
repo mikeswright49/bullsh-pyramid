@@ -9,15 +9,18 @@ export function HostBullshit() {
     const votes = useContext(VotesContext);
     const { translate } = useContext(TranslationContext);
 
+    const uniqueAwaiting = votes
+        .filter((vote) => !vote.accepted && !vote.bullshit)
+        .map((vote) => vote.target.name)
+        .filter((v, i, a) => a.indexOf(v) === i);
+
     return (
         <div className="stack-y-2">
             <h3>{translate('host.display.stage.bullshit.title')}</h3>
             <h4>Still waiting on:</h4>
-            {votes
-                .filter((vote) => !vote.accepted && !vote.bullshit)
-                .map((vote) => (
-                    <div key={vote.id}>{vote.target.name}</div>
-                ))}
+            {uniqueAwaiting.map((player) => (
+                <div key={player}>{player}</div>
+            ))}
             <button
                 className="pure-button pure-button-primary"
                 onClick={() => transitionToReveal(gameState.id)}

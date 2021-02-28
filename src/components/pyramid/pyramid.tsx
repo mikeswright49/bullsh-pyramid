@@ -14,7 +14,12 @@ export function Pyramid({ tiers }: { tiers: CardType[][] }) {
             {renderedTiers.map((tier, tierIndex) => (
                 <div key={`pyramid-tier-${tierIndex}`} className={'flex-center-center stack-y-3'}>
                     {tier.map((card: CardType, cardIndex) => (
-                        <Card key={`pyramid-tier-${tierIndex}-card-${cardIndex}`} card={card} />
+                        <span
+                            className="stack-x-4"
+                            key={`pyramid-tier-${tierIndex}-card-${cardIndex}`}
+                        >
+                            <Card card={card} />
+                        </span>
                     ))}
                 </div>
             ))}

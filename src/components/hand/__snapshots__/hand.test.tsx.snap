@@ -8,74 +8,44 @@ exports[`<Unit Test> Hand should be able to render the component 1`] = `
   <div
     class="hand"
   >
-    <div>
+    <div
+      class="stack-x-4"
+    >
       <div
-        class="flex-center-center card"
-        data-testid="card-0-1"
-        style="background-position: -79px -0px;"
-      />
-    </div>
-    <div>
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-2"
-        style="background-position: -158px -0px;"
-      />
-    </div>
-    <div>
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-3"
-        style="background-position: -237px -0px;"
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<Unit Test> Hand should be able to show the selection button 1`] = `
-<div>
-  <h3>
-    Your hand
-  </h3>
-  <div
-    class="hand"
-  >
-    <div>
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-1"
-        style="background-position: -79px -0px;"
-      />
-      <button
-        data-testid="1-0-select-button"
+        style="cursor: pointer;"
       >
-        This one
-      </button>
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-1"
+          style="background-position: -79px -0px;"
+        />
+      </div>
     </div>
-    <div>
+    <div
+      class="stack-x-4"
+    >
       <div
-        class="flex-center-center card"
-        data-testid="card-0-2"
-        style="background-position: -158px -0px;"
-      />
-      <button
-        data-testid="2-0-select-button"
+        style="cursor: pointer;"
       >
-        This one
-      </button>
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-2"
+          style="background-position: -158px -0px;"
+        />
+      </div>
     </div>
-    <div>
+    <div
+      class="stack-x-4"
+    >
       <div
-        class="flex-center-center card"
-        data-testid="card-0-3"
-        style="background-position: -237px -0px;"
-      />
-      <button
-        data-testid="3-0-select-button"
+        style="cursor: pointer;"
       >
-        This one
-      </button>
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-3"
+          style="background-position: -237px -0px;"
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -89,36 +59,44 @@ exports[`<Unit Test> Hand should hide the card if it is selected 1`] = `
   <div
     class="hand"
   >
-    <div>
+    <div
+      class="stack-x-4"
+    >
       <div
-        class="flex-center-center card"
-        data-testid="card-0-1"
-        style="background-position: -79px -0px;"
-      />
-    </div>
-    <div>
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-2"
-        style="background-position: -158px -0px;"
-      />
-      <button
-        data-testid="2-0-select-button"
+        style="border: 2px solid green; cursor: pointer;"
       >
-        This one
-      </button>
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-1"
+          style="background-position: -79px -0px;"
+        />
+      </div>
     </div>
-    <div>
+    <div
+      class="stack-x-4"
+    >
       <div
-        class="flex-center-center card"
-        data-testid="card-0-3"
-        style="background-position: -237px -0px;"
-      />
-      <button
-        data-testid="3-0-select-button"
+        style="cursor: pointer;"
       >
-        This one
-      </button>
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-2"
+          style="background-position: -158px -0px;"
+        />
+      </div>
+    </div>
+    <div
+      class="stack-x-4"
+    >
+      <div
+        style="cursor: pointer;"
+      >
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-3"
+          style="background-position: -237px -0px;"
+        />
+      </div>
     </div>
   </div>
 </div>
