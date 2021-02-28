@@ -4,6 +4,8 @@ import { PlayerContext } from 'src/providers/player-provider';
 import { VoteStore, VoteConfig } from 'src/stores/vote-store';
 import { GameContext } from 'src/providers/game-provider';
 import { Card } from 'types/card';
+import { TranslationContext } from 'src/providers/translation-provider';
+import { PlayerStore } from 'src/stores/player-store';
 export interface VoteAssignProps {
     card: Card;
 }
@@ -12,6 +14,7 @@ export function VoteAssign({ card }: VoteAssignProps) {
     const players = useContext(PlayersContext);
     const player = useContext(PlayerContext);
     const gameState = useContext(GameContext);
+    const { translate } = useContext(TranslationContext);
 
     const [errorMessage, setErrorMessage] = useState('');
     const voteInputs = useRef([]);
@@ -43,13 +46,14 @@ export function VoteAssign({ card }: VoteAssignProps) {
             setErrorMessage('You must assign votes out');
             return;
         }
-
-        await Promise.all(
-            assignedPlayers.map(async (assignee) => {
+        player.voteSubmitted++;
+        await Promise.all([
+            ...assignedPlayers.map(async (assignee) => {
                 const voteId = await VoteStore.createVote(assignee);
                 await VoteStore.addVote(gameState.id, voteId);
-            })
-        );
+            }),
+            PlayerStore.updatePlayer(player),
+        ]);
 
         setSubmitted(true);
     }
@@ -58,11 +62,11 @@ export function VoteAssign({ card }: VoteAssignProps) {
         <div data-testid="vote-assign">
             {!submitted ? (
                 <>
-                    <h4>Assign {count} &quot;points&quot; out</h4>
+                    <h4>{translate('vote.assign.title', { count })}</h4>
                     <form onSubmit={createVotes} data-testid="vote-assign-form">
                         <div className="row">
-                            <h4 className="col-8-sm">Player name</h4>
-                            <h4 className="col-3-sm">Points</h4>
+                            <h4 className="col-8-sm">{translate('global.player_name')}</h4>
+                            <h4 className="col-3-sm">{translate('global.points')}</h4>
                         </div>
                         {otherPlayers.map((player, index) => {
                             return (
@@ -86,11 +90,11 @@ export function VoteAssign({ card }: VoteAssignProps) {
                             );
                         })}
                         {errorMessage && <div>{errorMessage}</div>}
-                        <button type="submit">All done</button>
+                        <button type="submit">{translate('vote.assign.submit')}</button>
                     </form>
                 </>
             ) : (
-                <h5>That was pretty easy</h5>
+                <h5>{translate('vote.assign.complete')}</h5>
             )}
         </div>
     );

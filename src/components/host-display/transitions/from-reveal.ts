@@ -11,6 +11,7 @@ export async function transitionFromReveal(players: Player[], gameState: GameSta
         players.map(async (player) => {
             player.declaration = null;
             player.hand.forEach((card) => (card.hidden = true));
+            player.voteSubmitted = 0;
             await PlayerStore.updatePlayer(player);
         })
     );

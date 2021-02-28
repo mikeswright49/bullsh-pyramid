@@ -17,6 +17,7 @@ export class PlayerStore extends BaseStore {
             score: PlayerStore.DEFAULT_PLAYER_SCORE,
             isHost,
             declaration: [],
+            voteSubmitted: 0,
         };
 
         try {
