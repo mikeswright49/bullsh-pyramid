@@ -6,13 +6,15 @@ import { PlayersContext } from 'src/providers/players-provider';
 import { transitionToMemorization } from './transitions/to-memorization';
 import { transitionToFlipping } from './transitions/to-flipping';
 import { transitionToNewGame } from './transitions/to-new-game';
-import { transitionToDeclaration } from './transitions/to-declaration';
 import { transitionFromReveal } from './transitions/from-reveal';
 import { transitionToAssignment } from './transitions/to-assignment';
 import { TranslationContext } from 'src/providers/translation-provider';
 import isEmpty from 'lodash.isempty';
 import { HostAssign } from './stages/host-assign';
 import { HostBullshit } from './stages/host-bullshit';
+import { GameType } from 'types/game-state';
+import { StandardFlipping } from './stages/standard-flipping';
+import { OpenFlipping } from './stages/open-flipping';
 
 const MEMORIZATION_TIMEOUT = 30000;
 const MEMORY_TIMEOUT = 1000;
@@ -57,6 +59,10 @@ export function HostDisplay() {
                 return (
                     <div className="stack-y-2">
                         <h2>{translate('host.display.stage.initiation.title')}</h2>
+                        <h3>{translate('host.display.stage.initiation.subtitle')}</h3>
+                        {players.map((player) => (
+                            <h4 key={`player-${player.id}`}>{player.name}</h4>
+                        ))}
                         <button
                             className="pure-button pure-button-primary"
                             onClick={() => transitionToMemorization(players, gameState)}
@@ -73,16 +79,10 @@ export function HostDisplay() {
                     </div>
                 );
             case GameStage.Flipping:
-                return (
-                    <div className="stack-y-2">
-                        <h3>{translate('host.display.stage.flipping.title')}</h3>
-                        <button
-                            className="pure-button pure-button-primary"
-                            onClick={() => transitionToDeclaration(gameState)}
-                        >
-                            {translate('host.display.stage.flipping.button')}
-                        </button>
-                    </div>
+                return gameState.gameType === GameType.Standard ? (
+                    <StandardFlipping />
+                ) : (
+                    <OpenFlipping />
                 );
             case GameStage.Declaration:
                 return (

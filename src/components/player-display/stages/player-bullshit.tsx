@@ -4,10 +4,12 @@ import { PlayerContext } from 'src/providers/player-provider';
 import { VotesContext } from 'src/providers/votes-provider';
 import { Vote } from 'types/vote';
 import { VoteStore } from 'src/stores/vote-store';
+import { TranslationContext } from 'src/providers/translation-provider';
 
 export function PlayerBullshit() {
     const player = useContext(PlayerContext);
     const votes = useContext(VotesContext);
+    const { translate } = useContext(TranslationContext);
 
     function onVoted(vote: Vote, accepted: boolean) {
         if (accepted) {
@@ -27,7 +29,9 @@ export function PlayerBullshit() {
         <>
             {!isEmpty(votes) ? (
                 <div className="stack-y-2">
-                    <h3 className="stack-y-2">The following people are on the hook</h3>
+                    <h3 className="stack-y-2">
+                        {translate('player.display.stage.bullshit.hascards.title')}
+                    </h3>
                     {votes
                         .sort((a: Vote, b: Vote) => {
                             return a.target.name > b.target.name ? -1 : 1;
@@ -42,8 +46,11 @@ export function PlayerBullshit() {
                                     justifyContent: 'space-between',
                                 }}
                             >
-                                {vote.player.name} has assigned {vote.target.name} {vote.amount}{' '}
-                                &quot;points&quot;
+                                {translate('player.display.stage.bullshit.assignment.detail', {
+                                    playerName: vote.player.name,
+                                    targetName: vote.target.name,
+                                    amount: vote.amount,
+                                })}
                                 {player.id === vote.target.id && !vote.accepted && !vote.bullshit && (
                                     <>
                                         <button
@@ -57,21 +64,22 @@ export function PlayerBullshit() {
                                         </button>
                                     </>
                                 )}
-                                {vote.accepted && (
-                                    <span>{vote.target.name} accepted that they suck</span>
-                                )}
-                                {vote.bullshit && (
-                                    <span>
-                                        {vote.target.name} said that {vote.player.name} is full of
-                                        it
-                                    </span>
-                                )}
+                                {vote.accepted &&
+                                    translate('player.display.stage.bullshit.assignment.accepted', {
+                                        playerName: vote.player.name,
+                                        targetName: vote.target.name,
+                                    })}
+                                {vote.bullshit &&
+                                    translate('player.display.stage.bullshit.assignment.declined', {
+                                        playerName: vote.player.name,
+                                        targetName: vote.target.name,
+                                    })}
                             </div>
                         ))}
                 </div>
             ) : (
                 <div className="stack-y-2">
-                    <h3>No one says they had it</h3>
+                    <h3>{translate('player.display.stage.bullshit.nocards.title')}</h3>
                 </div>
             )}
         </>

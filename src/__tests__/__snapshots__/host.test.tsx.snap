@@ -75,6 +75,58 @@ exports[`<Unit Test> Host Page should render the page 1`] = `
         />
       </label>
     </div>
+    <div
+      class="stack-y-2"
+    >
+      <label>
+        <span
+          class="stack-x-1"
+        >
+          Game Mode
+        </span>
+        <select
+          data-testid="game-mode"
+        >
+          <option
+            selected=""
+            value="0"
+          >
+            Standard
+          </option>
+          <option
+            value="1"
+          >
+            Open
+          </option>
+        </select>
+      </label>
+    </div>
+    <div
+      class="stack-y-2"
+    >
+      <label>
+        <span
+          class="stack-x-1"
+        >
+          Language
+        </span>
+        <select
+          data-testid="language-select"
+        >
+          <option
+            selected=""
+            value="en"
+          >
+            Standard
+          </option>
+          <option
+            value="cunt"
+          >
+            Cunt
+          </option>
+        </select>
+      </label>
+    </div>
     <div>
       <button
         class="pure-button pure-button-primary"

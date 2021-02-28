@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Layout } from 'src/components/layout/layout';
 import { GameStore } from 'src/stores/game-store';
+import { GameType } from 'types/game-state';
 
 const DEFAULT_PLAYER_COUNT = 3;
 const DEFAULT_TIER_COUNT = 5;
@@ -12,6 +13,8 @@ export default function HostGame(): JSX.Element {
     const tierCount = useRef<HTMLInputElement>();
     const flipDelay = useRef<HTMLInputElement>();
     const cardCount = useRef<HTMLInputElement>();
+    const languageSelect = useRef<HTMLSelectElement>();
+    const gameModeSelect = useRef<HTMLSelectElement>();
 
     async function initializeGame(event: React.FormEvent): Promise<void> {
         event.preventDefault();
@@ -20,6 +23,8 @@ export default function HostGame(): JSX.Element {
             tierCount: parseInt(tierCount.current.value, 10),
             flipDelay: parseInt(flipDelay.current.value, 10),
             cardCount: parseInt(cardCount.current.value, 10),
+            gameType: parseInt(gameModeSelect.current.value, 10),
+            language: languageSelect.current.value,
         });
         window.location.assign(`/game/${gameId}`);
     }
@@ -71,6 +76,32 @@ export default function HostGame(): JSX.Element {
                                 defaultValue={DEFAULT_FLIP_DELAY}
                                 ref={flipDelay}
                             />
+                        </label>
+                    </div>
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Game Mode</span>
+                            <select
+                                data-testid="game-mode"
+                                defaultValue={GameType.Standard}
+                                ref={gameModeSelect}
+                            >
+                                <option value={GameType.Standard}>Standard</option>
+                                <option value={GameType.Open}>Open</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div className="stack-y-2">
+                        <label>
+                            <span className="stack-x-1">Language</span>
+                            <select
+                                data-testid="language-select"
+                                defaultValue={'en'}
+                                ref={languageSelect}
+                            >
+                                <option value={'en'}>Standard</option>
+                                <option value={'cunt'}>Cunt</option>
+                            </select>
                         </label>
                     </div>
                     <div>

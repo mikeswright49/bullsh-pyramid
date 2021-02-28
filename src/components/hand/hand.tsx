@@ -26,7 +26,6 @@ export function Hand({ cards, onSelected, selectedCards = [] }: HandProps): JSX.
 
     return (
         <>
-            <h3>Your hand</h3>
             <div className={styles.hand}>
                 {cards.map((card) => {
                     const isSelected = isCardSelected(card);

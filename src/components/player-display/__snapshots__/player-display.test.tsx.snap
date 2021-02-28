@@ -5,7 +5,7 @@ exports[`Player Display it should be able to render the player view for Assign 1
   data-testid="player-display"
 >
   <h3>
-    You don't have this card, just sit back and relax
+    player.display.stage.assign.nocards.title
   </h3>
 </div>
 `;
@@ -18,7 +18,7 @@ exports[`Player Display it should be able to render the player view for Bullshit
     class="stack-y-2"
   >
     <h3>
-      No one says they had it
+      player.display.stage.bullshit.nocards.title
     </h3>
   </div>
 </div>
@@ -46,13 +46,13 @@ exports[`Player Display it should be able to render the player view for Declarat
     class="stack-y-2"
   >
     <h3>
-      Quick 5s! Do you have this card?
+      player.display.stage.declaration.title
     </h3>
     <div
       class="stack-y-2"
     >
       <h3>
-        Your hand
+        global.your_hand
       </h3>
       <div
         class="hand"
@@ -123,13 +123,13 @@ exports[`Player Display it should be able to render the player view for Flipping
     class="stack-y-2"
   >
     <h3>
-      Flipping a card
+      player.display.stage.flipping.title
     </h3>
     <div
       class="stack-y-2"
     >
       <h3>
-        Your hand
+        global.your_hand
       </h3>
       <div
         class="hand"
@@ -200,7 +200,7 @@ exports[`Player Display it should be able to render the player view for Initiati
     class="stack-y-2"
   >
     <h3>
-      Waiting for the game to start
+      player.display.stage.initiation.title
     </h3>
   </div>
 </div>
@@ -214,13 +214,13 @@ exports[`Player Display it should be able to render the player view for Memoriza
     class="stack-y-2"
   >
     <h3>
-      You have 30s to remember your cards!
+      player.display.stage.memorization.title
     </h3>
     <div
       class="stack-y-2"
     >
       <h3>
-        Your hand
+        global.your_hand
       </h3>
       <div
         class="hand"
