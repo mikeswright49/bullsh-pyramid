@@ -22,7 +22,6 @@ export function PlayerDeclaration() {
                 <div className="stack-y-2">
                     <Hand
                         cards={player.hand}
-                        showSelector
                         selectedCards={declaredCards}
                         onSelected={onDeclarationSelected}
                     />

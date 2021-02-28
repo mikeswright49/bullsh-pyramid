@@ -25,97 +25,157 @@ exports[`Game Display it should be able to render the game view for Assign 1`] =
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -148,97 +208,157 @@ exports[`Game Display it should be able to render the game view for Bullshit 1`]
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -285,97 +405,157 @@ exports[`Game Display it should be able to render the game view for Complete 1`]
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -411,97 +591,157 @@ exports[`Game Display it should be able to render the game view for Declaration 
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -534,97 +774,157 @@ exports[`Game Display it should be able to render the game view for Flipping 1`]
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -699,97 +999,157 @@ exports[`Game Display it should be able to render the game view for Memorization
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -822,97 +1182,157 @@ exports[`Game Display it should be able to render the game view for Memory 1`] =
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>
@@ -945,97 +1365,157 @@ exports[`Game Display it should be able to render the game view for Reveal 1`] =
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-5"
-            style="background-position: -395px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-5"
+              style="background-position: -395px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-1"
-            style="background-position: -79px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-10"
-            style="background-position: -790px -0px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-1"
+              style="background-position: -79px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-10"
+              style="background-position: -790px -0px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-0-2"
-            style="background-position: -158px -0px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-3"
-            style="background-position: -237px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-1-7"
-            style="background-position: -553px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-0-2"
+              style="background-position: -158px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-3"
+              style="background-position: -237px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-7"
+              style="background-position: -553px -123px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-0"
-            style="background-position: -0px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-10"
-            style="background-position: -790px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-10"
-            style="background-position: -790px -369px;"
-          />
-          <div
-            class="flex-center-center card cardHidden"
-            data-testid="card-3-7"
-            style="background-position: -553px -369px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-0"
+              style="background-position: -0px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-10"
+              style="background-position: -790px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-10"
+              style="background-position: -790px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-7"
+              style="background-position: -553px -369px;"
+            />
+          </span>
         </div>
         <div
           class="flex-center-center stack-y-3"
         >
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-2"
-            style="background-position: -158px -123px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-2-1"
-            style="background-position: -79px -246px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-3-12"
-            style="background-position: -948px -369px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-0-12"
-            style="background-position: -948px -0px;"
-          />
-          <div
-            class="flex-center-center card"
-            data-testid="card-1-12"
-            style="background-position: -948px -123px;"
-          />
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-2"
+              style="background-position: -158px -123px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-2-1"
+              style="background-position: -79px -246px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-3-12"
+              style="background-position: -948px -369px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-0-12"
+              style="background-position: -948px -0px;"
+            />
+          </span>
+          <span
+            class="stack-x-4"
+          >
+            <div
+              class="flex-center-center card"
+              data-testid="card-1-12"
+              style="background-position: -948px -123px;"
+            />
+          </span>
         </div>
       </div>
     </div>

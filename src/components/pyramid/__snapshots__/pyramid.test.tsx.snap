@@ -8,44 +8,68 @@ exports[`<Unit Test> Pyramid should be able to render the component 1`] = `
     <div
       class="flex-center-center stack-y-3"
     >
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-6"
-        style="background-position: -474px -0px;"
-      />
+      <span
+        class="stack-x-4"
+      >
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-6"
+          style="background-position: -474px -0px;"
+        />
+      </span>
     </div>
     <div
       class="flex-center-center stack-y-3"
     >
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-4"
-        style="background-position: -316px -0px;"
-      />
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-5"
-        style="background-position: -395px -0px;"
-      />
+      <span
+        class="stack-x-4"
+      >
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-4"
+          style="background-position: -316px -0px;"
+        />
+      </span>
+      <span
+        class="stack-x-4"
+      >
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-5"
+          style="background-position: -395px -0px;"
+        />
+      </span>
     </div>
     <div
       class="flex-center-center stack-y-3"
     >
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-1"
-        style="background-position: -79px -0px;"
-      />
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-2"
-        style="background-position: -158px -0px;"
-      />
-      <div
-        class="flex-center-center card"
-        data-testid="card-0-3"
-        style="background-position: -237px -0px;"
-      />
+      <span
+        class="stack-x-4"
+      >
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-1"
+          style="background-position: -79px -0px;"
+        />
+      </span>
+      <span
+        class="stack-x-4"
+      >
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-2"
+          style="background-position: -158px -0px;"
+        />
+      </span>
+      <span
+        class="stack-x-4"
+      >
+        <div
+          class="flex-center-center card"
+          data-testid="card-0-3"
+          style="background-position: -237px -0px;"
+        />
+      </span>
     </div>
   </div>
 </div>

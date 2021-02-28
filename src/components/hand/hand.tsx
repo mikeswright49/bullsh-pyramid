@@ -6,16 +6,10 @@ import isEmpty from 'lodash.isempty';
 
 export interface HandProps {
     cards: CardType[];
-    showSelector: boolean;
     selectedCards?: CardType[];
     onSelected?: (card: CardType) => void;
 }
-export function Hand({
-    cards,
-    showSelector,
-    onSelected,
-    selectedCards = [],
-}: HandProps): JSX.Element {
+export function Hand({ cards, onSelected, selectedCards = [] }: HandProps): JSX.Element {
     if (!cards) {
         return null;
     }
@@ -34,21 +28,27 @@ export function Hand({
         <>
             <h3>Your hand</h3>
             <div className={styles.hand}>
-                {cards.map((card) => (
-                    <div key={`hand-card-${card.value}-${card.suit}`}>
-                        <Card card={card} />
-                        {showSelector && !isCardSelected(card) && (
-                            <button
-                                data-testid={`${card.value}-${card.suit}-select-button`}
-                                onClick={() => {
-                                    !!onSelected && onSelected(card);
+                {cards.map((card) => {
+                    const isSelected = isCardSelected(card);
+                    const isClickable = !!onSelected;
+                    return (
+                        <div key={`hand-card-${card.value}-${card.suit}`} className={'stack-x-4'}>
+                            <div
+                                style={{
+                                    border: isSelected ? '2px solid green' : 'none',
+                                    cursor: isClickable ? 'pointer' : 'auto',
                                 }}
                             >
-                                This one
-                            </button>
-                        )}
-                    </div>
-                ))}
+                                <Card
+                                    card={card}
+                                    onClick={(card) => {
+                                        isClickable && onSelected(card);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </>
     );
