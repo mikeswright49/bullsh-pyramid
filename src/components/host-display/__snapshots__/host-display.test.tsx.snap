@@ -10,6 +10,15 @@ exports[`HostDisplay it should be able to render the host view for Assign 1`] = 
     <h3>
       host.display.stage.assign.title
     </h3>
+    <h4>
+      Players submitted:
+    </h4>
+    <h4>
+      Players still assigning:
+    </h4>
+    <div>
+      frank
+    </div>
     <button
       class="pure-button pure-button-primary"
     >
@@ -29,6 +38,12 @@ exports[`HostDisplay it should be able to render the host view for Bullshit 1`] 
     <h3>
       host.display.stage.bullshit.title
     </h3>
+    <h4>
+      Still waiting on:
+    </h4>
+    <div>
+      frank
+    </div>
     <button
       class="pure-button pure-button-primary"
     >
@@ -51,6 +66,12 @@ exports[`HostDisplay it should be able to render the host view for Declaration 1
   <div
     class="stack-y-2"
   >
+    <h3>
+      host.display.stage.declaration.title
+    </h3>
+    <div>
+      frank
+    </div>
     <button
       class="pure-button pure-button-primary"
     >

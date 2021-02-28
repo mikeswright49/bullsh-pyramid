@@ -5,7 +5,7 @@ exports[`VoteAssign should be able to create the votes for a given set up 1`] = 
   data-testid="vote-assign"
 >
   <h5>
-    That was pretty easy
+    vote.assign.complete
   </h5>
 </div>
 `;
@@ -15,9 +15,7 @@ exports[`VoteAssign should be able to render the component 1`] = `
   data-testid="vote-assign"
 >
   <h4>
-    Assign 
-    2
-     "points" out
+    vote.assign.title
   </h4>
   <form
     data-testid="vote-assign-form"
@@ -28,12 +26,12 @@ exports[`VoteAssign should be able to render the component 1`] = `
       <h4
         class="col-8-sm"
       >
-        Player name
+        global.player_name
       </h4>
       <h4
         class="col-3-sm"
       >
-        Points
+        global.points
       </h4>
     </div>
     <div
@@ -58,7 +56,7 @@ exports[`VoteAssign should be able to render the component 1`] = `
     <button
       type="submit"
     >
-      All done
+      vote.assign.submit
     </button>
   </form>
 </div>

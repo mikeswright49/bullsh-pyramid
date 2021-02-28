@@ -5,13 +5,14 @@ import { GameStage } from 'src/enums/game-stage';
 import { PlayersContext } from 'src/providers/players-provider';
 import { transitionToMemorization } from './transitions/to-memorization';
 import { transitionToFlipping } from './transitions/to-flipping';
-import { transitionToBullshit } from './transitions/to-bullshit';
 import { transitionToNewGame } from './transitions/to-new-game';
 import { transitionToDeclaration } from './transitions/to-declaration';
-import { transitionToReveal } from './transitions/to-reveal';
 import { transitionFromReveal } from './transitions/from-reveal';
 import { transitionToAssignment } from './transitions/to-assignment';
 import { TranslationContext } from 'src/providers/translation-provider';
+import isEmpty from 'lodash.isempty';
+import { HostAssign } from './stages/host-assign';
+import { HostBullshit } from './stages/host-bullshit';
 
 const MEMORIZATION_TIMEOUT = 30000;
 const MEMORY_TIMEOUT = 1000;
@@ -86,6 +87,12 @@ export function HostDisplay() {
             case GameStage.Declaration:
                 return (
                     <div className="stack-y-2">
+                        <h3>{translate('host.display.stage.declaration.title')}</h3>
+                        {players
+                            .filter((player) => !isEmpty(player.declaration))
+                            .map((player) => (
+                                <div key={player.id}>{player.name}</div>
+                            ))}
                         <button
                             className="pure-button pure-button-primary"
                             onClick={() => {
@@ -98,29 +105,9 @@ export function HostDisplay() {
                     </div>
                 );
             case GameStage.Assign:
-                return (
-                    <div className="stack-y-2">
-                        <h3>{translate('host.display.stage.assign.title')}</h3>
-                        <button
-                            className="pure-button pure-button-primary"
-                            onClick={() => transitionToBullshit(gameState.id)}
-                        >
-                            {translate('host.display.stage.assign.button')}
-                        </button>
-                    </div>
-                );
+                return <HostAssign />;
             case GameStage.Bullshit:
-                return (
-                    <div className="stack-y-2">
-                        <h3>{translate('host.display.stage.bullshit.title')}</h3>
-                        <button
-                            className="pure-button pure-button-primary"
-                            onClick={() => transitionToReveal(gameState.id)}
-                        >
-                            {translate('host.display.stage.bullshit.button')}
-                        </button>
-                    </div>
-                );
+                return <HostBullshit />;
             case GameStage.Reveal:
                 return (
                     <div className="stack-y-2">

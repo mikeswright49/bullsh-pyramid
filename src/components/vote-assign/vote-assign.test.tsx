@@ -8,8 +8,10 @@ import { MOCK_GAME_STATE } from 'src/__tests__/data/mock-game-state';
 import { MOCK_PLAYER } from 'src/__tests__/data/mock-player';
 import { MOCK_PLAYERS } from 'src/__tests__/data/mock-players';
 import { VoteStore } from 'src/stores/vote-store';
+import { PlayerStore } from 'src/stores/player-store';
 
 jest.mock('src/stores/vote-store');
+jest.mock('src/stores/player-store');
 
 describe('VoteAssign', () => {
     let mockProps: VoteAssignProps;
@@ -65,5 +67,8 @@ describe('VoteAssign', () => {
             turnKey: '1-2',
         });
         expect(VoteStore.addVote).toHaveBeenCalledWith('mwif', 'a-vote-id');
+        expect(PlayerStore.updatePlayer).toHaveBeenLastCalledWith(
+            expect.objectContaining({ voteSubmitted: 1 })
+        );
     });
 });

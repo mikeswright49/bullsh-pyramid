@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { GameContext } from './game-provider';
-import { TRANSLATIONS } from './translations';
+import { TRANSLATIONS } from '../translations/translations';
 
 const INTERPOLATE_REGEX = /{{.*?}}/gi;
 const INTERPOLATE_PROPERTY_REGEX = /{{(.*)?}}/i;

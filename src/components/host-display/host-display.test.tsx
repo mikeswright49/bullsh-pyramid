@@ -9,6 +9,8 @@ import { MOCK_GAME_STATE } from 'src/__tests__/data/mock-game-state';
 import { MOCK_PLAYERS } from 'src/__tests__/data/mock-players';
 import { TranslationContext } from 'src/providers/translation-provider';
 import { MOCK_TRANSLATIONS } from 'src/__tests__/data/mock-translations';
+import { VotesContext } from 'src/providers/votes-provider';
+import { MOCK_VOTE } from 'src/__tests__/data/mock-vote';
 
 describe('HostDisplay', () => {
     let gameContextMock: GameState;
@@ -25,7 +27,9 @@ describe('HostDisplay', () => {
             <GameContext.Provider value={gameContextMock}>
                 <PlayersContext.Provider value={MOCK_PLAYERS}>
                     <TranslationContext.Provider value={MOCK_TRANSLATIONS}>
-                        <HostDisplay />
+                        <VotesContext.Provider value={[MOCK_VOTE]}>
+                            <HostDisplay />
+                        </VotesContext.Provider>
                     </TranslationContext.Provider>
                 </PlayersContext.Provider>
             </GameContext.Provider>

@@ -12,4 +12,5 @@ export const MOCK_PLAYER: Player = {
     name: 'frank',
     score: 10000,
     declaration: [],
+    voteSubmitted: 0,
 };
