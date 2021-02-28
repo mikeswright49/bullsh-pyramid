@@ -1,4 +1,4 @@
-import { GameState } from 'types/game-state';
+import { GameState, GameType } from 'types/game-state';
 
 export const MOCK_GAME_STATE: GameState = {
     activeIndex: 2,
@@ -41,4 +41,5 @@ export const MOCK_GAME_STATE: GameState = {
         '-MPRafqZfQsmIwRmkfPi': 'bgh',
         '-MPRag6XdifrVrEtwztR': 'cyq',
     },
+    gameType: GameType.Standard,
 };

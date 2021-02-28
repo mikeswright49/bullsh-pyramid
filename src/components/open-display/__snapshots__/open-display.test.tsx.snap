@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Open display It should be able to render for 0 1`] = `
+<div
+  data-testid="open-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      player.display.stage.initiation.title
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`Open display It should be able to render for 1 1`] = `
+<div
+  data-testid="open-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      player.display.stage.memorization.title
+    </h3>
+    <div
+      class="stack-y-2"
+    >
+      <h3>
+        global.your_hand
+      </h3>
+      <div
+        class="hand"
+      >
+        <div
+          class="stack-x-4"
+        >
+          <div
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-7"
+              style="background-position: -553px -246px;"
+            />
+          </div>
+        </div>
+        <div
+          class="stack-x-4"
+        >
+          <div
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-3-8"
+              style="background-position: -632px -369px;"
+            />
+          </div>
+        </div>
+        <div
+          class="stack-x-4"
+        >
+          <div
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-1-11"
+              style="background-position: -869px -123px;"
+            />
+          </div>
+        </div>
+        <div
+          class="stack-x-4"
+        >
+          <div
+            style="cursor: auto;"
+          >
+            <div
+              class="flex-center-center card cardHidden"
+              data-testid="card-2-0"
+              style="background-position: -0px -246px;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Open display It should be able to render for 2 1`] = `
+<div
+  data-testid="open-display"
+>
+  <div
+    class="stack-y-2"
+  >
+    <h3>
+      global.your_hand
+    </h3>
+    <div
+      class="hand"
+    >
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: pointer;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-7"
+            style="background-position: -553px -246px;"
+          />
+        </div>
+      </div>
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: pointer;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-3-8"
+            style="background-position: -632px -369px;"
+          />
+        </div>
+      </div>
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: pointer;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-1-11"
+            style="background-position: -869px -123px;"
+          />
+        </div>
+      </div>
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: pointer;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-0"
+            style="background-position: -0px -246px;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="stack-y-2"
+  >
+    <h5>
+      global.player
+      : 
+      joe
+    </h5>
+    <div
+      class="hand"
+    >
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: auto;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-1-4"
+            style="background-position: -316px -123px;"
+          />
+        </div>
+      </div>
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: auto;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-0-6"
+            style="background-position: -474px -0px;"
+          />
+        </div>
+      </div>
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: auto;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-2-2"
+            style="background-position: -158px -246px;"
+          />
+        </div>
+      </div>
+      <div
+        class="stack-x-4"
+      >
+        <div
+          style="cursor: auto;"
+        >
+          <div
+            class="flex-center-center card cardHidden"
+            data-testid="card-0-8"
+            style="background-position: -632px -0px;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

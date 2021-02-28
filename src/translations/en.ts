@@ -11,6 +11,7 @@ export const EN = {
     'game.display.stage.complete.text': 'Well time for a new game',
     'host.display.stage.initiation.title': "You're the host",
     'host.display.stage.initiation.button': 'Start game',
+    'host.display.stage.initiation.subtitle': 'Players joined',
     'host.display.stage.memorization.title': "You're still the host",
     'host.display.stage.memorization.subtitle': 'Everone has 30s to remember their cards!',
     'host.display.stage.flipping.title': 'Time to start flipping cards',
@@ -27,5 +28,21 @@ export const EN = {
     'vote.assign.submit': 'All done',
     'vote.assign.complete': 'Well that was easy',
     'global.player_name': 'Player name',
+    'global.player': 'Player',
     'global.points': 'points',
+    'global.your_hand': 'Your hand',
+    'player.display.stage.initiation.title': 'Waiting for the game to start',
+    'player.display.stage.memorization.title': 'You have 30s to remember your cards!',
+    'player.display.stage.flipping.title': 'Flipping a card',
+    'player.display.stage.declaration.title': 'Quick 5s! Do you have this card?',
+    'player.display.stage.assign.nocards.title':
+        "You don't have this card, just sit back and relax",
+    'player.display.stage.assign.hascards.title': 'Time to give out some "points"',
+    'player.display.stage.bullshit.hascards.title': 'The following people are on the hook',
+    'player.display.stage.bullshit.nocards.title': 'No one says they had it',
+    'player.display.stage.bullshit.assignment.detail':
+        '{{ playerName }} has assigned {{ targetName }} {{ amount }} "points"',
+    'player.display.stage.bullshit.assignment.declined':
+        '{{ targetName }} said that {{ playerName }} is full of it',
+    'player.display.stage.bullshit.assignment.accepted': '{{ targetName }} accepted that they suck',
 };

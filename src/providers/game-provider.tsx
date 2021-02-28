@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GameState } from 'types/game-state';
+import { GameState, GameType } from 'types/game-state';
 import { GameStore } from 'src/stores/game-store';
 import { GameStage } from 'src/enums/game-stage';
 
@@ -13,6 +13,8 @@ export const DEFAULT_GAME_STATE: GameState = {
     players: {},
     tiers: [],
     votes: {},
+    language: 'en',
+    gameType: GameType.Standard,
 };
 export const GameContext = React.createContext<GameState>(DEFAULT_GAME_STATE);
 

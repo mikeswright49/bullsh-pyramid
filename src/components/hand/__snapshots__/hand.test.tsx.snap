@@ -2,9 +2,6 @@
 
 exports[`<Unit Test> Hand should be able to render the component 1`] = `
 <div>
-  <h3>
-    Your hand
-  </h3>
   <div
     class="hand"
   >
@@ -53,9 +50,6 @@ exports[`<Unit Test> Hand should be able to render the component 1`] = `
 
 exports[`<Unit Test> Hand should hide the card if it is selected 1`] = `
 <div>
-  <h3>
-    Your hand
-  </h3>
   <div
     class="hand"
   >

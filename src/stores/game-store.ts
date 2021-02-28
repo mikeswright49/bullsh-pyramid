@@ -14,12 +14,9 @@ export class GameStore extends BaseStore {
         tierCount,
         flipDelay,
         cardCount,
-    }: {
-        playerCount: number;
-        tierCount: number;
-        flipDelay: number;
-        cardCount: number;
-    }): Promise<string> {
+        gameType,
+        language,
+    }: Partial<GameState>): Promise<string> {
         const gameId = shortId(ID_LENGTH);
 
         const gameState = {
@@ -31,6 +28,8 @@ export class GameStore extends BaseStore {
             tierCount,
             flipDelay: flipDelay * 1000,
             cardCount,
+            gameType,
+            language,
         } as GameState;
 
         try {

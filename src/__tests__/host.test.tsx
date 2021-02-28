@@ -2,6 +2,7 @@ import React from 'react';
 import Host from 'src/pages/game/host';
 import { render, fireEvent, act } from '@testing-library/react';
 import { GameStore } from 'src/stores/game-store';
+import { GameType } from 'types/game-state';
 
 jest.mock('src/stores/game-store');
 describe('<Unit Test> Host Page', () => {
@@ -46,6 +47,8 @@ describe('<Unit Test> Host Page', () => {
             flipDelay: 789,
             playerCount: 123,
             tierCount: 456,
+            gameType: GameType.Standard,
+            language: 'en',
         });
         expect(window.location.assign).toHaveBeenCalledWith('/game/a-game-id');
     });
